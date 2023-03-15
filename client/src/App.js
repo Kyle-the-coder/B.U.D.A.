@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom"
+import { useContext, useState, useEffect } from "react";
+import BudaNavbar from "./components/BudaNav";
+import LandingPage from "./views/LandingPage";
+import Admin from "./components/Admin"
+import { userInputs } from "./dataTable";
+import CreateUser from "./components/CreateUser";
+import { AuthContext } from "./context/AuthContext"
+import AdminNavbar from "./components/AdminNav";
+import AdminLandingPage from "./pages/AdminLandingPage";
+
+
 
 function App() {
+  const [navTracker, setNavTracker] = useState(false)
+  const { currentUser } = useContext(AuthContext)
+
+  useEffect(() => {
+
+    if (currentUser != null) {
+      setNavTracker(true)
+    } else if (currentUser === null) {
+      setNavTracker(false)
+    }
+
+
+  }, [currentUser])
+
+  const RequireAuth = ({ children }) => {
+    return currentUser ? (children) : <Navigate to="/" />
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {navTracker ? <AdminNavbar /> : <BudaNavbar />}
+
+      <Routes>
+        <Route path="/" element={<LandingPage/>}/>
+        <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/landingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
+      </Routes>
+
+
     </div>
   );
 }
