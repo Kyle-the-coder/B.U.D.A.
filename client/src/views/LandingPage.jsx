@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { db, auth, storage } from "../config/Firebase";
-import { collection, serverTimestamp, getDoc, deleteDoc, doc, setDoc, onSnapshot } from "firebase/firestore"
-import { ref, uploadBytes, listAll, getDownloadURL, uploadBytesResumable } from "firebase/storage"
+import { db, } from "../config/Firebase";
+import { getDoc, doc, } from "firebase/firestore"
 import ImpInfoModal from "../components/ImpInfoModal";
-import card2 from "../assets/images/card2.jpeg"
-import card3 from "../assets/images/card3.jpeg"
+
 
 
 const LandingPage = () => {
@@ -74,35 +71,13 @@ const LandingPage = () => {
 
 
             {/* Video Content Section */}
-            {/* <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
+            <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[600px] w-[700px]" loop muted autoPlay controls='' src={landingPageVid1}></video>
-                <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={landingPageVid2}></video>
+                <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[600px] w-[700px]" loop muted autoPlay controls='' src={data.vid1}></video>
+                <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid2} ></video>
 
-            </section> */}
-            {/* EDIT LANDING PAGE CARDS 1, 2, AND 3 */}
-            {/* <section className=" w-full mb-14 flex justify-center items-center">
-                <div className="w-full justify-center mt-12 flex h-fit">
-                    <form className="w-[420px] p-3 flex flex-col items-center  bg-slate-200  border-2 border-black" onSubmit={handleLandingPageVid1}>
-                        <h1 className="text-2xl mb-8 welcome">Edit Video 1:</h1>
-                        <FileBase64 multiple={false} onDone={({ base64 }) => setLandingPageVid1(base64)} />
-                        <div className="flex justify-center mt-8">
-                            <button type="submit" className="w-24 py-1 bg-indigo-200 rounded border-2 border-black">Upload</button>
-                            {lpVid1Edited && <img width="50" src={check} />}
-                        </div>
-                    </form>
-                </div>
-                <div className="w-full justify-center mt-12 flex h-fit">
-                    <form className="w-[420px] p-3 flex flex-col items-center  bg-slate-200  border-2 border-black" onSubmit={handleLandingPageVid2}>
-                        <h1 className="text-2xl mb-8 welcome">Edit Video 2:</h1>
-                        <FileBase64 multiple={false} onDone={({ base64 }) => setLandingPageVid2(base64)} />
-                        <div className="flex justify-center mt-8">
-                            <button type="submit" className="w-24 py-1 bg-indigo-200 rounded border-2 border-black">Upload</button>
-                            {lpVid2Edited && <img width="50" src={check} />}
-                        </div>
-                    </form>
-                </div>
-            </section> */}
+            </section>
+
 
         </div>
     )
