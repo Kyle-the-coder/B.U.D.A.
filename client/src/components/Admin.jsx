@@ -19,7 +19,7 @@ const Admin = () => {
                 // Signed in 
                 const user = userCredential.user;
                 dispatch({ type: "LOGIN", payload: user })
-                navigate("/landingpage")
+                navigate("/adminlandingpage")
             })
             .catch((error) => {
                 const errorCode = error.code;

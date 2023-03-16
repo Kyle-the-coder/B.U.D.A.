@@ -8,6 +8,7 @@ import CreateUser from "./components/CreateUser";
 import { AuthContext } from "./context/AuthContext"
 import AdminNavbar from "./components/AdminNav";
 import AdminLandingPage from "./pages/AdminLandingPage";
+import AdminSidebar from "./components/AdminSidebar";
 
 
 
@@ -33,14 +34,19 @@ function App() {
 
   return (
     <div className="App">
-      {navTracker ? <AdminNavbar /> : <BudaNavbar />}
 
-      <Routes>
-        <Route path="/" element={<LandingPage/>}/>
-        <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/landingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
-      </Routes>
+        {navTracker ? <AdminNavbar /> : <BudaNavbar />}
+        
+
+        
+
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
+          </Routes>
+    
 
 
     </div>
