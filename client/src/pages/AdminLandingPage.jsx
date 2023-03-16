@@ -269,7 +269,7 @@ const AdminLandingPage = () => {
                 </section>
 
 
-                <div className="w-full relative flex justify-center items-start transition-all duration-700">
+                <div className={` ${siteExpand ? "w-8/12":"w-full "} relative flex justify-end items-start transition-all duration-700`}>
 
 
                     <div className={` ${siteExpand ? "w-[500px] h-[500px]" : "w-full"} transition-all duration-700`}>
