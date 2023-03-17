@@ -32,7 +32,7 @@ const AdminNavbar = () => {
 
     let navLinks = [
         { name: "Edit Homepage", link: "/adminlandingpage" },
-        { name: "Edit About", link: "/adminabout" },
+        { name: "Edit About", link: "/adminaboutpage" },
         { name: "Edit Summer", link: "/adminsummer" },
         { name: "Edit Session", link: "/adminsession" },
         { name: "Edit B.C.", link: "/budacreweditadminpage" }

@@ -7,7 +7,7 @@ import { serverTimestamp, doc, setDoc } from "firebase/firestore"
 
 
 
-const AdminSidebar = (props) => {
+const AdminLandingSidebar = (props) => {
     const { data, setData } = props
     const { file, setFile } = props
     const { card1File, setCard1File } = props
@@ -185,4 +185,4 @@ const AdminSidebar = (props) => {
     )
 }
 
-export default AdminSidebar;
+export default AdminLandingSidebar;

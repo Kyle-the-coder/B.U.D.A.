@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { db, storage } from "../config/Firebase";
 import { getDoc, doc } from "firebase/firestore"
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
-import AdminSidebar from "../components/AdminSidebar";
+import AdminSidebar from "../components/AdminLandingSidebar";
 import ImpInfoModal from "../components/ImpInfoModal";
 
 

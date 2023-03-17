@@ -8,7 +8,9 @@ import CreateUser from "./components/CreateUser";
 import { AuthContext } from "./context/AuthContext"
 import AdminNavbar from "./components/AdminNav";
 import AdminLandingPage from "./pages/AdminLandingPage";
-import AdminSidebar from "./components/AdminSidebar";
+import AdminSidebar from "./components/AdminLandingSidebar";
+import AdminAboutPage from "./pages/AdminAboutPage";
+import AboutPage from "./views/AboutPage";
 
 
 
@@ -42,9 +44,11 @@ function App() {
 
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<AboutPage/>}/>
             <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
+            <Route path="/adminaboutpage" element={<RequireAuth><AdminAboutPage/></RequireAuth>}/>
           </Routes>
     
 
