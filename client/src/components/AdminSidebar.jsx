@@ -75,7 +75,7 @@ const AdminSidebar = (props) => {
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Main Image:</h1>
+                        <h1>Edit This Image:</h1>
                     </div>
                     <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setFile(e.target.files[0])} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
