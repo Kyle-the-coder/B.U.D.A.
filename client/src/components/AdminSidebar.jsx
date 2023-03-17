@@ -25,7 +25,7 @@ const AdminSidebar = (props) => {
     const { expandIndex, setExpandIndex } = props
     const { mainImgIndex } = props
     const { siteExpand, setSiteExpand } = props
-    const [sideExpand, setSideExpand] = useState(false)
+    const {sideExpand, setSideExpand} = props
     const [expand, setExpand] = useState(false)
 
     const handleExpandOption = (index) => {
@@ -142,12 +142,6 @@ const AdminSidebar = (props) => {
                 </div>
         }
     ]
-
-
-
-
-
-    console.log(data)
 
     return (
         <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]":"h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>

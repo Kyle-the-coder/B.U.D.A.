@@ -26,6 +26,7 @@ const AdminLandingPage = () => {
     const [mainImgIndex, setMainImgIndex] = useState('')
     const [show, setShow] = useState(false)
     const [siteExpand, setSiteExpand] = useState(false)
+    const [sideExpand, setSideExpand]=useState(false)
 
     useEffect(() => {
         const getPhoto = async () => {
@@ -239,7 +240,8 @@ const AdminLandingPage = () => {
         setVid1Index("5")
         setVid2Index("6")
     }, [file, card1File, card2File, card3File, vid1File, vid2File])
-
+console.log("side1", sideExpand)
+console.log("site2", siteExpand)
     return (
 
 
@@ -265,6 +267,7 @@ const AdminLandingPage = () => {
                         perc={perc} setPerc={setPerc}
                         mainImgIndex={mainImgIndex}
                         siteExpand={siteExpand} setSiteExpand={setSiteExpand}
+                        sideExpand={sideExpand} setSideExpand={setSideExpand}
                     />
                 </section>
 
@@ -276,9 +279,9 @@ const AdminLandingPage = () => {
 
                         <div className="w-full flex flex-col">
                             {/* LP Img Section */}
-                            <section className={`items-center ${highlightFocus && expandIndex == mainImgIndex ? "border-4 border-red-700 " : ""} ${siteExpand ? "h-[300px]":"h-screen"}  justify-center flex flex-col relative w-full  bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto  `} >
-                                <img src={file ? URL.createObjectURL(file) : data.img} alt=" Bianca" className={`rounded  w-full z-[1] h-full absolute  mix-blend-overlay`} />
-                                <h1 className={` ${siteExpand ? "text-2xl": "sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-3xl"} welcome  font-bold mb-2 relative`}>Bianca's Urban Dance Academy</h1>
+                            <section className={`items-center ${highlightFocus && expandIndex == mainImgIndex ? "border-4 border-red-700 " : ""} ${siteExpand ? "h-[300px]":"h-screen"}  justify-center flex flex-col relative w-full  bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-cover `} >
+                                <img src={file ? URL.createObjectURL(file) : data.img} alt=" Bianca" className={`rounded  w-full z-[1] h-full absolute  mix-blend-overlay object-cover `} />
+                                <h1 className={` ${sideExpand == true && siteExpand == false ? "text-5xl" : ""} ${sideExpand == false && siteExpand == false ? "text-6xl":""} ${sideExpand == true && siteExpand == true ? "text-xl":""} ${sideExpand == false && siteExpand == true ? "text-xl":""}  welcome  font-bold mb-2 relative`}>Bianca's Urban Dance Academy</h1>
                                 <a href="/wsp" className={` ${siteExpand ? "text-md px-2 py-1": " lg:text-2xl px-4 py-3"} bg-indigo-800 relative text-white   rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500`}>Class Schedule</a>
                             </section>
 
@@ -297,18 +300,18 @@ const AdminLandingPage = () => {
 
                                     {/* Important Info Card */}
                                     <div className={` w-fit  h-fit rounded`}>
-                                        <img className={`${highlightFocus && expandIndex == card1Index ? "border-4 border-red-700" : ""} ${siteExpand ? "w-[100px]":"sm:w-48 lg:w-64   w-32 "} infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black h-auto`} src={data.card1} onClick={() => setShow(true)} alt="important info card" />
+                                        <img className={`${highlightFocus && expandIndex == card1Index ? "border-4 border-red-700" : ""} ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black h-auto`} src={data.card1} onClick={() => setShow(true)} alt="important info card" />
                                         {show && <ImpInfoModal show={show} setShow={setShow} />}
                                     </div>
 
                                     {/* Buda Crew Info Card */}
                                     <div className="rounded w-fit h-fit hover:drop-shadow-lg">
-                                        <a href="/bcp"><img className={`${highlightFocus && expandIndex == card2Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${siteExpand ? "w-[100px]":"sm:w-48 lg:w-64   w-32 "} h-auto`} src={data.card2} alt="buda crew info card" /></a>
+                                        <a href="/bcp"><img className={`${highlightFocus && expandIndex == card2Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  h-auto`} src={data.card2} alt="buda crew info card" /></a>
                                     </div>
 
                                     {/* Summer Camp Info Card */}
                                     <div className=" w-fit rounded   h-fit hover:drop-shadow-lg ">
-                                        <a href="/sp"><img className={`${highlightFocus && expandIndex == card3Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${siteExpand ? "w-[100px]":"sm:w-48 lg:w-64   w-32 "} h-auto`} src={data.card3} alt="summer camp info card" /></a>
+                                        <a href="/sp"><img className={`${highlightFocus && expandIndex == card3Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  h-auto`} src={data.card3} alt="summer camp info card" /></a>
                                     </div>
                                 </div>
                             </section>
@@ -317,8 +320,8 @@ const AdminLandingPage = () => {
                             {/* Video Content Section */}
                             <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                                <video className={` ${highlightFocus && expandIndex == vid1Index ? "border-4 border-red-700" : "border-2 border-red-200"} ${siteExpand ? "w-[200px]":"md:w-[600px] w-[700px]"}  rounded mb-2 md:m-0   `} loop muted autoPlay controls='' src={data.vid1} ></video>
-                                <video className={` ${highlightFocus && expandIndex == vid2Index ? "border-4 border-red-700" : "border-2 border-indigo-200"} ${siteExpand ? "w-[200px]":"md:w-[600px] w-[700px]"}  rounded mb-2 md:m-0  `} loop muted autoPlay controls='' src={data.vid2} ></video>
+                                <video className={` ${highlightFocus && expandIndex == vid1Index ? "border-4 border-red-700" : "border-2 border-red-200"} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0   `} loop muted autoPlay controls='' src={data.vid1} ></video>
+                                <video className={` ${highlightFocus && expandIndex == vid2Index ? "border-4 border-red-700" : "border-2 border-indigo-200"}  ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0  `} loop muted autoPlay controls='' src={data.vid2} ></video>
 
                             </section>
                         </div>
