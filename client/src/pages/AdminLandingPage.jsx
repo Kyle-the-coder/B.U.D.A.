@@ -276,8 +276,8 @@ const AdminLandingPage = () => {
 
                         <div className="w-full flex flex-col">
                             {/* LP Img Section */}
-                            <section className={`items-center ${highlightFocus && expandIndex == mainImgIndex ? "border-4 border-red-700 " : ""} ${siteExpand ? "h-[300px]":"h-screen"}  justify-center flex flex-col relative w-full  bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-contain `} >
-                                <img src={file ? URL.createObjectURL(file) : data.img} alt=" Bianca" className={`rounded object-cover w-full z-[1] h-full absolute  mix-blend-overlay`} />
+                            <section className={`items-center ${highlightFocus && expandIndex == mainImgIndex ? "border-4 border-red-700 " : ""} ${siteExpand ? "h-[300px]":"h-screen"}  justify-center flex flex-col relative w-full  bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto  `} >
+                                <img src={file ? URL.createObjectURL(file) : data.img} alt=" Bianca" className={`rounded  w-full z-[1] h-full absolute  mix-blend-overlay`} />
                                 <h1 className={` ${siteExpand ? "text-2xl": "sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-3xl"} welcome  font-bold mb-2 relative`}>Bianca's Urban Dance Academy</h1>
                                 <a href="/wsp" className={` ${siteExpand ? "text-md px-2 py-1": " lg:text-2xl px-4 py-3"} bg-indigo-800 relative text-white   rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500`}>Class Schedule</a>
                             </section>
