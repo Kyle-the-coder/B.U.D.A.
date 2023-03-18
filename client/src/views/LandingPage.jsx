@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { db, } from "../config/Firebase";
 import { getDoc, doc, } from "firebase/firestore"
 import ImpInfoModal from "../components/ImpInfoModal";
-
+import "../"
 
 
 const LandingPage = () => {
