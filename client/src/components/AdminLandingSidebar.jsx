@@ -73,7 +73,7 @@ const AdminLandingSidebar = (props) => {
             name: "Edit Main Image",
             index: "1",
             content:
-                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
+                <div className="w-[400px] transition-all duration-700 p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit This Image:</h1>
                     </div>
@@ -170,7 +170,7 @@ const AdminLandingSidebar = (props) => {
                                         </div>
 
 
-                                        {expand && expandIndex === option.index && <p>{option.content}</p>}
+                                        {expand && expandIndex === option.index && <div>{option.content}</div>}
 
                                     </div>
                                 )

@@ -9,23 +9,24 @@ import { serverTimestamp, doc, setDoc } from "firebase/firestore"
 
 const AdminAboutSidebar = (props) => {
     const { data, setData } = props
-    const { file, setFile } = props
-    const { card1File, setCard1File } = props
-    const { card1Index } = props
-    const { card2File, setCard2File } = props
-    const { card2Index } = props
-    const { card3File, setCard3File } = props
-    const { card3Index } = props
-    const { vid1File, setVid1File } = props
-    const { vid1Index } = props
-    const { vid2File, setVid2File } = props
-    const { vid2Index } = props
+    const { aboutMeContent, setAboutMeContent } = props
+    const { aboutMeContentIndex, setAboutMeContentIndex } = props
+    const { aboutBudaContent, setAboutBudaContent } = props
+    const { aboutBudaContentIndex, setAboutBudaContentIndex } = props
+    const { aboutMeImgFile, setAboutMeImgFile } = props
+    const { aboutMeImgFileIndex, setAboutMeImgFileIndex } = props
+    const { aboutBudaImgFile, setAboutBudaImgFile } = props
+    const { aboutBudaImgFileIndex, setAboutBudaImgFileIndex } = props
+    const { aboutBannerImgFile, setAboutBannerImgFile } = props
+    const { aboutBannerVidFile, setAboutBannerVidFile } = props
+    const { aboutBannerFileIndex, setAboutBannerFileIndex } = props
+    const { aboutBannerTracker, setAboutBannerTracker } = props
     const { perc, setPerc } = props
     const { highlightFocus, setHighlightFocus } = props
     const { expandIndex, setExpandIndex } = props
     const { mainImgIndex } = props
     const { siteExpand, setSiteExpand } = props
-    const {sideExpand, setSideExpand} = props
+    const { sideExpand, setSideExpand } = props
     const [expand, setExpand] = useState(false)
 
     const handleExpandOption = (index) => {
@@ -41,23 +42,48 @@ const AdminAboutSidebar = (props) => {
     }
 
 
-
-
     const editPhoto = async () => {
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                aboutBannerTracker: aboutBannerTracker,
                 ...data,
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
-            alert("image went through")
+        
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const editAboutMeContent = async () => {
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                aboutMeContent: aboutMeContent,
+                ...data,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const editAboutBudaContent = async () => {
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                aboutBudaContent: aboutBudaContent,
+                ...data,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            
         } catch (error) {
             console.log(error)
         }
     }
 
     const handleFocus = (index) => {
-        if (index == mainImgIndex || index == card1Index || index == card2Index || index == card3Index || index == vid1Index || index == vid2Index) {
+        if (index == null) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)
@@ -67,84 +93,87 @@ const AdminAboutSidebar = (props) => {
     const handleSiteExpand = () => {
         setSideExpand(!siteExpand)
     }
+    const handleBannerImgTracker = ()=>{
+        setAboutBannerTracker("false")
+    }
+    const handleBannerVidTracker = ()=>{
+        setAboutBannerTracker("true")
+    }
 
     const options = [
         {
-            name: "Edit Main Image",
+            name: "Edit About Me Banner",
             index: "1",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit This Image:</h1>
+                        <h1>Edit About Me Banner Image:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setFile(e.target.files[0])} />
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutBannerImgFile(e.target.files[0])} />
+                    <input type="hidden" value="false" onChange={(e) => setAboutBannerTracker(e.target.value)}/>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={ editPhoto}>Submit</button>
+                    
+                    <div className=" transition-all duration-700 mt-5">
+                        <h1>OR make the banner a video:</h1>
+                    </div>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutBannerVidFile(e.target.files[0])} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
                 </div>
         },
         {
-            name: "Edit Info Card Image",
+            name: "Edit About Me Image",
             index: "2",
             content:
-                <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Info Card Image:</h1>
+                        <h1>Edit About Me Image:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setCard1File(e.target.files[0])} />
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutMeImgFile(e.target.files[0])} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
                 </div>
         },
         {
-            name: "Edit BUDA Card Image",
+            name: "Edit About Me Content",
             index: "3",
+            content:
+                <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                    <div className=" transition-all duration-700">
+                        <h1>Edit About Me Content:</h1>
+                    </div>
+                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700" onChange={(e) => setAboutMeContent(e.target.value)} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editAboutMeContent}>Submit</button>
+                </div>
+        },
+        {
+            name: "Edit About BUDA Image",
+            index: "4",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit BUDA Card Image:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setCard2File(e.target.files[0])} />
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutBudaImgFile(e.target.files[0])} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
                 </div>
         },
         {
-            name: "Edit Summer Card Image",
-            index: "4",
-            content:
-                <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
-                    <div className=" transition-all duration-700">
-                        <h1>Edit Summer Card Image:</h1>
-                    </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setCard3File(e.target.files[0])} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
-                </div>
-        },
-        {
-            name: "Edit Video 1",
+            name: "Edit About Buda Content",
             index: "5",
             content:
-                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Video One:</h1>
+                        <h1>Edit About BUDA Content:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setVid1File(e.target.files[0])} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
-                </div>
-        },
-        {
-            name: "Edit Video 2",
-            index: "6",
-            content:
-                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
-                    <div className=" transition-all duration-700">
-                        <h1>Edit Video Two:</h1>
-                    </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setVid2File(e.target.files[0])} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
+                    <textarea rows="10" cols="40" className="m-8 p-2 text-black transition-all duration-700" onChange={(e) => setAboutBudaContent(e.target.value)} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editAboutBudaContent}>Submit</button>
                 </div>
         }
     ]
 
+    console.log(data)
+    console.log(aboutBudaContent)
     return (
-        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]":"h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
             <img className="w-[50px] h-[50px] cursor-pointer mt-1" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }} src={more} />
             {sideExpand &&
                 <div className="w-[300px]   bg-slate-900  z-[999] transition-all duration-700">
@@ -152,9 +181,9 @@ const AdminAboutSidebar = (props) => {
                     <section className="w-full ">
                         <div className="w-full">
                             <h1 className="p-3 text-white text-lg">Edit Homepage Options:</h1>
-                            <div onClick={()=>setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
-                                <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small": "Big"}</span></h1>
-                                <img className={` ${siteExpand ? "": "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
+                            <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
+                                <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
+                                <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
                             </div>
                         </div>
                     </section>
@@ -169,8 +198,8 @@ const AdminAboutSidebar = (props) => {
                                             <img className="w-[30px] h-[30px]" src={arrow} />
                                         </div>
 
-
-                                        {expand && expandIndex === option.index && <p>{option.content}</p>}
+                                        
+                                        {expand && expandIndex === option.index && <div>{option.content}</div>}
 
                                     </div>
                                 )

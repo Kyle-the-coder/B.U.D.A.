@@ -1,0 +1,20 @@
+.aboutInfo {
+    overflow-y: scroll;
+}
+
+.aboutInfo::-webkit-scrollbar {
+    width: 8px;
+
+}
+
+.aboutInfo::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.aboutInfo::-webkit-scrollbar-thumb:hover {
+    background: #708ad4;
+
+}

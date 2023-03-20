@@ -240,8 +240,7 @@ const AdminLandingPage = () => {
         setVid1Index("5")
         setVid2Index("6")
     }, [file, card1File, card2File, card3File, vid1File, vid2File])
-console.log("side1", sideExpand)
-console.log("site2", siteExpand)
+
     return (
 
 

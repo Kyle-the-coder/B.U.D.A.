@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { db, } from "../config/Firebase";
 import { getDoc, doc, } from "firebase/firestore"
 import ImpInfoModal from "../components/ImpInfoModal";
-import "../"
+import "../styles/spinner.css"
 
 
 const LandingPage = () => {
     const [data, setData] = useState({});
     const [show, setShow] = useState(false)
+    const [attempt, setAttempt] = useState(false)
 
 
     useEffect(() => {
@@ -19,27 +20,27 @@ const LandingPage = () => {
             } catch (error) {
                 console.log(error)
             }
-
-
         }
         getPhoto()
-
     }, [])
-
-
-
-    console.log(data)
 
     return (
         <div>
-            {/* LP Img Section */}
-            <section className="items-center justify-center flex flex-col relative w-full h-screen bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-contain " >
-                <img src={data.img} alt=" Bianca" className="rounded object-cover w-full z-[1] h-full absolute  mix-blend-overlay" />
-                <h1 className="welcome sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl font-bold mb-2 relative">Bianca's Urban Dance Academy</h1>
-                <a href="/wsp" className="bg-indigo-800 relative   lg:text-2xl text-white px-4 py-3 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
-            </section>
+            {Object.keys(data).length === 0 ?
+                <div>
+                    <section className="items-center justify-center flex flex-col relative w-full h-screen bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-contain " >
+                        <div class="loader ">loading...</div>
+                        <h1 className="welcome sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl font-bold mb-2 relative">Bianca's Urban Dance Academy</h1>
+                        <a href="/wsp" className="bg-indigo-800 relative   lg:text-2xl text-white px-4 py-3 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
+                    </section>
+                </div> :
+                <section className="items-center justify-center flex flex-col relative w-full h-screen bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-contain " >
+                    <img src={data.img} alt=" Bianca" className="rounded object-cover w-full z-[1] h-full absolute  mix-blend-overlay" />
+                    <h1 className="welcome sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl font-bold mb-2 relative">Bianca's Urban Dance Academy</h1>
+                    <a href="/wsp" className="bg-indigo-800 relative   lg:text-2xl text-white px-4 py-3 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
+                </section>
 
-
+            }
             {/* Welcome Students Section */}
             <section className="w-full flex h-14 my-6  items-center">
                 <div className="flex w-full justify-center  mx-auto">
@@ -71,12 +72,26 @@ const LandingPage = () => {
 
 
             {/* Video Content Section */}
-            <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
+            {Object.keys(data).length === 0 ?
+                <section className="flex relative flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
+                    <video className="rounded relative mb-2 md:m-0  border-2 border-red-200 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src=""></video>
+                    <div className="absolute loader top-[130px] left-[300px]">
+                        <h1>loading...</h1>
+                    </div>
+                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src=""></video>
+                    <div className="absolute loader top-[130px] right-[300px]">
+                        <h1>loading...</h1>
+                    </div>
 
-                <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[600px] w-[700px]" loop muted autoPlay controls='' src={data.vid1}></video>
-                <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid2} ></video>
+                </section>
+                :
+                <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-            </section>
+                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[600px] w-[700px]" loop muted autoPlay controls='' src={data.vid1}></video>
+                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid2} ></video>
+                </section>
+            }
+
 
 
         </div>
