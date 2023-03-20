@@ -21,6 +21,7 @@ const AdminAboutSidebar = (props) => {
     const { aboutBannerVidFile, setAboutBannerVidFile } = props
     const { aboutBannerFileIndex, setAboutBannerFileIndex } = props
     const { aboutBannerTracker, setAboutBannerTracker } = props
+    const {aboutBannerHandler, setAboutBannerHandler} = props
     const { perc, setPerc } = props
     const { highlightFocus, setHighlightFocus } = props
     const { expandIndex, setExpandIndex } = props
@@ -45,7 +46,6 @@ const AdminAboutSidebar = (props) => {
     const editPhoto = async () => {
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
-                aboutBannerTracker: aboutBannerTracker,
                 ...data,
                 timeStamp: serverTimestamp()
             });
@@ -55,11 +55,25 @@ const AdminAboutSidebar = (props) => {
             console.log(error)
         }
     }
+    const editBannerTracker = async () => {
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                ...data,
+                aboutBannerTracker: aboutBannerTracker,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+        
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const editAboutMeContent = async () => {
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
-                aboutMeContent: aboutMeContent,
                 ...data,
+                aboutMeContent: aboutMeContent,
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
@@ -71,8 +85,8 @@ const AdminAboutSidebar = (props) => {
     const editAboutBudaContent = async () => {
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
-                aboutBudaContent: aboutBudaContent,
                 ...data,
+                aboutBudaContent: aboutBudaContent,
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
@@ -93,12 +107,6 @@ const AdminAboutSidebar = (props) => {
     const handleSiteExpand = () => {
         setSideExpand(!siteExpand)
     }
-    const handleBannerImgTracker = ()=>{
-        setAboutBannerTracker("false")
-    }
-    const handleBannerVidTracker = ()=>{
-        setAboutBannerTracker("true")
-    }
 
     const options = [
         {
@@ -109,15 +117,16 @@ const AdminAboutSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit About Me Banner Image:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutBannerImgFile(e.target.files[0])} />
-                    <input type="hidden" value="false" onChange={(e) => setAboutBannerTracker(e.target.value)}/>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={ editPhoto}>Submit</button>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => {setAboutBannerTracker("false"); setAboutBannerHandler(false); setAboutBannerImgFile(e.target.files[0])}} />
+                    <input type="hidden" value="false" onClick={(e) => {setAboutBannerTracker(e.target.value); editBannerTracker()}}/>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={()=>{editPhoto(); editBannerTracker()}}>Submit</button>
                     
                     <div className=" transition-all duration-700 mt-5">
                         <h1>OR make the banner a video:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setAboutBannerVidFile(e.target.files[0])} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => {setAboutBannerTracker("true"); setAboutBannerHandler(true); setAboutBannerVidFile(e.target.files[0]) }} />
+                    <input type="hidden" value="true" onClick={(e) => {setAboutBannerTracker(e.target.value); editBannerTracker()}}/>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={()=>{ editBannerTracker()}}>Submit</button>
                 </div>
         },
         {
@@ -140,7 +149,7 @@ const AdminAboutSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit About Me Content:</h1>
                     </div>
-                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700" onChange={(e) => setAboutMeContent(e.target.value)} />
+                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setAboutMeContent(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editAboutMeContent}>Submit</button>
                 </div>
         },
@@ -170,8 +179,6 @@ const AdminAboutSidebar = (props) => {
         }
     ]
 
-    console.log(data)
-    console.log(aboutBudaContent)
     return (
         <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
             <img className="w-[50px] h-[50px] cursor-pointer mt-1" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }} src={more} />

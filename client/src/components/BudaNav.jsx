@@ -15,7 +15,7 @@ const BudaNavbar = () => {
     const [highlightClick, setHighLightClick] = useState(false)
     let navLinks = [
         { name: "Home", link: "/" },
-        { name: "About", link: "/ap" },
+        { name: "About", link: "/about" },
         { name: "Summer Info", link: "/sp" },
         { name: "Session Info", link: "/wsp" },
         { name: "Buda Crew", link: "/bcp" },

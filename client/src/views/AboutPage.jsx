@@ -1,6 +1,8 @@
 
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { db, } from "../config/Firebase";
+import { getDoc, doc, } from "firebase/firestore"
 
 
 
@@ -10,24 +12,24 @@ import { useEffect, useState } from "react"
 
 
 const AboutPage = (props) => {
-    const { aboutMe, setAboutMe, aboutBuda, setAboutBuda } = props
-    const [aboutMeEdited, setAboutMeEdited] = useState(false)
-    const [aboutBudaEdited, setAboutBudaEdited] = useState(false)
-    const [aboutMeImageEdited, setAboutMeImageEdited] = useState(false)
-    const [aboutBudaImageEdited, setAboutBudaImageEdited] = useState(false)
-    const [aboutInfoBannerImgEdited, setAboutInfoBannerImgEdited] = useState(false)
-    const [aboutInfoBannerVidEdited, setAboutInfoBannerVidEdited] = useState(false)
-    const { aboutMeImage, setAboutMeImage } = props
-    const { aboutBudaImage, setAboutBudaImage } = props
-    const { aboutInfoBannerImg, setAboutInfoBannerImg } = props
-    const { aboutInfoBannerVid, setAboutInfoBannerVid } = props
-    const { aboutBannerVidOrImg, setAboutBannerVidOrImg } = props
-    const navigate = useNavigate();
-    const { loggedIn, setLoggedIn } = props
-    const { setTracker } = props
-    const baseUrl = process.env.REACT_APP_BASE_URL
+    const [data, setData] = useState({});
+    const [show, setShow] = useState(false)
+    const [attempt, setAttempt] = useState(false)
+    const navigate = useNavigate()
 
 
+    useEffect(() => {
+        const getPhoto = async () => {
+            try {
+                const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                const docSnap = await getDoc(docRef);
+                setData(docSnap.data())
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getPhoto()
+    }, [])
 
     const backOne = () => {
         navigate(-1)
@@ -38,9 +40,16 @@ const AboutPage = (props) => {
         <div>
             {/* ABOUT BANNER SECTION */}
             <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                {aboutBannerVidOrImg == "false" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={aboutInfoBannerVid} alt="people dancing and colors" ></video>
+            {Object.keys(data).length === 0 ? 
+                <div className="loader flex items-center">loading...</div>
+            :
+                <div className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+
+                {data.aboutBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.aboutBannerVid} alt="people dancing and colors" ></video>
                     :
-                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={aboutInfoBannerImg} alt="people dancing and colors" />}
+                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.aboutMeBannerImg} alt="people dancing and colors" />}
+                </div>
+            }
             </section>
 
             {/* Back One Page Section */}
@@ -59,11 +68,11 @@ const AboutPage = (props) => {
             {/* Bianca About Info Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                    <img className="rounded infoCard2 hover:drop-shadow-lg" width="500" src={aboutMeImage} />
+                    <img className="rounded infoCard2 hover:drop-shadow-lg" width="500" src={data.aboutMeImg} />
                     <div className="sm:w-1/2 w-11/12 h-[640px] flex flex-col items-center">
                         <div className=" aboutInfo p-2">
                             <p className="mb-8 indent-5 lg:text-lg">
-                                {aboutMe}
+                                {data.aboutMeContent}
                             </p>
                         </div>
                     </div>
@@ -77,15 +86,15 @@ const AboutPage = (props) => {
 
             {/* BUDA About Info Section */}
             <section className="mb-10">
-                <div className="flex flex-col-reverse md:flex-row items-center w-full h-content justify-center ">
+                <div className="flex flex-col-reverse md:flex-row sm:items-start items-center w-full h-content justify-center ">
                     <div className="sm:w-1/2 h-[590px] px-2 flex flex-col items-center">
                         <div className=" aboutInfo px-5 py-2">
                             <p className="mb-8 indent-5 lg:text-lg">
-                                {aboutBuda}
+                                {data.aboutBudaContent}
                             </p>
                         </div>
                     </div>
-                    <img className="mb-1 rounded infoCard hover:drop-shadow-lg" width="800" src={aboutBudaImage} />
+                    <img className="mb-1 rounded infoCard hover:drop-shadow-lg" width="800" src={data.aboutBudaImg} />
                 </div>
             </section>
 

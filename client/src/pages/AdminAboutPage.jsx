@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore"
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
 import AdminAboutSidebar from "../components/AdminAboutSidebar"
 import "../styles/scrollbar.css"
+import "../styles/bannerSize.css"
 
 
 
@@ -26,7 +27,8 @@ const AdminAboutPage = (props) => {
     const [aboutBannerImgFile, setAboutBannerImgFile] = useState("")
     const [aboutBannerVidFile, setAboutBannerVidFile] = useState("")
     const [aboutBannerFileIndex, setAboutBannerFileIndex] = useState('')
-    const [aboutBannerTracker, setAboutBannerTracker] = useState('')
+    const [aboutBannerTracker, setAboutBannerTracker] = useState(null)
+    const [aboutBannerHandler, setAboutBannerHandler] = useState(null)
 
 
 
@@ -35,6 +37,7 @@ const AdminAboutPage = (props) => {
     const [sideExpand, setSideExpand] = useState(false)
     const [highlightFocus, setHighlightFocus] = useState(false)
     const [perc, setPerc] = useState(null);
+    const [timeOut, setTimeOut] = useState(false)
     const navigate = useNavigate();
 
     const backOne = () => {
@@ -47,11 +50,21 @@ const AdminAboutPage = (props) => {
                 const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
                 const docSnap = await getDoc(docRef);
                 setData(docSnap.data())
+                setAboutBudaContent(docSnap.data().aboutBudaContent)
+                setAboutMeContent(docSnap.data().aboutMeContent)
+                if (aboutBannerTracker == null) {
+                    setAboutBannerTracker(docSnap.data().aboutBannerTracker)
+                } else if (aboutBannerHandler == "false") {
+                    setAboutBannerTracker("false")
+                } else if (aboutBannerHandler === "true") {
+                    setAboutBannerTracker(true)
+                }
             } catch (error) {
                 console.log(error)
             }
         }
         getPhoto()
+
 
         //ABOUT BANNER IMG UPLOAD
         const uploadAboutBannerImgFile = () => {
@@ -63,13 +76,16 @@ const AdminAboutPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
                             break;
                         case 'running':
                             console.log('Upload is running');
+                            setTimeOut(true)
                             break;
+
                         default:
                             break;
                     }
@@ -80,6 +96,7 @@ const AdminAboutPage = (props) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, aboutMeBannerImg: downloadURL }))
                     });
+                    setTimeOut(false)
                 }
             );
 
@@ -96,6 +113,7 @@ const AdminAboutPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
@@ -112,6 +130,7 @@ const AdminAboutPage = (props) => {
                 }, () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, aboutBannerVid: downloadURL }))
+                        setTimeOut(false)
                     });
                 }
             );
@@ -150,6 +169,9 @@ const AdminAboutPage = (props) => {
         }
         aboutMeImgFile && uploadAboutMeImgFile()
 
+
+
+
         //ABOUT BUDA CONTENT UPLOAD
         const uploadAboutBudaImgFile = () => {
             const name = new Date().getTime() + aboutBudaImgFile.name
@@ -170,6 +192,7 @@ const AdminAboutPage = (props) => {
                         default:
                             break;
                     }
+
                 },
                 (error) => {
                     console.log(error)
@@ -184,13 +207,20 @@ const AdminAboutPage = (props) => {
 
 
 
+
+
+
+
         setAboutBannerFileIndex("1")
         setAboutMeImgFileIndex("2")
         setAboutMeContentIndex("3")
         setAboutBudaImgFileIndex("4")
         setAboutBudaContentIndex("5")
 
+
+
     }, [aboutBannerImgFile, aboutBannerVidFile, aboutMeImgFile, aboutBudaImgFile])
+
 
 
     return (
@@ -218,6 +248,7 @@ const AdminAboutPage = (props) => {
                         aboutBannerVidFile={aboutBannerVidFile} setAboutBannerVidFile={setAboutBannerVidFile}
                         aboutBannerFileIndex={aboutBannerFileIndex} setAboutBannerFileIndex={setAboutBannerFileIndex}
                         aboutBannerTracker={aboutBannerTracker} setAboutBannerTracker={setAboutBannerTracker}
+                        aboutBannerHandler={aboutBannerHandler} setAboutBannerHandler={setAboutBannerHandler}
                     />
                 </section>
 
@@ -230,9 +261,20 @@ const AdminAboutPage = (props) => {
 
                         {/* ABOUT BANNER SECTION */}
                         <section className="w-full bg-slate-200 h-32 mb-5 flex justify-center ">
-                            {Object.keys(data).length === 0 ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src="" alt="people dancing and colors" ></video>
+                            {timeOut ?
+                                <div className="loader flex flex-col items-center justify-center">
+                                <h1>loading...</h1>
+                                <h1>Bigger files might take a few seconds</h1>
+                                <h1>Don't forget to click submit once it's done!</h1>
+                                </div>
                                 :
-                                <img className="shrink ratesBanner w-full h-full  bg-slate-200" src="" alt="people dancing and colors" />}
+                                <div className="w-full bg-slate-200 h-32 mb-5 flex justify-center">
+
+                                    {aboutBannerTracker === "true" ? <video className=" ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.aboutBannerVid} alt="people dancing and colors" ></video>
+                                        :
+                                        <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.aboutMeBannerImg} alt="people dancing and colors" />}
+                                </div>
+                            }
                         </section>
 
                         {/* Back One Page Section */}
@@ -256,7 +298,7 @@ const AdminAboutPage = (props) => {
                                 <div className="sm:w-1/2 w-11/12 h-[640px] flex flex-col items-center">
                                     <div className=" aboutInfo p-2">
                                         <p className="mb-8 indent-5 lg:text-lg">
-                                            {data.aboutMeContent}
+                                            {aboutMeContent}
                                         </p>
                                     </div>
                                 </div>
@@ -276,7 +318,7 @@ const AdminAboutPage = (props) => {
                                 <div className="sm:w-1/2 h-[590px] px-2 flex flex-col items-center">
                                     <div className=" aboutInfo px-5 py-2">
                                         <p className="mb-8 indent-5 lg:text-lg">
-                                            about buda
+                                            {aboutBudaContent}
                                         </p>
                                     </div>
                                 </div>
