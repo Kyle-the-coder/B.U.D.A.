@@ -1,0 +1,100 @@
+  <div className="w-full">
+            <div className="flex">
+
+
+                <section>
+                    <AdminAboutSidebar
+                 siteExpand={siteExpand} setSiteExpand={setSiteExpand}
+                        sideExpand={sideExpand} setSideExpand={setSideExpand}
+                        perc={perc} setPerc={setPerc}
+                        highlightFocus={highlightFocus} setHighlightFocus={setHighlightFocus}
+                        expandIndex={expandIndex} setExpandIndex={setExpandIndex}
+                        show={show} setShow={setShow} summerTitle={summerTitle}
+                        setSummerTitle={setSummerTitle}
+                        summerContent={summerContent} setSummerContent={setSummerContent}
+                        summerRegLink={summerRegLink} setSummerRegLink={setSummerRegLink}
+                        summerBannerImg={summerBannerImg} setSummerBannerImg={setSummerBannerImg}
+                        summerBannerVid={summerBannerVid} setSummerBannerVid={setSummerBannerVid}
+                        summerBannerTracker={summerBannerTracker} setSummerBannerTracker={setSummerBannerTracker}
+                        summerBannerHandler={summerBannerHandler} setSummerBannerHandler={setSummerBannerHandler}
+                        summerMainImg={summerMainImg} setSummerMainImg={setSummerMainImg}
+                        summerImg2={summerImg2} setSummerImg2={setSummerImg2}
+                        summerImg3={summerImg3} setSummerImg3={setSummerImg3}
+                        data={data} setData={setData}
+                    />
+                </section>
+
+
+                <div className={` ${siteExpand ? "w-8/12" : "w-full "} relative flex justify-end items-start transition-all duration-700`}>
+
+
+                    <div className={` ${siteExpand ? "w-[500px] h-[500px]" : "w-full"} transition-all duration-700`}>
+
+
+                      {/* BANNER SECTION */}
+                        <section className={`w-full h-content  flex justify-center ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `}>
+                            {timeOut ?
+                                <div className="loader flex flex-col items-center justify-center">
+                                    <h1>loading...</h1>
+                                    <h1>Bigger files might take a few seconds</h1>
+                                    <h1>Don't forget to click submit once it's done!</h1>
+                                </div>
+                                :
+                                <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
+
+                                    {summerBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == summerBannerFileIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.summerBannerVid} alt="people dancing and colors" ></video>
+                                        :
+                                        <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.summerBannerImg} alt="people dancing and colors" />}
+                                </div>
+                            }
+                        </section>
+
+                        {/* Back One Page Section */}
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "":""} ${sideExpand == false && siteExpand == true ? "":""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]":""} transition-all duration-500`} onClick={() => backOne()} >
+                                Back
+                            </p>
+                        </section>
+
+
+
+                        {/* BUDA Name Section */}
+                        <section className={`w-full  flex justify-center mb-8 ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "h-[5px]":""} ${sideExpand == false && siteExpand == true ? "h-[5px]":""} transition-all duration-500`}>
+                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">Summer Info</h1>
+                        </section>
+
+                        {/* Bianca About Info Section */}
+                        <section className="mb-10">
+                            <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
+                                <img className="rounded infoCard2 m-2" width="600" src={summerMainImg} />
+                                <div className="w-11/12 sm:w-1/2  h-96 flex flex-col items-center">
+                                    <div className=" aboutInfo w-full px-2 py-1 mb-2 ">
+                                        <h2 className="mb-6 xl:text-3xl">
+                                            <strong>{summerTitle}</strong>
+                                        </h2>
+                                        <p className="mb-1 xl:text-xl">
+                                            {summerContent}
+                                        </p>
+                                    </div>
+                                    <div className=" w-full h-content flex justify-center">
+                                        <a target="_blank" href={summerRegLink} className="bg-indigo-700 py-2 px-5 text-white cursor-pointer transition-all duration-500 hover:bg-slate-900 hover:text-pink-300 justify-center flex items-center  rounded xl:text-2xl">Register Here!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                        {/* BUDA About Info Section */}
+                        <section className="mb-10 w-full">
+                           <div className="w-full flex flex-col sm:flex-row items-center sm:items-start justify-evenly">
+                                <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[650px]" src={summerImg2} />
+                                <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[650px]" src={summerImg3} />
+                            </div>
+                        </section>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>

@@ -16,7 +16,7 @@ const BudaNavbar = () => {
     let navLinks = [
         { name: "Home", link: "/" },
         { name: "About", link: "/about" },
-        { name: "Summer Info", link: "/sp" },
+        { name: "Summer Info", link: "/summer" },
         { name: "Session Info", link: "/wsp" },
         { name: "Buda Crew", link: "/bcp" },
     ]

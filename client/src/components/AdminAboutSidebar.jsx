@@ -104,9 +104,7 @@ const AdminAboutSidebar = (props) => {
         }
     }
 
-    const handleSiteExpand = () => {
-        setSideExpand(!siteExpand)
-    }
+
 
     const options = [
         {

@@ -11,6 +11,8 @@ import AdminLandingPage from "./pages/AdminLandingPage";
 import AdminSidebar from "./components/AdminLandingSidebar";
 import AdminAboutPage from "./pages/AdminAboutPage";
 import AboutPage from "./views/AboutPage";
+import AdminSummerPage from "./pages/AdminSummerPage";
+import SummerPage from "./views/SummerPage";
 
 
 
@@ -43,12 +45,18 @@ function App() {
         
 
           <Routes>
+            {/* Public Routes */}
             <Route path="/" element={<LandingPage />} />
             <Route path="/about" element={<AboutPage/>}/>
             <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/summer" element={<SummerPage/>}/>
+
+            {/* Auth Routes */}
             <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
             <Route path="/adminaboutpage" element={<RequireAuth><AdminAboutPage/></RequireAuth>}/>
+            <Route path="/adminsummerpage" element={<RequireAuth><AdminSummerPage/></RequireAuth>}/>
+
           </Routes>
     
 

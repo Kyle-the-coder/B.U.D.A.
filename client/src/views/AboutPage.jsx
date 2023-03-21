@@ -13,8 +13,7 @@ import { getDoc, doc, } from "firebase/firestore"
 
 const AboutPage = (props) => {
     const [data, setData] = useState({});
-    const [show, setShow] = useState(false)
-    const [attempt, setAttempt] = useState(false)
+
     const navigate = useNavigate()
 
 
