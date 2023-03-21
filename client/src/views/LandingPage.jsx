@@ -87,7 +87,7 @@ const LandingPage = () => {
                 :
                 <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[600px] w-[700px]" loop muted autoPlay controls='' src={data.vid1}></video>
+                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid1}></video>
                     <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid2} ></video>
                 </section>
             }

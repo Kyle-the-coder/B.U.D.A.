@@ -260,7 +260,7 @@ const AdminAboutPage = (props) => {
 
 
                         {/* ABOUT BANNER SECTION */}
-                        <section className="w-full bg-slate-200 h-32 mb-5 flex justify-center ">
+                        <section className={`w-full h-content  flex justify-center ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "":""} ${sideExpand == false && siteExpand == true ? "":""} `}>
                             {timeOut ?
                                 <div className="loader flex flex-col items-center justify-center">
                                 <h1>loading...</h1>
@@ -268,9 +268,9 @@ const AdminAboutPage = (props) => {
                                 <h1>Don't forget to click submit once it's done!</h1>
                                 </div>
                                 :
-                                <div className="w-full bg-slate-200 h-32 mb-5 flex justify-center">
+                                <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]":""} ${sideExpand == true && siteExpand == true ? "h-[95px]":""} ${sideExpand == false && siteExpand == true ? "h-[95px]":""} transition-all duration-500`}>
 
-                                    {aboutBannerTracker === "true" ? <video className=" ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.aboutBannerVid} alt="people dancing and colors" ></video>
+                                    {aboutBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == aboutBannerFileIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.aboutBannerVid} alt="people dancing and colors" ></video>
                                         :
                                         <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.aboutMeBannerImg} alt="people dancing and colors" />}
                                 </div>
@@ -278,8 +278,8 @@ const AdminAboutPage = (props) => {
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-5 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "":""} ${sideExpand == false && siteExpand == true ? "":""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]":""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
@@ -287,17 +287,17 @@ const AdminAboutPage = (props) => {
 
 
                         {/* BUDA Name Section */}
-                        <section className="w-full h-12 flex justify-center mb-8">
-                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">About Bianca:</h1>
+                        <section className={`w-full  flex justify-center mb-8 ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "":""} ${sideExpand == true && siteExpand == true ? "h-[5px]":""} ${sideExpand == false && siteExpand == true ? "h-[5px]":""} transition-all duration-500`}>
+                            <h1 className={` welcome ${siteExpand ? "text-lg": " sm:text-xl md:text-3xl lg:text-4xl text-xl "} transition-all duration-500`}>About Bianca:</h1>
                         </section>
 
                         {/* Bianca About Info Section */}
                         <section className="mb-10">
                             <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                                <img className="rounded infoCard2 hover:drop-shadow-lg" width="500" src={data.aboutMeImg} />
-                                <div className="sm:w-1/2 w-11/12 h-[640px] flex flex-col items-center">
-                                    <div className=" aboutInfo p-2">
-                                        <p className="mb-8 indent-5 lg:text-lg">
+                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutMeImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[400px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[500px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""} `}  src={data.aboutMeImg} />
+                                <div className="sm:w-1/2 w-11/12 h-content flex flex-col items-center">
+                                    <div className={`aboutInfo p-2 transition-all duration-500 ${highlightFocus && expandIndex == aboutMeContentIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "h-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[600px]":""} ${sideExpand == true && siteExpand == true ? "h-[300px]":""} ${sideExpand == false && siteExpand == true ? "h-[300px]":""}`}>
+                                        <p className={`mb-8  indent-5 transition-all duration-500  ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-lg":""} ${sideExpand == true && siteExpand == true ? "text-[.5rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.5rem]":""}`}>
                                             {aboutMeContent}
                                         </p>
                                     </div>
@@ -308,21 +308,21 @@ const AdminAboutPage = (props) => {
 
 
                         {/* BUDA Name Section */}
-                        <section className="w-full h-12 flex justify-center mb-8">
-                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl  text-2xl welcome">About BUDA:</h1>
+                        <section className={`w-full  flex justify-center ${sideExpand == true && siteExpand == false ? "h-[50px] mb-8" : ""} ${sideExpand == false && siteExpand == false ? "mb-8":""} ${sideExpand == true && siteExpand == true ? "mb-5":""} ${sideExpand == false && siteExpand == true ? "mb-5":""}`}>
+                            <h1 className={` welcome ${siteExpand ? "text-lg": " sm:text-xl md:text-3xl lg:text-4xl text-xl "} transition-all duration-500`}>About BUDA:</h1>
                         </section>
 
                         {/* BUDA About Info Section */}
                         <section className="mb-10">
-                            <div className="flex flex-col-reverse md:flex-row items-center w-full h-content justify-center ">
+                            <div className="flex flex-col-reverse md:flex-row items-center sm:items-start w-full h-content justify-center ">
                                 <div className="sm:w-1/2 h-[590px] px-2 flex flex-col items-center">
-                                    <div className=" aboutInfo px-5 py-2">
-                                        <p className="mb-8 indent-5 lg:text-lg">
+                                    <div className={` aboutInfo px-5 transition-all duration-500 py-2 ${highlightFocus && expandIndex == aboutBudaContentIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "h-[280px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[400px]":""} ${sideExpand == true && siteExpand == true ? "h-[120px]":""} ${sideExpand == false && siteExpand == true ? "h-[120px]":""}`}>
+                                        <p className={`mb-8 indent-5 transition-all duration-500  ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-lg":""} ${sideExpand == true && siteExpand == true ? "text-[.5rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.5rem]":""}`}>
                                             {aboutBudaContent}
                                         </p>
                                     </div>
                                 </div>
-                                <img className="mb-1 rounded infoCard hover:drop-shadow-lg" width="800" src={data.aboutBudaImg} />
+                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutBudaImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""} `}   src={data.aboutBudaImg} />
                             </div>
                         </section>
                     </div>

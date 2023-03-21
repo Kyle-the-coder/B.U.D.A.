@@ -21,7 +21,7 @@ const AdminAboutSidebar = (props) => {
     const { aboutBannerVidFile, setAboutBannerVidFile } = props
     const { aboutBannerFileIndex, setAboutBannerFileIndex } = props
     const { aboutBannerTracker, setAboutBannerTracker } = props
-    const {aboutBannerHandler, setAboutBannerHandler} = props
+    const { aboutBannerHandler, setAboutBannerHandler } = props
     const { perc, setPerc } = props
     const { highlightFocus, setHighlightFocus } = props
     const { expandIndex, setExpandIndex } = props
@@ -50,7 +50,7 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
-        
+
         } catch (error) {
             console.log(error)
         }
@@ -63,7 +63,7 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
-        
+
         } catch (error) {
             console.log(error)
         }
@@ -77,7 +77,7 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
-            
+
         } catch (error) {
             console.log(error)
         }
@@ -90,14 +90,14 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
-            
+
         } catch (error) {
             console.log(error)
         }
     }
 
     const handleFocus = (index) => {
-        if (index == null) {
+        if (index == aboutBannerFileIndex || index == aboutMeImgFileIndex || index == aboutMeContentIndex || index == aboutBudaImgFileIndex || index == aboutBudaContentIndex) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)
@@ -117,16 +117,16 @@ const AdminAboutSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit About Me Banner Image:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => {setAboutBannerTracker("false"); setAboutBannerHandler(false); setAboutBannerImgFile(e.target.files[0])}} />
-                    <input type="hidden" value="false" onClick={(e) => {setAboutBannerTracker(e.target.value); editBannerTracker()}}/>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={()=>{editPhoto(); editBannerTracker()}}>Submit</button>
-                    
-                    <div className=" transition-all duration-700 mt-5">
-                        <h1>OR make the banner a video:</h1>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setAboutBannerTracker("false"); setAboutBannerHandler(false); setAboutBannerImgFile(e.target.files[0]) }} />
+                    <input type="hidden" value="false" onClick={(e) => { setAboutBannerTracker(e.target.value); editBannerTracker() }} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editBannerTracker() }}>Submit</button>
+
+                    <div className=" transition-all duration-700 mt-6 border-t-2 w-full flex justify-center ">
+                        <h1 className="mt-5">OR make the banner a video:</h1>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => {setAboutBannerTracker("true"); setAboutBannerHandler(true); setAboutBannerVidFile(e.target.files[0]) }} />
-                    <input type="hidden" value="true" onClick={(e) => {setAboutBannerTracker(e.target.value); editBannerTracker()}}/>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={()=>{ editBannerTracker()}}>Submit</button>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setAboutBannerTracker("true"); setAboutBannerHandler(true); setAboutBannerVidFile(e.target.files[0]) }} />
+                    <input type="hidden" value="true" onClick={(e) => { setAboutBannerTracker(e.target.value); editBannerTracker() }} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editBannerTracker() }}>Submit</button>
                 </div>
         },
         {
@@ -187,7 +187,7 @@ const AdminAboutSidebar = (props) => {
 
                     <section className="w-full ">
                         <div className="w-full">
-                            <h1 className="p-3 text-white text-lg">Edit Homepage Options:</h1>
+                            <h1 className="p-3 text-white text-lg">Edit About Page Options:</h1>
                             <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
                                 <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
                                 <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
@@ -205,7 +205,7 @@ const AdminAboutSidebar = (props) => {
                                             <img className="w-[30px] h-[30px]" src={arrow} />
                                         </div>
 
-                                        
+
                                         {expand && expandIndex === option.index && <div>{option.content}</div>}
 
                                     </div>
