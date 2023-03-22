@@ -25,7 +25,7 @@ const AdminLandingSidebar = (props) => {
     const { expandIndex, setExpandIndex } = props
     const { mainImgIndex } = props
     const { siteExpand, setSiteExpand } = props
-    const {sideExpand, setSideExpand} = props
+    const { sideExpand, setSideExpand } = props
     const [expand, setExpand] = useState(false)
 
     const handleExpandOption = (index) => {
@@ -118,7 +118,7 @@ const AdminLandingSidebar = (props) => {
                 </div>
         },
         {
-            name: "Edit Video 1",
+            name: "Edit Left Video",
             index: "5",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
@@ -130,7 +130,7 @@ const AdminLandingSidebar = (props) => {
                 </div>
         },
         {
-            name: "Edit Video 2",
+            name: "Edit Right Video",
             index: "6",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
@@ -144,17 +144,21 @@ const AdminLandingSidebar = (props) => {
     ]
 
     return (
-        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]":"h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
-            <img className="w-[50px] h-[50px] cursor-pointer mt-1" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }} src={more} />
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+                <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
+            </div>
+
             {sideExpand &&
                 <div className="w-[300px]   bg-slate-900  z-[999] transition-all duration-700">
 
                     <section className="w-full ">
                         <div className="w-full">
                             <h1 className="p-3 text-white text-lg">Edit Homepage Options:</h1>
-                            <div onClick={()=>setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
-                                <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small": "Big"}</span></h1>
-                                <img className={` ${siteExpand ? "": "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
+                            <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
+                                <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
+                                <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
                             </div>
                         </div>
                     </section>

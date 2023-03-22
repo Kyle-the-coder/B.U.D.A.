@@ -173,11 +173,13 @@ const AdminSummerPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
                             break;
                         case 'running':
+                            setTimeOut(true)
                             console.log('Upload is running');
                             break;
                         default:
@@ -190,6 +192,7 @@ const AdminSummerPage = (props) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, summerBannerImg: downloadURL }))
                     });
+                    setTimeOut(false)
                 }
             );
 
@@ -206,12 +209,14 @@ const AdminSummerPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
                             break;
                         case 'running':
                             console.log('Upload is running');
+                            setTimeOut(true)
                             break;
                         default:
                             break;
@@ -223,6 +228,7 @@ const AdminSummerPage = (props) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, summerBannerVid: downloadURL }))
                     });
+                    setTimeOut(false)
                 }
             );
 
@@ -321,7 +327,7 @@ const AdminSummerPage = (props) => {
                         {/* Summer Info Section */}
                         <section className=" w-full">
                             <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerMainImgIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.summerMainImg} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerMainImgIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[320px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[166px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]  h-[166px]" : ""} `} src={data.summerMainImg} />
                                 <div className="w-11/12 sm:w-1/2   flex flex-col items-center">
                                     <div className={`aboutInfo mb-3 p-2 transition-all duration-500 ${sideExpand == true && siteExpand == false ? "h-[330px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[160px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[160px]" : ""}`}>
                                         <h2 className={`mb-2 transition-all duration-500 ${highlightFocus && expandIndex == summerTitleIndex ? "border-4 border-red-700 " : ""}   ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-lg" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
@@ -343,8 +349,8 @@ const AdminSummerPage = (props) => {
                         {/* BUDA Summer Image Section */}
                         <section className="mb-5 w-full">
                             <div className="w-full flex flex-col sm:flex-row items-center sm:items-start justify-evenly">
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerImg2Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.summerImg2} />
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerImg3Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.summerImg3} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerImg2Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[350px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[150px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[150px]" : ""} `} src={data.summerImg2} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == summerImg3Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[350px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[150px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[150px]" : ""} `} src={data.summerImg3} />
                             </div>
                         </section>
                     </div>

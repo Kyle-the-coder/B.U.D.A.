@@ -113,13 +113,13 @@ const AdminSessionSidebar = (props) => {
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
                 ...data,
-                noClass1 : noClass1,
-                noClass2 : noClass2,
-                noClass3 : noClass3,
-                noClass4 : noClass4,
-                noClass5 : noClass5,
-                noClass6 : noClass6,
-                noClass7 : noClass7,
+                noClass1: noClass1,
+                noClass2: noClass2,
+                noClass3: noClass3,
+                noClass4: noClass4,
+                noClass5: noClass5,
+                noClass6: noClass6,
+                noClass7: noClass7,
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
@@ -159,44 +159,48 @@ const AdminSessionSidebar = (props) => {
 
     const sessionOptions = [
         {
-            name: "Edit Session Banner",
+            name: "Edit Banner",
             index: "1",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
-                    <div className=" transition-all duration-700">
-                        <h1>Edit Session Banner Image:</h1>
+                    <div className="w-full flex flex-col items-center p-2">
+                        <div className=" transition-all duration-700">
+                            <h1>Edit Banner Image:</h1>
+                        </div>
+                        <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setSessionBannerTracker("false"); setSessionBannerHandler(false); setSessionBannerImg(e.target.files[0]) }} />
+                        <input type="hidden" value="false" onClick={(e) => { setSessionBannerTracker(e.target.value); editSessionBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editSessionBannerTracker() }}>Submit</button>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setSessionBannerTracker("false"); setSessionBannerHandler(false); setSessionBannerImg(e.target.files[0]) }} />
-                    <input type="hidden" value="false" onClick={(e) => { setSessionBannerTracker(e.target.value); editSessionBannerTracker() }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editSessionBannerTracker() }}>Submit</button>
 
-                    <div className=" transition-all duration-700 mt-6 border-t-2 w-full flex justify-center ">
-                        <h1 className="mt-5">OR make the banner a video:</h1>
+                    <div className="w-full p-2 text-black border-t-2 mt-3 bg-indigo-200 flex flex-col items-center">
+                        <div className=" transition-all duration-700  w-full flex justify-center ">
+                            <h1 className="mt-5">OR make the banner a video:</h1>
+                        </div>
+                        <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setSessionBannerTracker("true"); setSessionBannerHandler(true); setSessionBannerVid(e.target.files[0]) }} />
+                        <input type="hidden" value="true" onClick={(e) => { setSessionBannerTracker(e.target.value); editSessionBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-slate-800 text-indigo-200 transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-200 py-2" onClick={() => { editSessionBannerTracker() }}>Submit</button>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setSessionBannerTracker("true"); setSessionBannerHandler(true); setSessionBannerVid(e.target.files[0]) }} />
-                    <input type="hidden" value="true" onClick={(e) => { setSessionBannerTracker(e.target.value); editSessionBannerTracker() }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editSessionBannerTracker() }}>Submit</button>
                 </div>
         },
         {
-            name: "Edit Session Title",
+            name: "Edit Title",
             index: "2",
             content:
                 <div className="w-[300px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Session Title:</h1>
+                        <h1>Edit Title:</h1>
                     </div>
                     <input type="text" className="m-8 text-black w-full transition-all duration-700 p-2" onChange={(e) => setSessionTitle(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSessionTitle}>Submit</button>
                 </div>
         },
         {
-            name: "Edit Session Content",
+            name: "Edit Content",
             index: "3",
             content:
                 <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Summer Content:</h1>
+                        <h1>Edit Content:</h1>
                     </div>
 
                     <div className="my-4">
@@ -291,7 +295,7 @@ const AdminSessionSidebar = (props) => {
         },
 
         {
-            name: "Edit Session Main Image",
+            name: "Edit Main Image",
             index: "5",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
@@ -330,17 +334,21 @@ const AdminSessionSidebar = (props) => {
 
 
 
-console.log(data)
-console.log(noClass7)
+    console.log(data)
+    console.log(noClass7)
     return (
         <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
-            <img className="w-[50px] h-[50px] cursor-pointer mt-1" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }} src={more} />
+
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+                <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
+            </div>
+
             {sideExpand &&
                 <div className="w-[300px]   bg-slate-900  z-[999] transition-all duration-700">
 
                     <section className="w-full ">
                         <div className="w-full">
-                            <h1 className="p-3 text-white text-lg">Edit Homepage Options:</h1>
+                            <h1 className="p-3 text-white text-lg">Edit Session Options:</h1>
                             <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
                                 <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
                                 <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />

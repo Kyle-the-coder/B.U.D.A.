@@ -299,18 +299,18 @@ const AdminLandingPage = () => {
 
                                     {/* Important Info Card */}
                                     <div className={` w-fit  h-fit rounded`}>
-                                        <img className={`${highlightFocus && expandIndex == card1Index ? "border-4 border-red-700" : ""} ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black h-auto`} src={data.card1} onClick={() => setShow(true)} alt="important info card" />
+                                        <img className={`${highlightFocus && expandIndex == card1Index ? "border-4 border-red-700" : ""} ${sideExpand == true && siteExpand == false ? "w-[300px] h-[420px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px] h-[450px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px] h-[170px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px] h-[170px]":""}  infoCard rounded hover:drop-shadow-lg object-cover  cursor-pointer border-2 border-black `} src={data.card1} onClick={() => setShow(true)} alt="important info card" />
                                         {show && <ImpInfoModal show={show} setShow={setShow} />}
                                     </div>
 
                                     {/* Buda Crew Info Card */}
                                     <div className="rounded w-fit h-fit hover:drop-shadow-lg">
-                                        <a href="/bcp"><img className={`${highlightFocus && expandIndex == card2Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  h-auto`} src={data.card2} alt="buda crew info card" /></a>
+                                        <a href="/bcp"><img className={`object-cover ${highlightFocus && expandIndex == card2Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px] h-[420px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px] h-[450px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px] h-[170px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px] h-[170px]":""}  `} src={data.card2} alt="buda crew info card" /></a>
                                     </div>
 
                                     {/* Summer Camp Info Card */}
                                     <div className=" w-fit rounded   h-fit hover:drop-shadow-lg ">
-                                        <a href="/sp"><img className={`${highlightFocus && expandIndex == card3Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px]":""}  h-auto`} src={data.card3} alt="summer camp info card" /></a>
+                                        <a href="/sp"><img className={`object-cover ${highlightFocus && expandIndex == card3Index ? "border-4 border-red-700" : ""}  infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black ${sideExpand == true && siteExpand == false ? "w-[300px] h-[420px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[325px] h-[450px]":""} ${sideExpand == true && siteExpand == true ? "w-[130px] h-[170px]":""} ${sideExpand == false && siteExpand == true ? "w-[130px] h-[170px]":""}  `} src={data.card3} alt="summer camp info card" /></a>
                                     </div>
                                 </div>
                             </section>
@@ -319,8 +319,8 @@ const AdminLandingPage = () => {
                             {/* Video Content Section */}
                             <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                                <video className={` ${highlightFocus && expandIndex == vid1Index ? "border-4 border-red-700" : "border-2 border-red-200"} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0   `} loop muted autoPlay controls='' src={data.vid1} ></video>
-                                <video className={` ${highlightFocus && expandIndex == vid2Index ? "border-4 border-red-700" : "border-2 border-indigo-200"}  ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0  `} loop muted autoPlay controls='' src={data.vid2} ></video>
+                                <video className={` ${highlightFocus && expandIndex == vid1Index ? "border-4 border-red-700" : "border-2 border-red-200"} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0   `} loop muted autoPlay  src={data.vid1} ></video>
+                                <video className={` ${highlightFocus && expandIndex == vid2Index ? "border-4 border-red-700" : "border-2 border-indigo-200"}  ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[650px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""}   rounded mb-2 md:m-0  `} loop muted autoPlay src={data.vid2} ></video>
 
                             </section>
                         </div>

@@ -294,7 +294,7 @@ const AdminAboutPage = (props) => {
                         {/* Bianca About Info Section */}
                         <section className="mb-10">
                             <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutMeImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[400px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[500px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""} `}  src={data.aboutMeImg} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutMeImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[400px] h-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[500px] h-[600px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[295px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[295px]":""} `}  src={data.aboutMeImg} />
                                 <div className="sm:w-1/2 w-11/12 h-content flex flex-col items-center">
                                     <div className={`aboutInfo p-2 transition-all duration-500 ${highlightFocus && expandIndex == aboutMeContentIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "h-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[600px]":""} ${sideExpand == true && siteExpand == true ? "h-[300px]":""} ${sideExpand == false && siteExpand == true ? "h-[300px]":""}`}>
                                         <p className={`mb-8  indent-5 transition-all duration-500  ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-lg":""} ${sideExpand == true && siteExpand == true ? "text-[.5rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.5rem]":""}`}>
@@ -315,14 +315,14 @@ const AdminAboutPage = (props) => {
                         {/* BUDA About Info Section */}
                         <section className="mb-10">
                             <div className="flex flex-col-reverse md:flex-row items-center sm:items-start w-full h-content justify-center ">
-                                <div className="sm:w-1/2 h-[590px] px-2 flex flex-col items-center">
+                                <div className="sm:w-1/2  px-2 flex flex-col items-center">
                                     <div className={` aboutInfo px-5 transition-all duration-500 py-2 ${highlightFocus && expandIndex == aboutBudaContentIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "h-[280px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[400px]":""} ${sideExpand == true && siteExpand == true ? "h-[120px]":""} ${sideExpand == false && siteExpand == true ? "h-[120px]":""}`}>
                                         <p className={`mb-8 indent-5 transition-all duration-500  ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-lg":""} ${sideExpand == true && siteExpand == true ? "text-[.5rem]":""} ${sideExpand == false && siteExpand == true ? "text-[.5rem]":""}`}>
                                             {aboutBudaContent}
                                         </p>
                                     </div>
                                 </div>
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutBudaImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px]":""} `}   src={data.aboutBudaImg} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutBudaImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[380px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[130px]":""} `}   src={data.aboutBudaImg} />
                             </div>
                         </section>
                     </div>

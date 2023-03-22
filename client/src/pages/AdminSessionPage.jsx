@@ -27,7 +27,7 @@ const AdminSessionPage = (props) => {
     const [showTime, setShowTime] = useState('')
 
     //NO CLASS INFO
-    const [noClassIndex, setNoClassIndex]=useState('')
+    const [noClassIndex, setNoClassIndex] = useState('')
     const [noClass1, setNoClass1] = useState('')
     const [noClass2, setNoClass2] = useState('')
     const [noClass3, setNoClass3] = useState('')
@@ -39,9 +39,9 @@ const AdminSessionPage = (props) => {
     const [sessionIntro, setSessionIntro] = useState('')
 
     //SESSION PAGE IMGS & VIDS
-    const [sessionMainImgIndex, setSessionMainImgIndex]=useState('')
-    const [sessionImg2Index, setSessionImg2Index]=useState('')
-    const [sessionImg3Index, setSessionImg3Index]=useState('')
+    const [sessionMainImgIndex, setSessionMainImgIndex] = useState('')
+    const [sessionImg2Index, setSessionImg2Index] = useState('')
+    const [sessionImg3Index, setSessionImg3Index] = useState('')
     const [sessionMainImg, setSessionMainImg] = useState('')
     const [sessionImg2, setSessionImg2] = useState('')
     const [sessionImg3, setSessionImg3] = useState('')
@@ -194,12 +194,14 @@ const AdminSessionPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
                             break;
                         case 'running':
                             console.log('Upload is running');
+                            setTimeOut(true)
                             break;
                         default:
                             break;
@@ -211,6 +213,7 @@ const AdminSessionPage = (props) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, sessionBannerImg: downloadURL }))
                     });
+                    setTimeOut(false)
                 }
             );
 
@@ -227,12 +230,14 @@ const AdminSessionPage = (props) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
                     setPerc(progress)
+                    setTimeOut(true)
                     switch (snapshot.state) {
                         case 'paused':
                             console.log('Upload is paused');
                             break;
                         case 'running':
                             console.log('Upload is running');
+                            setTimeOut(true)
                             break;
                         default:
                             break;
@@ -244,6 +249,7 @@ const AdminSessionPage = (props) => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         setData((prev) => ({ ...prev, sessionBannerVid: downloadURL }))
                     });
+                    setTimeOut(false)
                 }
             );
 
@@ -317,35 +323,46 @@ const AdminSessionPage = (props) => {
                     <div className={` ${siteExpand ? "w-[500px] h-[500px]" : "w-full"}  transition-all duration-700`}>
 
 
-                        {/* Banner Section */}
-                        <section className="w-full bg-slate-200 h-32 mb-5 flex justify-center ">
-                            {data.sessionBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.sessionBannerVid} alt="people dancing and colors" ></video>
+                        {/* BANNER SECTION */}
+                        <section className={`w-full h-content  flex justify-center ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `}>
+                            {timeOut ?
+                                <div className="loader flex flex-col items-center justify-center">
+                                    <h1>loading...</h1>
+                                    <h1>Bigger files might take a few seconds</h1>
+                                    <h1>Don't forget to click submit once it's done!</h1>
+                                </div>
                                 :
-                                <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.sessionBannerImg} alt="people dancing and colors" />}
+                                <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
+
+                                    {sessionBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == sessionBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.sessionBannerVid} alt="people dancing and colors" ></video>
+                                        :
+                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == sessionBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.sessionBannerImg} alt="people dancing and colors" />}
+                                </div>
+                            }
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-12 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
 
                         {/* BUDA Name Section */}
-                        <section className="w-full h-12 flex justify-center mb-5">
-                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">{data.sessionTitle}:</h1>
+                        <section className={`w-full  flex justify-center mb-8 ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "h-[5px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[5px]" : ""} transition-all duration-500`}>
+                            <h1 className={` welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500`}>{data.sessionTitle}</h1>
                         </section>
 
                         {/* Bianca About Info Section */}
                         <section className="mb-10">
-                            <div className="flex flex-col md:flex-row items-center w-full h-content justify-center">
-                                <img className="rounded infoCard2" width="500" src={data.sessionMainImg} />
-                                <div className="w-11/12 sm:w-1/2  h-[700px] flex flex-col items-center">
-                                    <div className=" aboutInfo w-full px-2 py-1 mb-2 lg:text-2xl">
-                                        <h2 className="mb-6 lg:text-4xl">
+                            <div className="flex flex-col md:flex-row items-start w-full  justify-center">
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionMainImgIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[450px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[510px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[340px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `}  src={data.sessionMainImg} />
+                                <div className="w-11/12 sm:w-1/2 ml-4 text-xl   flex flex-col items-center">
+                                    <div className={`aboutInfo mb-3 p-2  transition-all duration-500 ${sideExpand == true && siteExpand == false ? "h-[540px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[640px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[160px] h-[290px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[160px] h-[290px]" : ""}`}>
+                                        <h2 className={`mb-5 flex justify-center transition-all duration-500   ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-4xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
                                             {data.sessionIntro}
                                         </h2>
-                                        <p className="mb-1 text-lg">
+                                        <p className="mb-1 ">
                                             <strong>Important Dates:</strong>
                                         </p>
                                         <p className="indent-5">
@@ -402,11 +419,10 @@ const AdminSessionPage = (props) => {
                                         <p className="indent-5 ">
                                             Please <a className="text-sky-500 underline" href="#contactSection">contact</a> Bianca if you have any questions.
                                         </p>
-
-
                                     </div>
-                                    <div className=" w-full h-32 flex justify-center items-end mt-1">
-                                        <a target="_blank" href={data.sessionLink} className="bg-indigo-700 text-white cursor-pointer justify-center hover:bg-slate-900 hover:text-pink-300 transition-all duration-500 flex items-center md:text-2xl px-6 h-1/2 rounded">Register Here!</a>
+
+                                    <div className={` w-full  flex justify-center  items-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-sm" : ""} ${sideExpand == false && siteExpand == true ? "text-sm" : ""} `}>
+                                        <a target="_blank" href={data.sessionLink} className="bg-indigo-700 text-white cursor-pointer justify-center hover:bg-slate-900 hover:text-pink-300 transition-all duration-500 px-3 py-1 flex items-center rounded">Register Here!</a>
                                     </div>
                                 </div>
                             </div>
@@ -416,8 +432,8 @@ const AdminSessionPage = (props) => {
                         {/* BUDA Summer Image Section */}
                         <section className="mb-5">
                             <div className="w-full flex flex-col sm:flex-row items-center justify-evenly">
-                                <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[600px]" src={data.sessionImg2} />
-                                <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[650px]" src={data.sessionImg3} />
+                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg2Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.sessionImg2} />
+                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg3Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.sessionImg3} />
                             </div>
                         </section>
                     </div>

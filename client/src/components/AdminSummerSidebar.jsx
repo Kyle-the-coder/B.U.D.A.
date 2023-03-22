@@ -134,27 +134,32 @@ const AdminSummerSidebar = (props) => {
 
     const options = [
         {
-            name: "Edit Summer Banner",
+            name: "Edit Banner",
             index: "1",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
-                    <div className=" transition-all duration-700">
-                        <h1>Edit Summer Banner Image:</h1>
-                    </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setSummerBannerTracker("false"); setSummerBannerHandler(false); setSummerBannerImg(e.target.files[0]) }} />
-                    <input type="hidden" value="false" onClick={(e) => { setSummerBannerTracker(e.target.value); editSummerBannerTracker() }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editSummerBannerTracker() }}>Submit</button>
+                    <div className="w-full flex flex-col items-center p-2">
 
-                    <div className=" transition-all duration-700 mt-6 border-t-2 w-full flex justify-center ">
-                        <h1 className="mt-5">OR make the banner a video:</h1>
+                        <div className=" transition-all duration-700">
+                            <h1>Edit Summer Banner Image:</h1>
+                        </div>
+                        <input type="file" className="m-8 w-full  transition-all duration-700" onChange={(e) => { setSummerBannerTracker("false"); setSummerBannerHandler(false); setSummerBannerImg(e.target.files[0]) }} />
+                        <input type="hidden" value="false" onClick={(e) => { setSummerBannerTracker(e.target.value); editSummerBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editSummerBannerTracker() }}>Submit</button>
                     </div>
-                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => { setSummerBannerTracker("true"); setSummerBannerHandler(true); setSummerBannerVid(e.target.files[0]) }} />
-                    <input type="hidden" value="true" onClick={(e) => { setSummerBannerTracker(e.target.value); editSummerBannerTracker() }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editSummerBannerTracker() }}>Submit</button>
+                    <div className="w-full p-2 text-black border-t-2 mt-3 bg-indigo-200 flex flex-col items-center">
+
+                        <div className=" transition-all duration-700 w-full flex justify-center ">
+                            <h1 className="mt-5 ">OR make the banner a video:</h1>
+                        </div>
+                        <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setSummerBannerTracker("true"); setSummerBannerHandler(true); setSummerBannerVid(e.target.files[0]) }} />
+                        <input type="hidden" value="true" onClick={(e) => { setSummerBannerTracker(e.target.value); editSummerBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-slate-800 text-indigo-200 transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-200 py-2" onClick={() => { editSummerBannerTracker() }}>Submit</button>
+                    </div>
                 </div>
         },
         {
-            name: "Edit Summer Title",
+            name: "Edit Title",
             index: "2",
             content:
                 <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
@@ -166,7 +171,7 @@ const AdminSummerSidebar = (props) => {
                 </div>
         },
         {
-            name: "Edit Summer Content",
+            name: "Edit Content",
             index: "3",
             content:
                 <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
@@ -178,20 +183,20 @@ const AdminSummerSidebar = (props) => {
                 </div>
         },
         {
-            name: "Edit Summer Reg Link",
+            name: "Edit Register Link",
             index: "4",
             content:
                 <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
-                        <h1>Edit Reg Link:</h1>
+                        <h1>Edit Register Link:</h1>
                     </div>
                     <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setSummerRegLink(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSummerRegLink}>Submit</button>
                 </div>
         },
-        
+
         {
-            name: "Edit Summer Main Image",
+            name: "Edit Main Image",
             index: "5",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
@@ -230,14 +235,18 @@ const AdminSummerSidebar = (props) => {
     ]
 
     return (
-        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
-            <img className="w-[50px] h-[50px] cursor-pointer mt-1" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }} src={more} />
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+            <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
+            </div>
+
             {sideExpand &&
                 <div className="w-[300px]   bg-slate-900  z-[999] transition-all duration-700">
 
                     <section className="w-full ">
                         <div className="w-full">
-                            <h1 className="p-3 text-white text-lg">Edit Homepage Options:</h1>
+                            <h1 className="p-3 text-white text-lg">Edit Summer Options:</h1>
                             <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
                                 <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
                                 <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
