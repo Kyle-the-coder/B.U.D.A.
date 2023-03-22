@@ -13,6 +13,9 @@ import AdminAboutPage from "./pages/AdminAboutPage";
 import AboutPage from "./views/AboutPage";
 import AdminSummerPage from "./pages/AdminSummerPage";
 import SummerPage from "./views/SummerPage";
+import AdminSessionPage from "./pages/AdminSessionPage";
+import SessionPage from "./views/SessionPage";
+
 
 
 
@@ -51,11 +54,13 @@ function App() {
             <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/summer" element={<SummerPage/>}/>
+            <Route path="/session" element={<SessionPage/>}/>
 
             {/* Auth Routes */}
             <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
             <Route path="/adminaboutpage" element={<RequireAuth><AdminAboutPage/></RequireAuth>}/>
             <Route path="/adminsummerpage" element={<RequireAuth><AdminSummerPage/></RequireAuth>}/>
+            <Route path="/adminsessionpage" element={<RequireAuth><AdminSessionPage/></RequireAuth>}/>
 
           </Routes>
     

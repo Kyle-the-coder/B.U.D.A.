@@ -34,7 +34,7 @@ const AdminNavbar = () => {
         { name: "Edit Homepage", link: "/adminlandingpage" },
         { name: "Edit About", link: "/adminaboutpage" },
         { name: "Edit Summer", link: "/adminsummerpage" },
-        { name: "Edit Session", link: "/adminsession" },
+        { name: "Edit Session", link: "/adminsessionpage" },
         { name: "Edit B.C.", link: "/budacreweditadminpage" }
     ]
 
