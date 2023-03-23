@@ -21,7 +21,7 @@ const BudaNavbar = () => {
         { name: "Buda Crew", link: "/bcp" },
     ]
     let moreLinks = [
-        { name: "Gallery", link: "/gp" },
+        { name: "Gallery", link: "/gallery" },
         { name: "Rates", link: "/rp" },
         { name: "Buda Crew Member", link: "/budacrewmember" },
         {name: "Contact", link: "#contactSection"},

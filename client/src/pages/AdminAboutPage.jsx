@@ -322,7 +322,7 @@ const AdminAboutPage = (props) => {
                                         </p>
                                     </div>
                                 </div>
-                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutBudaImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[380px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[130px]":""} `}   src={data.aboutBudaImg} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard hover:drop-shadow-lg ${highlightFocus && expandIndex == aboutBudaImgFileIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[380px]":""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[130px]":""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[130px]":""} `}   src={data.aboutBudaImg} />
                             </div>
                         </section>
                     </div>

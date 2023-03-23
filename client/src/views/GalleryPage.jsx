@@ -1,30 +1,70 @@
 import check from "../assets/images/checkmark.png"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { getDoc, doc } from "firebase/firestore"
+import { ref, uploadBytes, listAll, getDownloadURL, uploadBytesResumable } from "firebase/storage"
+import { storage, db } from "../config/Firebase"
 
 import "../styles/bannerSize.css"
 import "../styles/cardHover.css"
 
 
 const GalleryPage = (props) => {
-    const { galleryBannerImg,
-        galleryBannerVid,
-        galleryBannerVidOrImg,
-        setGalleryBannerImg,
-        setGalleryBannerVid,
-        setGalleryBannerVidOrImg,
-        galleryVids, setGalleryVids,
-        galleryVidsList, setGalleryVidsList,
-        galleryImgs, setGalleryImgs,
-        galleryImgsList, setGalleryImgsList } = props
-    const { loggedIn, setLoggedIn } = props
-    const { setTracker } = props
-    const [galleryBannerImgEdited, setGalleryBannerImgEdited] = useState('')
-    const [galleryBannerVidEdited, setGalleryBannerVidEdited] = useState('')
-    const [galleryVidAdded, setGalleryVidAdded] = useState(false)
-    const [galleryImgAdded, setGalleryImgAdded] = useState(false)
+    const [data, setData] = useState({})
+    const [galleryBannerTracker, setGalleryBannerTracker] = useState(null)
+    const imageListRef = ref(storage, "galleryimgs/")
+    const videoListRef = ref(storage, "galleryvids/")
+    const [galleryVidsList, setGalleryVidsList] = useState([])
+    const [galleryImgsList, setGalleryImgsList] = useState([])
+    const [galleryBannerImg, setGalleryBannerImg] = useState('')
+    const [galleryBannerVid, setGalleryBannerVid] = useState('')
+
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        const getPhoto = async () => {
+            try {
+                const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                const docSnap = await getDoc(docRef);
+                setData(docSnap.data())
+                if (galleryBannerTracker == null) {
+                    setGalleryBannerTracker(docSnap.data().galleryBannerTracker)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getPhoto()
+
+        //GET ALL GALLERY IMGS
+        const getImgs = () => {
+            listAll(imageListRef)
+                .then((res) => {
+                    res.items.forEach((item) => {
+                        getDownloadURL(item).then((url) => {
+                            setGalleryImgsList((prev) => [...prev, url])
+
+                        })
+                    })
+                })
+        }
+        getImgs()
+
+        //GET ALL GALLERY VIDS
+        const getVids = () => {
+            listAll(videoListRef)
+                .then((res) => {
+                    res.items.forEach((item) => {
+                        getDownloadURL(item).then((url) => {
+                            setGalleryVidsList((prev) => [...prev, url])
+                            console.log(url)
+                        })
+                    })
+                })
+        }
+        getVids()
+    }, [])
     const backOne = () => {
         navigate(-1)
     }
@@ -32,10 +72,10 @@ const GalleryPage = (props) => {
     return (
         <div>
             {/* Banner Section */}
-            <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                {galleryBannerVidOrImg == "false" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={galleryBannerVid} alt="people dancing and colors" ></video>
+            <section className="w-full bg-slate-200 h-32 mb-5 flex justify-center ">
+                {galleryBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.galleryBannerVid} alt="people dancing and colors" ></video>
                     :
-                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={galleryBannerImg} alt="people dancing and colors" />}
+                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.galleryBannerImg} alt="people dancing and colors" />}
             </section>
 
             {/* Back One Page Section */}
@@ -46,27 +86,25 @@ const GalleryPage = (props) => {
             </section>
 
             {/* BUDA Name Section */}
-            <section className="w-full h-12 flex justify-center mb-12">
+            <section className="w-full  h-content flex justify-center mb-12">
                 <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-2xl welcome">Bianca's Urban Dance Academy</h1>
             </section>
 
             {/* Video Section */}
-            <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
-                {galleryVidsList.map((vid, i) => (
-                    <div key={i} className="flex flex-col justify-center items-center">
-                        <video className="rounded md:m-2 border-2 border-indigo-200 m-8 w-[700px]" loop muted autoPlay controls='' src={vid.galleryVids} >video loading...</video>
-                        <button className="bg-red-400 px-2 rounded w-[120px] mb-10">Delete</button>
-                    </div>
-                )
-                )}
+            <section className=" w-full">
+                <div  className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
+                    {galleryVidsList.map((vid, i) => (
+                        <video key={i} className="rounded my-3 border-2 border-indigo-200  w-[700px]" loop muted autoPlay controls='' src={vid} >video loading...</video>
+                    )
+                    )}
+                </div>
             </section>
 
             {/* Img Section */}
             <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
                 {galleryImgsList.map((img, i) => (
                     <div key={i} className="flex flex-col justify-center items-center justify-start">
-                        <img className="rounded md:m-2 border-2 border-indigo-200 m-8 w-[480px]" src={img.galleryImgs} />
-                        <button className="bg-red-400 px-2 rounded w-[120px] mb-10">Delete</button>
+                        <img className="rounded md:m-2 border-2 border-indigo-200 m-8 w-[480px]" src={img} />
                     </div>
                 )
                 )}
