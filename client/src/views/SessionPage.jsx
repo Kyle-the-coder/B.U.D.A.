@@ -55,13 +55,13 @@ const SessionPage = (props) => {
 
             {/* BUDA Name Section */}
             <section className="w-full h-12 flex justify-center mb-5">
-                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">{data.sessionTitle}:</h1>
+                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">{data.sessionTitle}</h1>
             </section>
 
             {/* Bianca About Info Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center w-full h-content justify-center">
-                    <img className="rounded infoCard2" width="500" src={data.sessionMainImg} />
+                    <img className="rounded infoCard2 object-cover w-[510px] h-[700px]"  src={data.sessionMainImg} />
                     <div className="w-11/12 sm:w-1/2  h-[700px] flex flex-col items-center">
                         <div className=" aboutInfo w-full px-2 py-1 mb-2 lg:text-2xl">
                             <h2 className="mb-6 lg:text-4xl">
@@ -144,8 +144,8 @@ const SessionPage = (props) => {
             {/* BUDA Summer Image Section */}
             <section className="mb-5">
                 <div className="w-full flex flex-col sm:flex-row items-center justify-evenly">
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[600px]" src={data.sessionImg2} />
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 w-[650px]" src={data.sessionImg3} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[400px]" src={data.sessionImg2} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[400px]" src={data.sessionImg3} />
                 </div>
             </section>
 

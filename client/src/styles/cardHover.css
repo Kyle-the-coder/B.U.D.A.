@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap');
+
+
+.welcome{
+    font-family: 'Fredoka One', cursive;
+}
+
+.infoCard{
+    transition: all 0.7s;
+    box-shadow: 1px 1px 5px rgb(60, 60, 60);
+}
+.infoCard:hover{
+    transition: all 0.4s;
+    transform: scale(1.04) rotate(2deg);
+    box-shadow: 10px 10px 15px rgb(60, 60, 60);
+}
+
+.infoCard2{
+    transition: all 0.7s;
+    box-shadow: -1px 1px 5px rgb(60, 60, 60);
+}
+
+.infoCard2:hover{
+    transition: all 0.4s;
+    transform: scale(1.04) rotate(-2deg);
+    box-shadow: -10px 10px 15px  rgb(60, 60, 60);
+}

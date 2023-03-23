@@ -19,12 +19,14 @@ const AdminSessionPage = (props) => {
 
     //SESSION PAGE INFO
     const [sessionContentIndex, setSessionContentIndex] = useState('')
+    const [sessionIntro, setSessionIntro] = useState('')
     const [startDate, setStartDate] = useState('')
     const [showDate, setShowDate] = useState('')
     const [showLocation, setShowLocation] = useState('')
     const [showTech, setShowTech] = useState('')
     const [showTitle, setShowTitle] = useState('')
     const [showTime, setShowTime] = useState('')
+    const [sessionLink, setSessionLink] = useState('')
 
     //NO CLASS INFO
     const [noClassIndex, setNoClassIndex] = useState('')
@@ -35,8 +37,6 @@ const AdminSessionPage = (props) => {
     const [noClass5, setNoClass5] = useState('')
     const [noClass6, setNoClass6] = useState('')
     const [noClass7, setNoClass7] = useState('')
-    const [sessionLink, setSessionLink] = useState('')
-    const [sessionIntro, setSessionIntro] = useState('')
 
     //SESSION PAGE IMGS & VIDS
     const [sessionMainImgIndex, setSessionMainImgIndex] = useState('')
@@ -58,6 +58,8 @@ const AdminSessionPage = (props) => {
     const [sideExpand, setSideExpand] = useState(false)
     const [perc, setPerc] = useState(null);
     const [highlightFocus, setHighlightFocus] = useState(false)
+    const [contentHighlightFocus, setContentHighlightFocus]=useState(false)
+    const [contentHighlightIndex, setContentHighlightIndex] = useState('')
     const [expandIndex, setExpandIndex] = useState('')
     const [show, setShow] = useState(false)
     const [timeOut, setTimeOut] = useState(false)
@@ -71,6 +73,22 @@ const AdminSessionPage = (props) => {
                 const docSnap = await getDoc(docRef);
                 setData(docSnap.data())
                 setSessionTitle(docSnap.data().sessionTitle)
+                setSessionIntro(docSnap.data().sessionIntro)
+                setStartDate(docSnap.data().startDate)
+                setShowDate(docSnap.data().showDate)
+                setShowLocation(docSnap.data().showLocation)
+                setShowTech(docSnap.data().showTech)
+                setShowTitle(docSnap.data().showTitle)
+                setShowTime(docSnap.data().showTime)
+                setSessionLink(docSnap.data().sessionLink)
+                setNoClass1(docSnap.data().noClass1)
+                setNoClass2(docSnap.data().noClass2)
+                setNoClass3(docSnap.data().noClass3)
+                setNoClass4(docSnap.data().noClass4)
+                setNoClass5(docSnap.data().noClass5)
+                setNoClass6(docSnap.data().noClass6)
+                setNoClass7(docSnap.data().noClass7)
+
 
                 if (sessionBannerTracker == null) {
                     setSessionBannerTracker(docSnap.data().sessionBannerTracker)
@@ -279,11 +297,6 @@ const AdminSessionPage = (props) => {
         <div className="w-full">
             <div className="flex">
 
-
-
-
-
-
                 <section>
                     <AdminSessionSidebar
                         data={data} setData={setData}
@@ -316,6 +329,15 @@ const AdminSessionPage = (props) => {
                         highlightFocus={highlightFocus} setHighlightFocus={setHighlightFocus}
                         expandIndex={expandIndex} setExpandIndex={setExpandIndex}
                         show={show} setShow={setShow}
+                        sessionBannerIndex={sessionBannerIndex}
+                        sessionTitleIndex={sessionTitleIndex}
+                        sessionContentIndex={sessionContentIndex}
+                        noClassIndex={noClassIndex}
+                        sessionMainImgIndex={sessionMainImgIndex}
+                        sessionImg2Index={sessionImg2Index}
+                        sessionImg3Index={sessionImg3Index}
+                        contentHighlightFocus={contentHighlightFocus} setContentHighlightFocus={setContentHighlightFocus}
+                        contentHighlightIndex={contentHighlightIndex} setContentHighlightIndex={setContentHighlightIndex}
                     />
                 </section>
 
@@ -349,59 +371,66 @@ const AdminSessionPage = (props) => {
                         </section>
 
                         {/* BUDA Name Section */}
-                        <section className={`w-full  flex justify-center mb-8 ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "h-[5px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[5px]" : ""} transition-all duration-500`}>
-                            <h1 className={` welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500`}>{data.sessionTitle}</h1>
+                        <section className={`w-full   flex justify-center  ${sideExpand == true && siteExpand == false ? "mb-8" : ""} ${sideExpand == false && siteExpand == false ? "mb-8" : ""} ${sideExpand == true && siteExpand == true ? "h-content mb-3 " : ""} ${sideExpand == false && siteExpand == true ? "h-content mb-3" : ""} transition-all duration-500`}>
+                            <h1 className={`${highlightFocus && expandIndex == sessionTitleIndex ? "border-4 border-red-700 p-1" : ""} welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500 `}>{sessionTitle}</h1>
                         </section>
 
                         {/* Bianca About Info Section */}
                         <section className="mb-10">
                             <div className="flex flex-col md:flex-row items-start w-full  justify-center">
-                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionMainImgIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[450px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[510px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[340px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `}  src={data.sessionMainImg} />
-                                <div className="w-11/12 sm:w-1/2 ml-4 text-xl   flex flex-col items-center">
-                                    <div className={`aboutInfo mb-3 p-2  transition-all duration-500 ${sideExpand == true && siteExpand == false ? "h-[540px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[640px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[160px] h-[290px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[160px] h-[290px]" : ""}`}>
-                                        <h2 className={`mb-5 flex justify-center transition-all duration-500   ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-4xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
-                                            {data.sessionIntro}
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionMainImgIndex ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[450px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[510px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[340px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.sessionMainImg} />
+                                <div className="w-11/12 sm:w-1/2 ml-4 flex flex-col items-center">
+                                    <div className={` aboutInfo mb-3   transition-all duration-500 ${sideExpand == true && siteExpand == false ? "h-[540px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[640px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[160px] h-[290px] text-[.5rem]" : ""} ${sideExpand == false && siteExpand == true ? "h-[160px] h-[290px] text-[.5rem]" : ""}`}>
+                                    <div className={`p-1 ${highlightFocus && expandIndex == sessionContentIndex ? "border-4 border-red-700 " : ""} `}>
+
+                                    
+                                        <h2 className={` ${contentHighlightFocus && contentHighlightIndex == "1" ? "border-2 border-red-700 " : ""} mb-5 flex justify-center transition-all duration-500   ${sideExpand == true && siteExpand == false ? "text-2xl" : ""} ${sideExpand == false && siteExpand == false ? "text-4xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
+                                            {sessionIntro}
                                         </h2>
                                         <p className="mb-1 ">
                                             <strong>Important Dates:</strong>
                                         </p>
+                                        <p className={`indent-5 ${contentHighlightFocus && contentHighlightIndex == "2" ? "border-2 border-red-700 " : ""} `}>
+                                            <strong>Start: </strong>{startDate}
+                                        </p>
+                                        <p className={`indent-5  ${contentHighlightFocus && contentHighlightIndex == "3" ? "border-2 border-red-700 " : ""}`}>
+                                            <strong>Show date:</strong>  {showDate}
+                                        </p>
+                                        <p className={`indent-5 ${contentHighlightFocus && contentHighlightIndex == "4" ? "border-2 border-red-700 " : ""}`}>
+                                            <strong>Show Location:</strong> {showLocation}
+                                        </p>
+                                        <p className={` indent-5 ${contentHighlightFocus && contentHighlightIndex == "5" ? "border-2 border-red-700 " : ""}`}>
+                                            <strong>MANDATORY TECH: </strong> {showTech}
+                                        </p>
+                                        <p className={`indent-5`}>
+                                            <strong className={`${contentHighlightFocus && contentHighlightIndex == "6" ? "border-2 border-red-700 " : ""}`}>{data.showTitle}: </strong> <span className={`${contentHighlightFocus && contentHighlightIndex == "7" ? "border-2 border-red-700 " : ""}`}>{data.showTime}</span>
+                                        </p>
+                                        </div>
+                                        <div className={`${highlightFocus && expandIndex == noClassIndex ? "border-4 border-red-700 " : ""} w-full h-content`}>
+
                                         <p className="indent-5">
-                                            <strong>Start: </strong>{data.startDate}
+                                            <strong>{noClass1} </strong>
                                         </p>
                                         <p className="indent-5">
-                                            <strong>Show date:</strong>  {data.showDate}
+                                            <strong>{noClass2} </strong>
                                         </p>
                                         <p className="indent-5">
-                                            <strong>Show Location:</strong> {data.showLocation}
-                                        </p>
-                                        <p className=" indent-5">
-                                            <strong>MANDATORY TECH: </strong> {data.showTech}
-                                        </p>
-                                        <p className="indent-5">
-                                            <strong>{data.showTitle}: </strong> {data.showTime}
-                                        </p>
-                                        <p className="indent-5">
-                                            <strong>{data.noClass1} </strong>
-                                        </p>
-                                        <p className="indent-5">
-                                            <strong>{data.noClass2} </strong>
-                                        </p>
-                                        <p className="indent-5">
-                                            <strong>{data.noClass3}</strong>
+                                            <strong>{noClass3}</strong>
                                         </p>
                                         <p className="indent-5 ">
-                                            <strong>{data.noClass4}</strong>
+                                            <strong>{noClass4}</strong>
                                         </p>
                                         <p className="indent-5">
-                                            <strong>{data.noClass5}</strong>
+                                            <strong>{noClass5}</strong>
                                         </p>
                                         <p className="indent-5 ">
-                                            <strong>{data.noClass6}</strong>
+                                            <strong>{noClass6}</strong>
                                         </p>
                                         <p className="indent-5 mb-5">
-                                            <strong>{data.noClass7}</strong>
+                                            <strong>{noClass7}</strong>
                                         </p>
-                                        <p className=" text-lg">
+                                        </div>
+                                        <p className={`${sideExpand == true && siteExpand == false ? "text-2xl" : ""} ${sideExpand == false && siteExpand == false ? "text-4xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
                                             <strong>Tuition:</strong>
                                         </p>
                                         <p className="indent-5">
@@ -413,7 +442,7 @@ const AdminSessionPage = (props) => {
                                         <p className="indent-5 mb-5">
                                             <a className="text-sky-500 underline" href="/rp">Click Here</a> for rate pricing.
                                         </p>
-                                        <p className=" text-lg">
+                                        <p className={`${sideExpand == true && siteExpand == false ? "text-2xl" : ""} ${sideExpand == false && siteExpand == false ? "text-4xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>
                                             <strong>Contact:</strong>
                                         </p>
                                         <p className="indent-5 ">
@@ -422,7 +451,7 @@ const AdminSessionPage = (props) => {
                                     </div>
 
                                     <div className={` w-full  flex justify-center  items-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-sm" : ""} ${sideExpand == false && siteExpand == true ? "text-sm" : ""} `}>
-                                        <a target="_blank" href={data.sessionLink} className="bg-indigo-700 text-white cursor-pointer justify-center hover:bg-slate-900 hover:text-pink-300 transition-all duration-500 px-3 py-1 flex items-center rounded">Register Here!</a>
+                                        <a target="_blank" href={data.sessionLink} className={`${contentHighlightFocus && contentHighlightIndex == "8" ? "border-4 border-red-700 " : ""} bg-indigo-700 text-white cursor-pointer justify-center hover:bg-slate-900 hover:text-pink-300 transition-all duration-500 px-3 py-1 flex items-center rounded`}>Register Here!</a>
                                     </div>
                                 </div>
                             </div>
@@ -432,8 +461,8 @@ const AdminSessionPage = (props) => {
                         {/* BUDA Summer Image Section */}
                         <section className="mb-5">
                             <div className="w-full flex flex-col sm:flex-row items-center justify-evenly">
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg2Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.sessionImg2} />
-                                <img className={`rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg3Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} src={data.sessionImg3} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg2Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[350px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[240px] h-[150px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[240px] h-[150px]" : ""} `} src={data.sessionImg2} />
+                                <img className={`object-cover rounded transition-all duration-500 infoCard2 hover:drop-shadow-lg ${highlightFocus && expandIndex == sessionImg3Index ? "border-4 border-red-700 " : ""} ${sideExpand == true && siteExpand == false ? "w-[500px] h-[350px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[400px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[240px] h-[150px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[240px] h-[150px]" : ""} `} src={data.sessionImg3} />
                             </div>
                         </section>
                     </div>

@@ -23,6 +23,15 @@ const AdminSessionSidebar = (props) => {
     const { sessionLink, setSessionLink } = props
     const { sessionIntro, setSessionIntro } = props
 
+    //INDEXES FOR HIGHLIGHT
+    const { sessionBannerIndex } = props
+    const { sessionTitleIndex } = props
+    const { sessionContentIndex } = props
+    const { noClassIndex } = props
+    const { sessionMainImgIndex } = props
+    const { sessionImg2Index } = props
+    const { sessionImg3Index } = props
+
     //NO CLASS INFO
     const { noClass1, setNoClass1 } = props
     const { noClass2, setNoClass2 } = props
@@ -47,6 +56,8 @@ const AdminSessionSidebar = (props) => {
     //PAGE HANDLERS
     const { perc, setPerc } = props
     const { highlightFocus, setHighlightFocus } = props
+    const { contentHighlightFocus, setContentHighlightFocus } = props
+    const { contentHighlightIndex, setContentHighlightIndex } = props
     const { expandIndex, setExpandIndex } = props
     const { mainImgIndex } = props
     const { siteExpand, setSiteExpand } = props
@@ -64,6 +75,14 @@ const AdminSessionSidebar = (props) => {
 
     const handleExpandIndex = (index) => {
         setExpandIndex(index)
+        if(index != "3"){
+            setContentHighlightIndex(false)
+        }
+    }
+
+    const handleContentHighlightFocus = () => {
+        setContentHighlightFocus(true)
+
     }
 
 
@@ -80,8 +99,9 @@ const AdminSessionSidebar = (props) => {
         }
     }
 
+
     const handleFocus = (index) => {
-        if (index == null) {
+        if (index == sessionBannerIndex || index == sessionTitleIndex || index == sessionContentIndex || index == noClassIndex || index == sessionMainImgIndex || index == sessionImg2Index || index == sessionImg3Index) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)
@@ -190,7 +210,7 @@ const AdminSessionSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit Title:</h1>
                     </div>
-                    <input type="text" className="m-8 text-black w-full transition-all duration-700 p-2" onChange={(e) => setSessionTitle(e.target.value)} />
+                    <input type="text" className="m-8 text-black w-full transition-all duration-700 p-2" value={sessionTitle} onChange={(e) => setSessionTitle(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSessionTitle}>Submit</button>
                 </div>
         },
@@ -205,42 +225,43 @@ const AdminSessionSidebar = (props) => {
 
                     <div className="my-4">
                         <label>Session Intro:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setSessionIntro(e.target.value)} />
+                        <input type="text" value={sessionIntro} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => {setSessionIntro(e.target.value)}} onClick={()=>{setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true)}} />
+
                     </div>
 
                     <div className="my-4">
                         <label className="">Session Start Date:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setStartDate(e.target.value)} />
+                        <input type="text" value={startDate} className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setStartDate(e.target.value)} onClick={()=>{setContentHighlightIndex("2"); handleContentHighlightFocus(); setHighlightFocus(true)}} />
                     </div>
 
                     <div className="my-4">
                         <label>Show Date:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowDate(e.target.value)} />
+                        <input type="text" value={showDate} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowDate(e.target.value)} onClick={()=>{setContentHighlightIndex("3"); handleContentHighlightFocus(); setHighlightFocus(true)}}/>
                     </div>
 
                     <div className="my-4">
                         <label>Show Location:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowLocation(e.target.value)} />
+                        <input type="text" value={showLocation} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowLocation(e.target.value)} onClick={()=>{setContentHighlightIndex("4"); handleContentHighlightFocus(); setHighlightFocus(true)}}/>
                     </div>
 
                     <div className="my-4">
                         <label>Show Tech Time:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTech(e.target.value)} />
+                        <input type="text" value={showTech} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTech(e.target.value)} onClick={()=>{setContentHighlightIndex("5"); handleContentHighlightFocus(); setHighlightFocus(true)}}/>
                     </div>
 
                     <div className="my-4">
                         <label>Show Title:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTitle(e.target.value)} />
+                        <input type="text" value={showTitle} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTitle(e.target.value)} onClick={()=>{setContentHighlightIndex("6"); handleContentHighlightFocus(); setHighlightFocus(true)}}/>
                     </div>
 
                     <div className="my-4">
                         <label>Show Time:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTime(e.target.value)} />
+                        <input type="text" value={showTime} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setShowTime(e.target.value)} onClick={()=>{setContentHighlightIndex("7"); handleContentHighlightFocus(); setHighlightFocus(true)}}/>
                     </div>
 
                     <div className="my-4">
                         <label>Session Link:</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setSessionLink(e.target.value)} />
+                        <input type="text" value={sessionLink} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setSessionLink(e.target.value)} onClick={()=>{setContentHighlightIndex("8"); handleContentHighlightFocus(); setHighlightFocus(false)}}/>
                     </div>
 
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSessionContent}>Submit</button>
@@ -257,37 +278,37 @@ const AdminSessionSidebar = (props) => {
 
                     <div className="my-4">
                         <label>No Class 1 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass1(e.target.value)} />
+                        <input type="text" value={noClass1} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass1(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 2 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass2(e.target.value)} />
+                        <input type="text" value={noClass2} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass2(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 3 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass3(e.target.value)} />
+                        <input type="text" value={noClass3} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass3(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 4 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass4(e.target.value)} />
+                        <input type="text" value={noClass4} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass4(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 5 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass5(e.target.value)} />
+                        <input type="text" value={noClass5} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass5(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 6 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass6(e.target.value)} />
+                        <input type="text" value={noClass6} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass6(e.target.value)} />
                     </div>
 
                     <div className="my-4">
                         <label>No Class 7 (optional):</label>
-                        <input type="text" className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass7(e.target.value)} />
+                        <input type="text" value={noClass7} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => setNoClass7(e.target.value)} />
                     </div>
 
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSessionNoClassContent}>Submit</button>
@@ -334,10 +355,10 @@ const AdminSessionSidebar = (props) => {
 
 
 
-    console.log(data)
-    console.log(noClass7)
+    console.log(contentHighlightFocus, contentHighlightIndex)
+
     return (
-        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[975px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
 
             <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
                 <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
