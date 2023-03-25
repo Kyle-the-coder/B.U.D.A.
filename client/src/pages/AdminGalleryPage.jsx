@@ -2,7 +2,7 @@ import check from "../assets/images/checkmark.png"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getDoc, doc } from "firebase/firestore"
-import { ref, uploadBytes, listAll, getDownloadURL, uploadBytesResumable } from "firebase/storage"
+import { ref, uploadBytes, listAll, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage"
 import { storage, db } from "../config/Firebase"
 import "../styles/bannerSize.css"
 import "../styles/cardHover.css"
@@ -68,8 +68,7 @@ const AdminGalleryPage = (props) => {
                 .then((res) => {
                     res.items.forEach((item) => {
                         getDownloadURL(item).then((url) => {
-                            setGalleryImgsList((prev) => [...prev, url])
-
+                            setGalleryImgsList((prev) => [...prev, { link: url, name: item._location.path_ }])
                         })
                     })
                 })
@@ -82,8 +81,7 @@ const AdminGalleryPage = (props) => {
                 .then((res) => {
                     res.items.forEach((item) => {
                         getDownloadURL(item).then((url) => {
-                            setGalleryVidsList((prev) => [...prev, url])
-                            console.log(url)
+                            setGalleryVidsList((prev) => [...prev, { link: url, name: item._location.path_ }])
                         })
                     })
                 })
@@ -159,20 +157,52 @@ const AdminGalleryPage = (props) => {
                     setTimeOut(false)
                 }
             );
-
         }
         galleryBannerVid && uploadGalleryBannerVidFile()
-
-
     }, [galleryBannerImg, galleryBannerVid])
 
 
 
     const backOne = () => {
         navigate(-1)
+        console.log("yeah")
     }
-    console.log("vids list", galleryVidsList)
+    
 
+    const deleteVid = async (fileName) => {
+        console.log("yes", fileName)
+        const fileRef = ref(storage, fileName);
+        // Delete the file
+        await deleteObject(fileRef).then(() => {
+            // File deleted successfully
+            console.log("it worked!")
+        }).catch((error) => {
+            // Uh-oh, an error occurred!
+            console.log("did not work")
+        });
+        let filteredList = galleryVidsList.filter(name => name.name != fileName)
+        console.log(filteredList)
+        setGalleryVidsList(filteredList)
+        
+    }
+
+    const deleteImg = async (fileName) => {
+        console.log("yes", fileName)
+        const fileRef = ref(storage, fileName);
+        // Delete the file
+        await deleteObject(fileRef).then(() => {
+            // File deleted successfully
+            
+            console.log("it worked!")
+        }).catch((error) => {
+            // Uh-oh, an error occurred!
+            console.log("did not work")
+        });
+        let filteredList = galleryImgsList.filter(name => name.name != fileName)
+        console.log(filteredList)
+        setGalleryImgsList(filteredList)   
+    }
+    console.log(galleryImgsList)
     return (
         <div className="w-full">
             <div className="flex">
@@ -228,29 +258,40 @@ const AdminGalleryPage = (props) => {
 
                         {/* BUDA Name Section */}
                         <section className="w-full h-12 flex justify-center mb-12">
-                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-2xl welcome">Bianca's Urban <span className="text-indigo-500">Dance</span> Academy</h1>
+                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-2xl welcome"> <span className="text-indigo-500">BUDA</span> Gallery</h1>
                         </section>
 
                         {/* Video Section */}
                         <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
-                            {galleryVidsList != null && galleryVidsList.map((vid, i) => (
-                                <div key={i} className="flex flex-col justify-center items-center">
-                                    <video className="rounded md:m-2 border-2 border-indigo-200 m-8 w-[700px]" loop muted autoPlay controls='' src={vid} >video loading...</video>
-                                    <button className="bg-red-400 px-2 rounded w-[120px] mb-10" >Delete</button>
-                                </div>
-                            )
-                            )}
+                        <div className="w-full">
+                            <h1>Videos:</h1>
+                        </div>
+                            <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
+                                {galleryVidsList != null && galleryVidsList.map((vid, i) => (
+                                    <div key={i} className="flex flex-col justify-center items-center">
+                                        <video className={`rounded md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[400px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `} loop muted autoPlay controls='' src={vid.link} >video loading...</video>
+                                        <button className="bg-red-400 px-2 rounded w-[120px] mb-10" onClick={() => deleteVid(vid.name)}>Delete</button>
+                                    </div>
+                                )
+                                )}
+                            </div>
                         </section>
 
                         {/* Img Section */}
                         <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
+                        <div className="w-full">
+                            <h1>Photos:</h1>
+                        </div>
+                        <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
+
                             {galleryImgsList.map((img, i) => (
                                 <div key={i} className="flex flex-col justify-center items-center justify-start">
-                                    <img className="rounded md:m-2 border-2 border-indigo-200 m-8 w-[480px]" src={img} />
-                                    <button className="bg-red-400 px-2 rounded w-[120px] mb-10" >Delete</button>
+                                    <img className={`rounded object-cover md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[200px] h-[250px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[350px]" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `} src={img.link} />
+                                    <button className="bg-red-400 px-2 rounded w-[120px] mb-10" onClick={()=>deleteImg(img.name)} >Delete</button>
                                 </div>
                             )
                             )}
+                        </div>
 
                         </section>
                     </div>

@@ -87,14 +87,14 @@ const GalleryPage = (props) => {
 
             {/* BUDA Name Section */}
             <section className="w-full  h-content flex justify-center mb-12">
-                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-2xl welcome">Bianca's Urban Dance Academy</h1>
+                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-2xl welcome">BUDA Gallery</h1>
             </section>
 
             {/* Video Section */}
             <section className=" w-full">
                 <div  className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
                     {galleryVidsList.map((vid, i) => (
-                        <video key={i} className="rounded my-3 border-2 border-indigo-200  w-[700px]" loop muted autoPlay controls='' src={vid} >video loading...</video>
+                        <video key={i} className="rounded my-3 border-2 border-indigo-200 sm:w-[200px] md:w-[500px] lg:w-[700px]" loop muted autoPlay controls='' src={vid} >video loading...</video>
                     )
                     )}
                 </div>

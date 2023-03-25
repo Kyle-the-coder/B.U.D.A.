@@ -100,7 +100,7 @@ const AdminGallerySidebar = (props) => {
             await uploadBytes(filesFolderRef, imgFileUpload).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log("img", url)
-                    // setGalleryImgsList((prev) => [...prev, url])
+                    setGalleryImgsList((prev) => [...prev, { link: url, name: snapshot.ref._location.path_ }])
                 })
             })
         } catch (error) {
@@ -116,7 +116,7 @@ const AdminGallerySidebar = (props) => {
             await uploadBytes(filesFolderRef, vidFileUpload).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log("vid", url)
-                    // setGalleryVidsList((prev) => [...prev, url])
+                    setGalleryVidsList((prev) => [...prev, { link: url, name: snapshot.ref._location.path_ }])
                 })
             })
         } catch (error) {
