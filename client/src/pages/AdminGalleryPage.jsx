@@ -225,6 +225,8 @@ const AdminGalleryPage = (props) => {
                         highlightFocus={highlightFocus} setHighlightFocus={setHighlightFocus}
                         imgFileUpload={imgFileUpload} setImgFileUpload={setImgFileUpload}
                         vidFileUpload={vidFileUpload} setVidFileUpload={setVidFileUpload}
+                        galleryVidAdded={galleryVidAdded} setGalleryVidAdded={setGalleryVidAdded}
+                        galleryImgAdded={galleryImgAdded}  setGalleryImgAdded={setGalleryImgAdded}
                     />
                 </section>
 
@@ -250,27 +252,27 @@ const AdminGalleryPage = (props) => {
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-12 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}`}>
+                            <p  className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`}  onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
 
                         {/* BUDA Name Section */}
-                        <section className="w-full h-12 flex justify-center mb-12">
-                            <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-2xl welcome"> <span className="text-indigo-500">BUDA</span> Gallery</h1>
+                        <section className={`w-full h-content flex justify-center ${sideExpand == true && siteExpand == false ? "mb-12" : ""} ${sideExpand == false && siteExpand == false ? "mb-12" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `}>
+                            <h1 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl" : ""} ${sideExpand == false && siteExpand == false ? "text-6xl" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}  welcome`}> <span className="text-indigo-500">BUDA</span> Gallery</h1>
                         </section>
 
                         {/* Video Section */}
-                        <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
+                        <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center">
                         <div className="w-full">
-                            <h1>Videos:</h1>
+                            <h1 className={`${sideExpand == true && siteExpand == false ? "ml-5 text-2xl" : ""} ${sideExpand == false && siteExpand == false ? "ml-11 text-3xl" : ""} ${sideExpand == true && siteExpand == true ? "ml-3 text-sm" : ""} ${sideExpand == false && siteExpand == true ? "ml-3 text-sm" : ""}  transition-all duration-500`}>Videos:</h1>
                         </div>
                             <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
                                 {galleryVidsList != null && galleryVidsList.map((vid, i) => (
                                     <div key={i} className="flex flex-col justify-center items-center">
-                                        <video className={`rounded md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[400px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `} loop muted autoPlay controls='' src={vid.link} >video loading...</video>
-                                        <button className="bg-red-400 px-2 rounded w-[120px] mb-10" onClick={() => deleteVid(vid.name)}>Delete</button>
+                                        <video className={`rounded transition-all duration-500 md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px]" : ""} `} loop muted autoPlay controls='' src={vid.link} >video loading...</video>
+                                        <button className={`${sideExpand == true && siteExpand == false ? "px-7 py-1" : ""} ${sideExpand == false && siteExpand == false ? "px-7 py-1" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem] px-3 " : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem] px-3" : ""} bg-red-400 rounded `} onClick={() => deleteVid(vid.name)}>Delete</button>
                                     </div>
                                 )
                                 )}
@@ -278,16 +280,16 @@ const AdminGalleryPage = (props) => {
                         </section>
 
                         {/* Img Section */}
-                        <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center m-8">
+                        <section className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center ">
                         <div className="w-full">
-                            <h1>Photos:</h1>
+                            <h1 className={`${sideExpand == true && siteExpand == false ? "ml-5 text-2xl" : ""} ${sideExpand == false && siteExpand == false ? "ml-11 text-3xl" : ""} ${sideExpand == true && siteExpand == true ? "ml-3 text-sm" : ""} ${sideExpand == false && siteExpand == true ? "ml-3 text-sm" : ""}  transition-all duration-500`}>Photos:</h1>
                         </div>
                         <div className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
 
                             {galleryImgsList.map((img, i) => (
                                 <div key={i} className="flex flex-col justify-center items-center justify-start">
-                                    <img className={`rounded object-cover md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[200px] h-[250px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[350px]" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `} src={img.link} />
-                                    <button className="bg-red-400 px-2 rounded w-[120px] mb-10" onClick={()=>deleteImg(img.name)} >Delete</button>
+                                    <img className={`rounded object-cover md:m-2 border-2 border-indigo-200 m-8 ${sideExpand == true && siteExpand == false ? "w-[500px] h-[300px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[350px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[230px] h-[140px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[230px] h-[140px]" : ""}  `} src={img.link} />
+                                    <button className={`${sideExpand == true && siteExpand == false ? "px-7 py-1" : ""} ${sideExpand == false && siteExpand == false ? "px-7 py-1" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem] px-3 " : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem] px-3" : ""} bg-red-400 rounded `} onClick={()=>deleteImg(img.name)} >Delete</button>
                                 </div>
                             )
                             )}

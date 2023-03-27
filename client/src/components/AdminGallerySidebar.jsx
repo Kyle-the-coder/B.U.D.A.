@@ -1,6 +1,7 @@
 import arrow from "../assets/images/right-arrow2.png"
 import chevron from "../assets/images/down-chevron.png"
 import more from "../assets/images/more.png"
+import check from "../assets/images/check.png"
 import { useState } from "react";
 import { db } from "../config/Firebase";
 import { serverTimestamp, doc, setDoc } from "firebase/firestore"
@@ -13,8 +14,8 @@ import { storage } from "../config/Firebase"
 const AdminGallerySidebar = (props) => {
     //ALL INFO
     const { data, setData } = props
-    const {imgFileUpload, setImgFileUpload} = props
-    const {vidFileUpload, setVidFileUpload} = props
+    const { imgFileUpload, setImgFileUpload } = props
+    const { vidFileUpload, setVidFileUpload } = props
 
     //BANNER HANDLERS
     const { galleryBannerImg, setGalleryBannerImg } = props
@@ -24,8 +25,10 @@ const AdminGallerySidebar = (props) => {
     const { show, setShow } = props
 
     //VID AND IMG HANDLERS
-    const {galleryImgsList, setGalleryImgsList} = props
-    const {galleryVidsList, setGalleryVidsList} = props
+    const { galleryImgsList, setGalleryImgsList } = props
+    const { galleryVidsList, setGalleryVidsList } = props
+    const { galleryVidAdded, setGalleryVidAdded } = props
+    const { galleryImgAdded, setGalleryImgAdded } = props
 
     //PAGE HANDLERS
     const { perc, setPerc } = props
@@ -96,11 +99,14 @@ const AdminGallerySidebar = (props) => {
     const uploadGalleryImgFile = async () => {
         if (!imgFileUpload) return;
         const filesFolderRef = ref(storage, `galleryimgs/${imgFileUpload.name}`);
+        setGalleryImgAdded(true)
         try {
             await uploadBytes(filesFolderRef, imgFileUpload).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log("img", url)
                     setGalleryImgsList((prev) => [...prev, { link: url, name: snapshot.ref._location.path_ }])
+                    const time = setTimeout(() => setGalleryImgAdded(false), setSideExpand(false), 2100);
+                    return time
                 })
             })
         } catch (error) {
@@ -112,11 +118,15 @@ const AdminGallerySidebar = (props) => {
     const uploadGalleryVidFile = async () => {
         if (!vidFileUpload) return;
         const filesFolderRef = ref(storage, `galleryvids/${vidFileUpload.name}`);
+        setGalleryVidAdded(true)
         try {
             await uploadBytes(filesFolderRef, vidFileUpload).then((snapshot) => {
+
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log("vid", url)
                     setGalleryVidsList((prev) => [...prev, { link: url, name: snapshot.ref._location.path_ }])
+                    const time = setTimeout(() => setGalleryVidAdded(false), setSideExpand(false), 2100);
+                    return time
                 })
             })
         } catch (error) {
@@ -158,7 +168,10 @@ const AdminGallerySidebar = (props) => {
                         <h1>Add Video:</h1>
                     </div>
                     <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setVidFileUpload(e.target.files[0]) }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={uploadGalleryVidFile}>Submit</button>
+                    <div className="flex w-full justify-center relative transitition-all duration-300">
+                        <button disabled={galleryVidAdded} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={uploadGalleryVidFile}>{galleryVidAdded ? "Loading":"Submit"}</button>
+                        {galleryVidAdded && <img className="w-[50px] h-[50px] absolute right-0" src={check} />}
+                    </div>
                 </div>
         },
         {
@@ -170,14 +183,17 @@ const AdminGallerySidebar = (props) => {
                         <h1>Add Image:</h1>
                     </div>
                     <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setImgFileUpload(e.target.files[0]) }} />
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={uploadGalleryImgFile}>Submit</button>
+                    <div className="flex w-full justify-center relative transitition-all duration-300">
+                        <button disabled={galleryImgAdded} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={uploadGalleryImgFile}>{galleryImgAdded ? "Loading":"Submit"}</button>
+                        {galleryImgAdded && <img className="w-[50px] h-[50px] absolute right-0" src={check} />}
+                    </div>
                 </div>
         },
     ]
-
+console.log(galleryImgAdded)
 
     return (
-        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[2175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
 
             <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
                 <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
