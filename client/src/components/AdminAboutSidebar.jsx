@@ -3,7 +3,7 @@ import chevron from "../assets/images/down-chevron.png"
 import more from "../assets/images/more.png"
 import { useState } from "react";
 import { db } from "../config/Firebase";
-import { serverTimestamp, doc, setDoc } from "firebase/firestore"
+import { serverTimestamp, doc, setDoc, getDoc } from "firebase/firestore"
 
 
 
@@ -77,6 +77,25 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setAboutBudaContent(docSnap.data().aboutBudaContent)
+                    setAboutMeContent(docSnap.data().aboutMeContent)
+                    if (aboutBannerTracker == null) {
+                        setAboutBannerTracker(docSnap.data().aboutBannerTracker)
+                    } else if (aboutBannerHandler == "false") {
+                        setAboutBannerTracker("false")
+                    } else if (aboutBannerHandler === "true") {
+                        setAboutBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -90,6 +109,25 @@ const AdminAboutSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setAboutBudaContent(docSnap.data().aboutBudaContent)
+                    setAboutMeContent(docSnap.data().aboutMeContent)
+                    if (aboutBannerTracker == null) {
+                        setAboutBannerTracker(docSnap.data().aboutBannerTracker)
+                    } else if (aboutBannerHandler == "false") {
+                        setAboutBannerTracker("false")
+                    } else if (aboutBannerHandler === "true") {
+                        setAboutBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)

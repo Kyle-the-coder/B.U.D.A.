@@ -3,7 +3,7 @@ import chevron from "../assets/images/down-chevron.png"
 import more from "../assets/images/more.png"
 import { useState } from "react";
 import { db } from "../config/Firebase";
-import { serverTimestamp, doc, setDoc } from "firebase/firestore"
+import { serverTimestamp, doc, setDoc, getDoc } from "firebase/firestore"
 
 
 
@@ -85,6 +85,25 @@ const AdminSummerSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSummerTitle(docSnap.data().summerTitle)
+                    setSummerContent(docSnap.data().summerContent)
+                    if (summerBannerTracker == null) {
+                        setSummerBannerTracker(docSnap.data().summerBannerTracker)
+                    } else if (summerBannerHandler == "false") {
+                        setSummerBannerTracker("false")
+                    } else if (summerBannerHandler === "true") {
+                        setSummerBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -99,6 +118,25 @@ const AdminSummerSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSummerTitle(docSnap.data().summerTitle)
+                    setSummerContent(docSnap.data().summerContent)
+                    if (summerBannerTracker == null) {
+                        setSummerBannerTracker(docSnap.data().summerBannerTracker)
+                    } else if (summerBannerHandler == "false") {
+                        setSummerBannerTracker("false")
+                    } else if (summerBannerHandler === "true") {
+                        setSummerBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -112,6 +150,25 @@ const AdminSummerSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSummerTitle(docSnap.data().summerTitle)
+                    setSummerContent(docSnap.data().summerContent)
+                    if (summerBannerTracker == null) {
+                        setSummerBannerTracker(docSnap.data().summerBannerTracker)
+                    } else if (summerBannerHandler == "false") {
+                        setSummerBannerTracker("false")
+                    } else if (summerBannerHandler === "true") {
+                        setSummerBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -126,6 +183,25 @@ const AdminSummerSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSummerTitle(docSnap.data().summerTitle)
+                    setSummerContent(docSnap.data().summerContent)
+                    if (summerBannerTracker == null) {
+                        setSummerBannerTracker(docSnap.data().summerBannerTracker)
+                    } else if (summerBannerHandler == "false") {
+                        setSummerBannerTracker("false")
+                    } else if (summerBannerHandler === "true") {
+                        setSummerBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -162,11 +238,11 @@ const AdminSummerSidebar = (props) => {
             name: "Edit Title",
             index: "2",
             content:
-                <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit Summer Title:</h1>
                     </div>
-                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setSummerTitle(e.target.value)} />
+                    <input type="text" className="m-8 text-black w-full  transition-all duration-700 p-2" onChange={(e) => setSummerTitle(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSummerTitle}>Submit</button>
                 </div>
         },
@@ -186,11 +262,11 @@ const AdminSummerSidebar = (props) => {
             name: "Edit Register Link",
             index: "4",
             content:
-                <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit Register Link:</h1>
                     </div>
-                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setSummerRegLink(e.target.value)} />
+                    <input type="text" className="m-8 w-full text-black  transition-all duration-700 p-2" onChange={(e) => setSummerRegLink(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editSummerRegLink}>Submit</button>
                 </div>
         },

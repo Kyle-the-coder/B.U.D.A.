@@ -403,7 +403,7 @@ const AdminSessionPage = (props) => {
                                             <strong>MANDATORY TECH: </strong> {showTech}
                                         </p>
                                         <p className={`indent-5`}>
-                                            <strong className={`${contentHighlightFocus && contentHighlightIndex == "6" ? "border-2 border-red-700 " : ""}`}>{data.showTitle}: </strong> <span className={`${contentHighlightFocus && contentHighlightIndex == "7" ? "border-2 border-red-700 " : ""}`}>{data.showTime}</span>
+                                            <strong className={`${contentHighlightFocus && contentHighlightIndex == "6" ? "border-2 border-red-700 " : ""}`}>{showTitle}: </strong> <span className={`${contentHighlightFocus && contentHighlightIndex == "7" ? "border-2 border-red-700 " : ""}`}>{showTime}</span>
                                         </p>
                                         </div>
                                         <div className={`${highlightFocus && expandIndex == noClassIndex ? "border-4 border-red-700 " : ""} w-full h-content`}>

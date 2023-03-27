@@ -40,7 +40,7 @@ const AdminNavbar = () => {
 
     let moreLinks = [
         { name: "Edit Gallery", link: "/admingallerypage" },
-        { name: "Edit Rates", link: "/adminrates" },
+        { name: "Edit Rates", link: "/adminratespage" },
         { name: "Edit B.C. Member", link: "/budacrewmemberadminpage" },
         { name: "Edit Login Info", link: "/editlogin" },
         { name: "Edit B.C. Password", link: "/editbclogin" },

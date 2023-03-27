@@ -17,6 +17,8 @@ import AdminSessionPage from "./pages/AdminSessionPage";
 import SessionPage from "./views/SessionPage";
 import GalleryPage from "./views/GalleryPage";
 import AdminGalleryPage from "./pages/AdminGalleryPage";
+import AdminRatesPage from "./pages/AdminRatesPage";
+import RatesPage from "./views/RatesPage";
 
 
 
@@ -58,6 +60,7 @@ function App() {
             <Route path="/summer" element={<SummerPage/>}/>
             <Route path="/session" element={<SessionPage/>}/>
             <Route path="/gallery" element={<GalleryPage/>}/>
+            <Route path="/rates" element={<RatesPage/>}/>
 
             {/* Auth Routes */}
             <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
@@ -65,6 +68,7 @@ function App() {
             <Route path="/adminsummerpage" element={<RequireAuth><AdminSummerPage/></RequireAuth>}/>
             <Route path="/adminsessionpage" element={<RequireAuth><AdminSessionPage/></RequireAuth>}/>
             <Route path="/admingallerypage" element={<RequireAuth><AdminGalleryPage/></RequireAuth>}/>
+            <Route path="/adminratespage" element={<RequireAuth><AdminRatesPage/></RequireAuth>}/>
 
           </Routes>
     

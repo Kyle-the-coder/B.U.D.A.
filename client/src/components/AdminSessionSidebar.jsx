@@ -3,7 +3,7 @@ import chevron from "../assets/images/down-chevron.png"
 import more from "../assets/images/more.png"
 import { useState } from "react";
 import { db } from "../config/Firebase";
-import { serverTimestamp, doc, setDoc } from "firebase/firestore"
+import { serverTimestamp, doc, setDoc, getDoc } from "firebase/firestore"
 import "../styles/scrollbar.css"
 
 
@@ -124,12 +124,48 @@ const AdminSessionSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSessionTitle(docSnap.data().sessionTitle)
+                    setSessionIntro(docSnap.data().sessionIntro)
+                    setStartDate(docSnap.data().startDate)
+                    setShowDate(docSnap.data().showDate)
+                    setShowLocation(docSnap.data().showLocation)
+                    setShowTech(docSnap.data().showTech)
+                    setShowTitle(docSnap.data().showTitle)
+                    setShowTime(docSnap.data().showTime)
+                    setSessionLink(docSnap.data().sessionLink)
+                    setNoClass1(docSnap.data().noClass1)
+                    setNoClass2(docSnap.data().noClass2)
+                    setNoClass3(docSnap.data().noClass3)
+                    setNoClass4(docSnap.data().noClass4)
+                    setNoClass5(docSnap.data().noClass5)
+                    setNoClass6(docSnap.data().noClass6)
+                    setNoClass7(docSnap.data().noClass7)
+    
+    
+                    if (sessionBannerTracker == null) {
+                        setSessionBannerTracker(docSnap.data().sessionBannerTracker)
+                    } else if (sessionBannerHandler == "false") {
+                        setSessionBannerTracker("false")
+                    } else if (sessionBannerHandler === "true") {
+                        setSessionBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
         }
     }
-    const editSessionNoClassContent = async () => {
+    const editSessionNoClassContent = async (e) => {
+        e.preventDefault()
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
                 ...data,
@@ -143,13 +179,49 @@ const AdminSessionSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSessionTitle(docSnap.data().sessionTitle)
+                    setSessionIntro(docSnap.data().sessionIntro)
+                    setStartDate(docSnap.data().startDate)
+                    setShowDate(docSnap.data().showDate)
+                    setShowLocation(docSnap.data().showLocation)
+                    setShowTech(docSnap.data().showTech)
+                    setShowTitle(docSnap.data().showTitle)
+                    setShowTime(docSnap.data().showTime)
+                    setSessionLink(docSnap.data().sessionLink)
+                    setNoClass1(docSnap.data().noClass1)
+                    setNoClass2(docSnap.data().noClass2)
+                    setNoClass3(docSnap.data().noClass3)
+                    setNoClass4(docSnap.data().noClass4)
+                    setNoClass5(docSnap.data().noClass5)
+                    setNoClass6(docSnap.data().noClass6)
+                    setNoClass7(docSnap.data().noClass7)
+    
+    
+                    if (sessionBannerTracker == null) {
+                        setSessionBannerTracker(docSnap.data().sessionBannerTracker)
+                    } else if (sessionBannerHandler == "false") {
+                        setSessionBannerTracker("false")
+                    } else if (sessionBannerHandler === "true") {
+                        setSessionBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
         }
     }
 
-    const editSessionTitle = async () => {
+    const editSessionTitle = async (e) => {
+        e.preventDefault()
         try {
             await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
                 ...data,
@@ -157,6 +229,41 @@ const AdminSessionSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSessionTitle(docSnap.data().sessionTitle)
+                    setSessionIntro(docSnap.data().sessionIntro)
+                    setStartDate(docSnap.data().startDate)
+                    setShowDate(docSnap.data().showDate)
+                    setShowLocation(docSnap.data().showLocation)
+                    setShowTech(docSnap.data().showTech)
+                    setShowTitle(docSnap.data().showTitle)
+                    setShowTime(docSnap.data().showTime)
+                    setSessionLink(docSnap.data().sessionLink)
+                    setNoClass1(docSnap.data().noClass1)
+                    setNoClass2(docSnap.data().noClass2)
+                    setNoClass3(docSnap.data().noClass3)
+                    setNoClass4(docSnap.data().noClass4)
+                    setNoClass5(docSnap.data().noClass5)
+                    setNoClass6(docSnap.data().noClass6)
+                    setNoClass7(docSnap.data().noClass7)
+    
+    
+                    if (sessionBannerTracker == null) {
+                        setSessionBannerTracker(docSnap.data().sessionBannerTracker)
+                    } else if (sessionBannerHandler == "false") {
+                        setSessionBannerTracker("false")
+                    } else if (sessionBannerHandler === "true") {
+                        setSessionBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
@@ -171,6 +278,41 @@ const AdminSessionSidebar = (props) => {
                 timeStamp: serverTimestamp()
             });
             setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setSessionTitle(docSnap.data().sessionTitle)
+                    setSessionIntro(docSnap.data().sessionIntro)
+                    setStartDate(docSnap.data().startDate)
+                    setShowDate(docSnap.data().showDate)
+                    setShowLocation(docSnap.data().showLocation)
+                    setShowTech(docSnap.data().showTech)
+                    setShowTitle(docSnap.data().showTitle)
+                    setShowTime(docSnap.data().showTime)
+                    setSessionLink(docSnap.data().sessionLink)
+                    setNoClass1(docSnap.data().noClass1)
+                    setNoClass2(docSnap.data().noClass2)
+                    setNoClass3(docSnap.data().noClass3)
+                    setNoClass4(docSnap.data().noClass4)
+                    setNoClass5(docSnap.data().noClass5)
+                    setNoClass6(docSnap.data().noClass6)
+                    setNoClass7(docSnap.data().noClass7)
+    
+    
+                    if (sessionBannerTracker == null) {
+                        setSessionBannerTracker(docSnap.data().sessionBannerTracker)
+                    } else if (sessionBannerHandler == "false") {
+                        setSessionBannerTracker("false")
+                    } else if (sessionBannerHandler === "true") {
+                        setSessionBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
 
         } catch (error) {
             console.log(error)
