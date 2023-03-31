@@ -133,8 +133,8 @@ const AdminRatesPage = (props) => {
     const backOne = () => {
         navigate(-1)
     }
+    console.log(siteExpand)
 
-console.log(data)
     return (
         <div className="w-full">
             <div className="flex">
@@ -144,7 +144,7 @@ console.log(data)
                 <section>
                     <AdminRatesSidebar
                         data={data} setData={setData}
-                        siteExpand={siteExpand} setSiteExpand={setSideExpand}
+                        siteExpand={siteExpand} setSiteExpand={setSiteExpand}
                         sideExpand={sideExpand} setSideExpand={setSideExpand}
                         highlightFocus={highlightFocus} setHighlightFocus={setHighlightFocus}
                         show={show} setShow={setShow}
@@ -167,35 +167,48 @@ console.log(data)
                     <div className={` ${siteExpand ? "w-[500px] h-[500px]" : "w-full"}  transition-all duration-700`}>
 
 
-                        {/* Rates Banner Section */}
-                        <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                            {ratesBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.ratesBannerVid} alt="people dancing and colors" ></video>
+                        {/* BANNER SECTION */}
+                        <section className={`w-full h-content  flex justify-center ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `}>
+                            {timeOut ?
+                                <div className="loader flex flex-col items-center justify-center">
+                                    <h1>loading...</h1>
+                                    <h1>Bigger files might take a few seconds</h1>
+                                    <h1>Don't forget to click submit once it's done!</h1>
+                                </div>
                                 :
-                                <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.ratesBannerImg} alt="people dancing and colors" />}
+                                <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
+
+                                    {ratesBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.ratesBannerVid} alt="people dancing and colors" ></video>
+                                        :
+                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.ratesBannerImg} alt="people dancing and colors" />}
+                                </div>
+                            }
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-5 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
 
                         {/* Rates Info Section */}
                         <section >
-                            <div className="w-full flex flex-col items-center">
-                                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl mb-3 welcome">Session Rates:</h1>
-                                <div className="w-2/3 h-content xl:text-2xl">
+                            <div className="w-full flex flex-col items-center transition-all duration-500">
+                                <h1 className={`${highlightFocus && expandIndex == null ? "border-4 border-red-700 p-1" : ""} welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500 mb-5`}>Session Rates:</h1>
+                                <div className={` h-content transition-all duration-500  ${sideExpand == true && siteExpand == false ? "w-[1100px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[1200px]" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem] w-[400px]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem] w-[400px]" : ""}`}>
+                                    <div className={`${highlightFocus && expandIndex == null ? "border-4 border-red-700 p-1" : ""}  ${siteExpand ? "text-md" : " sm:text-xl md:text-3xl lg:text-3xl text-xl "} transition-all duration-500 `}>
 
-                                    <h4 className="xl:text-3xl">
-                                        <strong>Tuition:</strong>
-                                    </h4>
-                                    <p className="xl:text-3xl">
-                                        ${rate1} for 1hr classes
-                                    </p>
-                                    <p className="mb-5  xl:text-3xl">
-                                        ${rate2} for 45min classes
-                                    </p>
+                                        <h4 >
+                                            <strong>Tuition:</strong>
+                                        </h4>
+                                        <p >
+                                            ${rate1} for 1hr classes
+                                        </p>
+                                        <p className="mb-5  ">
+                                            ${rate2} for 45min classes
+                                        </p>
+                                    </div>
 
                                     <p className="mb-5">
                                         <strong>Includes</strong> {includes}
