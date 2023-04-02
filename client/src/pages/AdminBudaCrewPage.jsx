@@ -264,89 +264,88 @@ const AdminBudaCrewPage = () => {
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-5 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
 
-
                         {/* Rates Info Section */}
                         <section >
                             <div className="w-full flex flex-col items-center sm:items-start">
-                                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl mb-3 welcome w-full flex justify-center">BUDA Crew Info:</h1>
-                                <p className="mb-3 w-full flex justify-center xl:text-2xl">*please read all*</p>
-                                <p className="mb-3 w-full flex justify-center xl:text-2xl">*member login below*</p>
+                                <h1 className={` transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl" : ""} ${sideExpand == false && siteExpand == false ? "text-6xl" : ""} ${sideExpand == true && siteExpand == true ? "text-3xl" : ""} ${sideExpand == false && siteExpand == true ? "text-3xl" : ""}  mb-3 welcome w-full flex justify-center`}>BUDA Crew Info:</h1>
+                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl mb-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl mb-2" : ""} ${sideExpand == true && siteExpand == true ? "text-md" : ""} ${sideExpand == false && siteExpand == true ? "text-md" : ""}   w-full flex justify-center `}>*please read all*</p>
+                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl mb-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl mb-3" : ""} ${sideExpand == true && siteExpand == true ? "text-md mb-2" : ""} ${sideExpand == false && siteExpand == true ? "text-md mb-2" : ""} w-full flex justify-center `}>*member login below*</p>
                                 <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                                     <div className="w-full flex flex-col md:flex-row md:justify-evenly">
 
-                                        <div className="sm:w-[600px] w-full ">
+                                        <div className={`transition-all duration-500  ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px]" : ""}  `}>
 
-                                            <h4 >
+                                            <h4 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""}`} >
                                                 <strong>Session Dates and Tuition:</strong>
                                             </h4>
-                                            <div className="w-full h-96 sm:h-96  flex flex-col items-center justify-center border-2 border-black mb-5">
-                                                <div className="flex shrink bg-red-100 flex-col w-full h-1/2 p-2 border-b-2 border-black border-double aboutInfo">
-                                                    <p className="welcome text-xl xl:text-2xl">Session 1:</p>
-                                                    <p className="xl:text-xl">
+                                            <div className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "h-[380px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[480px] " : ""} ${sideExpand == true && siteExpand == true ? "h-[200px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[200px]" : ""}  w-full  flex flex-col items-center justify-center border-2 border-black mb-5`}>
+                                                <div className={` transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem]" : ""} flex shrink bg-red-100 flex-col w-full h-1/2 p-2 border-b-2 border-black border-double aboutInfo`}>
+                                                    <p className={`welcome transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem]" : ""}`}>Session 1:</p>
+                                                    <p >
                                                         <strong>Date: </strong> {bcSession1Date}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Tuition: </strong> ${bcSession1Tuition}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Includes: </strong> {bcSession1Includes}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Class Time: </strong> {bcClassTime1}
                                                     </p>
                                                 </div>
-                                                <div className="flex shrink flex-col w-full p-2 h-1/2 bg-indigo-100 aboutInfo">
-                                                    <p className="welcome text-xl xl:text-2xl">Session 2:</p>
-                                                    <p className="xl:text-xl">
+                                                <div className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem]" : ""} flex shrink flex-col w-full p-2 h-1/2 bg-indigo-100 aboutInfo`}>
+                                                    <p className={`welcome transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-xl" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem]" : ""}`}>Session 2:</p>
+                                                    <p >
                                                         <strong>Date: </strong> {bcSession2Date}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Tuition: </strong> ${bcSession2Tuition}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Includes: </strong> {bcSession2Includes}
                                                     </p>
-                                                    <p className="xl:text-xl">
+                                                    <p >
                                                         <strong>Class Time: </strong> {bcClassTime2}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="w-full flex justify-center mb-10 sm:justify-start sm:w-1/2 ">
-                                            <img src={data.crewMainImg} className="w-[500px] md:w-[700px] infoCard"></img>
+                                        <div className="w-full flex justify-center  sm:justify-start sm:w-1/2 ">
+                                            <img src={data.crewMainImg} className={`object-cover transition-all duration-500 infoCard  ${sideExpand == true && siteExpand == false ? "w-[500px] h-[380px] mt-7" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[480px] mt-8" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px] h-[200px] mt-4" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px] h-[200px] mt-4" : ""}  `}></img>
                                         </div>
                                     </div>
 
 
-                                    <div className="w-11/12 p-2 lg:text-xl">
-                                        <p className="mb-5">
+                                    <div className={` flex flex-col justify-evenly w-11/12 p-2 ${sideExpand == true && siteExpand == false ? "text-md h-[340px]" : ""} ${sideExpand == false && siteExpand == false ? "text-xl h-[380px]" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] h-[140px]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem] h-[140px]" : ""}`}>
+                                        <p >
                                             <strong>BUDA Crew Audition Date: </strong> {bcAuditionDate}
                                         </p>
-                                        <p className="mb-5">
+                                        <p >
                                             <strong>Requirements: </strong> {bcRequirementInfo}
                                         </p>
-                                        <p className="mb-5">
+                                        <p >
                                             <strong>Extra Performance Info: </strong> {bcExtraPerformanceInfo}
                                         </p>
-                                        <p className="mb-5">
+                                        <p >
                                             <strong>Mandatory Class Dates: </strong> {bcMandatoryClassDates}
                                         </p>
-                                        <p className="mb-5">
+                                        <p >
                                             <strong>Extra Reheasal Date (if needed): </strong> {bcExtraRehearsalClassDates}
                                         </p>
-                                        <p className="mb-5">
+                                        <p >
                                             <strong>Competition Date and Info: </strong> {bcCompDateInfo}
                                         </p>
                                     </div>
                                     <div className="w-11/12 flex justify-center mb-12">
 
-                                        <a className="bg-indigo-800 lg:text-4xl  border-2 border-black hover:bg-gradient-to-l from-indigo-200 to-red-100 transition-all hover:text-black duration-700  text-2xl text-white px-6 py-3 rounded" href="/budacrewadmin">BUDA Crew Member Login</a>
+                                        <a className={`${sideExpand == true && siteExpand == false ? "text-md px-6 py-3" : ""} ${sideExpand == false && siteExpand == false ? "text-xl px-6 py-3" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] px-3 py-1" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem] px-3 py-1" : ""} bg-gradient-to-r from-indigo-200 to-red-100  border-2 border-slate-700  transition-all hover:text-black hover:border-black duration-700  text-slate-700  rounded`} href="/budacrewadmin">BUDA Crew Member Login</a>
                                     </div>
                                 </div>
                             </div>
