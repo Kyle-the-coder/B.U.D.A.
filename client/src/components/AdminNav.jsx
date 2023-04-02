@@ -35,7 +35,7 @@ const AdminNavbar = () => {
         { name: "Edit About", link: "/adminaboutpage" },
         { name: "Edit Summer", link: "/adminsummerpage" },
         { name: "Edit Session", link: "/adminsessionpage" },
-        { name: "Edit B.C.", link: "/budacreweditadminpage" }
+        { name: "Edit B.C.", link: "/adminbcpage" }
     ]
 
     let moreLinks = [
