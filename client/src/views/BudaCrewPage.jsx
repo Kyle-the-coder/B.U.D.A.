@@ -1,38 +1,28 @@
 import check from "../assets/images/checkmark.png"
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { db, storage } from "../config/Firebase";
+import { getDoc, doc } from "firebase/firestore"
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage"
 
-const BudaCrewPage = (props) => {
-    const {
-        session1Date, setSession1Date,
-        session1Tuition, setSession1Tuition,
-        session1Includes, setSession1Includes,
-        session2Date, setSession2Date,
-        session2Tuition, setSession2Tuition,
-        session2Includes, setSession2Includes,
-        classTime1, setClassTime1,
-        classTime2, setClassTime2,
-        requirementInfo, setRequirementInfo,
-        extraPerformanceInfo, setExtraPerformanceInfo,
-        mandatoryClassDates, setMandatoryClassDates,
-        extraRehearsalClassDates, setExtraReheearsalClassDates,
-        compDateInfo, setCompDateInfo,
-        auditionDate, setAuditionDate } = props
-    const { crewBannerImg,
-        crewBannerVid,
-        crewBannerVidOrImg,
-        setCrewBannerImg,
-        setCrewBannerVid,
-        setCrewBannerVidOrImg,
-        budaCrewImg, setBudaCrewImg } = props
-    const navigate = useNavigate();
-    const { loggedIn, setLoggedIn } = props
-    const { setTracker } = props
-    const [budaCrewInfo1Edited, setBudaCrewInfo1Edited] = useState(false)
-    const [budaCrewInfo2Edited, setBudaCrewInfo2Edited] = useState(false)
-    const [crewBannerImgEdited, setCrewBannerImgEdited] = useState(false)
-    const [crewBannerVidEdited, setCrewBannerVidEdited] = useState(false)
-    const [budaCrewImgEdited, setBudaCrewImgEdited] = useState(false)
+const BudaCrewPage = () => {
+    const [data, setData] = useState({})
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const getPhoto = async () => {
+            try {
+                const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                const docSnap = await getDoc(docRef);
+                setData(docSnap.data())
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getPhoto()
+
+
+    }, [])
 
 
     const backOne = () => {
@@ -44,9 +34,9 @@ const BudaCrewPage = (props) => {
 
             {/* Banner Section */}
             <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                {crewBannerVidOrImg == "false" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={crewBannerVid} alt="people dancing and colors" ></video>
+                {data.crewBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.crewBannerVid} alt="people dancing and colors" ></video>
                     :
-                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={crewBannerImg} alt="people dancing and colors" />}
+                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.crewBannerImg} alt="people dancing and colors" />}
             </section>
 
             {/* Back One Page Section */}
@@ -75,59 +65,59 @@ const BudaCrewPage = (props) => {
                                     <div className="flex shrink bg-red-100 flex-col w-full h-1/2 p-2 border-b-2 border-black border-double aboutInfo">
                                         <p className="welcome text-xl xl:text-2xl">Session 1:</p>
                                         <p className="xl:text-xl">
-                                            <strong>Date: </strong> {session1Date}
+                                            <strong>Date: </strong> {data.bcSession1Date}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Tuition: </strong> ${session1Tuition}
+                                            <strong>Tuition: </strong> ${data.bcSession1Tuition}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Includes: </strong> {session1Includes}
+                                            <strong>Includes: </strong> {data.bcSession1Includes}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Class Time: </strong> {classTime1}
+                                            <strong>Class Time: </strong> {data.bcClassTime1}
                                         </p>
                                     </div>
                                     <div className="flex shrink flex-col w-full p-2 h-1/2 bg-indigo-100 aboutInfo">
                                         <p className="welcome text-xl xl:text-2xl">Session 2:</p>
                                         <p className="xl:text-xl">
-                                            <strong>Date: </strong> {session2Date}
+                                            <strong>Date: </strong> {data.bcSession2Date}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Tuition: </strong> ${session2Tuition}
+                                            <strong>Tuition: </strong> ${data.bcSession2Tuition}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Includes: </strong> {session2Includes}
+                                            <strong>Includes: </strong> {data.bcSession2Includes}
                                         </p>
                                         <p className="xl:text-xl">
-                                            <strong>Class Time: </strong> {classTime2}
+                                            <strong>Class Time: </strong> {data.bcClassTime2}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div className="w-full flex justify-center mb-10 sm:justify-start sm:w-1/2 ">
-                                <img src={budaCrewImg} className="w-[500px] md:w-[700px] infoCard"></img>
+                                <img src={data.crewMainImg} className= " object-cover   w-[700px] h-[480px] infoCard mt-6"></img>
                             </div>
                         </div>
 
 
                         <div className="w-11/12 p-2 lg:text-xl">
                             <p className="mb-5">
-                                <strong>BUDA Crew Audition Date: </strong> {auditionDate}
+                                <strong>BUDA Crew Audition Date: </strong> {data.bcAuditionDate}
                             </p>
                             <p className="mb-5">
-                                <strong>Requirements: </strong> {requirementInfo}
+                                <strong>Requirements: </strong> {data.bcRequirementInfo}
                             </p>
                             <p className="mb-5">
-                                <strong>Extra Performance Info: </strong> {extraPerformanceInfo}
+                                <strong>Extra Performance Info: </strong> {data.bcExtraPerformanceInfo}
                             </p>
                             <p className="mb-5">
-                                <strong>Mandatory Class Dates: </strong> {mandatoryClassDates}
+                                <strong>Mandatory Class Dates: </strong> {data.bcMandatoryClassDates}
                             </p>
                             <p className="mb-5">
-                                <strong>Extra Reheasal Date (if needed): </strong> {extraRehearsalClassDates}
+                                <strong>Extra Reheasal Date (if needed): </strong> {data.bcExtraRehearsalClassDates}
                             </p>
                             <p className="mb-5">
-                                <strong>Competition Date and Info: </strong> {compDateInfo}
+                                <strong>Competition Date and Info: </strong> {data.bcCompDateInfo}
                             </p>
                         </div>
                         <div className="w-11/12 flex justify-center mb-12">

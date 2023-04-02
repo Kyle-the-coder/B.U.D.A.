@@ -21,6 +21,8 @@ import AdminRatesPage from "./pages/AdminRatesPage";
 import RatesPage from "./views/RatesPage";
 import AdminBudaCrewPage from "./pages/AdminBudaCrewPage";
 import BudaCrewPage from "./views/BudaCrewPage";
+import AdminMemberPage from "./components/AdminMemberSidebar";
+import MemberPage from "./views/MemberPage";
 
 
 
@@ -73,6 +75,8 @@ function App() {
             <Route path="/admingallerypage" element={<RequireAuth><AdminGalleryPage/></RequireAuth>}/>
             <Route path="/adminratespage" element={<RequireAuth><AdminRatesPage/></RequireAuth>}/>
             <Route path="/adminbcpage" element={<RequireAuth><AdminBudaCrewPage/></RequireAuth>}/>
+            <Route path="/adminmemberpage" element={<RequireAuth><AdminMemberPage/></RequireAuth>}/>
+            <Route path="/memberpage" element={<MemberPage/>}/>
 
           </Routes>
     
