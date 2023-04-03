@@ -33,6 +33,7 @@ const AdminMemberPage = (props) => {
     const [memberBannerVid, setMemberBannerVid] = useState('')
     const [memberBannerTracker, setMemberBannerTracker] = useState(null)
     const [memberBannerHandler, setMemberBannerHandler] = useState('')
+    const [memberBannerIndex, setMemberBannerIndex] = useState('')
 
     //PAGE RESPONSIVENESS HANDLERS
     const [siteExpand, setSiteExpand] = useState(false)
@@ -57,7 +58,7 @@ const AdminMemberPage = (props) => {
                 setMemberBudaCrewInfo(docSnap.data().memberBudaCrewInfo)
                 setMemberContactPhone(docSnap.data().memberContactPhone)
                 if (memberBannerTracker == null) {
-                    setMemberBannerTracker(docSnap.data().memberBannerTracker)
+                    setMemberBannerTracker(docSnap.data().MemberBannerTracker)
                 } else if (memberBannerHandler == "false") {
                     setMemberBannerTracker("false")
                 } else if (memberBannerHandler === "true") {
@@ -197,7 +198,7 @@ const AdminMemberPage = (props) => {
         memberBannerVid && uploadMemberBannerVidFile()
 
 
-
+        setMemberBannerIndex("1")
 
 
 
@@ -206,10 +207,21 @@ const AdminMemberPage = (props) => {
     const backOne = () => {
         navigate(-1)
     }
-    const updateVideoList = async ()=>{
+    const updateVideoList = async (newArr) => {
         try {
             await setDoc(doc(db, "memberVidLinks", process.env.REACT_APP_VIDEO_ID), {
-                videoList: [...memberVideoList],
+                videoList: [...newArr],
+                timeStamp: serverTimestamp()
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateMusicList = async (newArr) => {
+        try {
+            await setDoc(doc(db, "memberMusicLinks", process.env.REACT_APP_MUSIC_ID), {
+                musicList: [...newArr],
                 timeStamp: serverTimestamp()
             });
         } catch (error) {
@@ -218,14 +230,23 @@ const AdminMemberPage = (props) => {
     }
 
     const handleDeleteOneVideo = (e, link, title) => {
-        const newArray = memberVideoList.filter((index) => link && title != index.videoLink && index.videoTitle)
+        const newArray = memberVideoList.filter((index) => link != index.videoLink)
         console.log(newArray)
         setMemberVideoList(newArray)
-        updateVideoList()
+        updateVideoList(newArray)
     }
 
-    
-    console.log(memberVideoList)
+    const handleDeleteOneMusic = (e, link, title) => {
+        console.log(title)
+        const newArr = memberMusicList.filter((index) => link != index.musicLink)
+        setMemberMusicList(newArr)
+        console.log("new arr is", newArr)
+        updateMusicList(newArr)
+
+    }
+
+
+
     return (
         <div className="w-full">
             <div className="flex">
@@ -266,16 +287,27 @@ const AdminMemberPage = (props) => {
                 <div className={` ${siteExpand ? "w-8/12" : "w-full "} relative flex justify-end items-start transition-all duration-700`}>
                     <div className={` ${siteExpand ? "w-[500px] h-[500px]" : "w-full"}  transition-all duration-700`}>
 
-                        {/* Banner Section */}
-                        <section className="w-full bg-slate-200 h-32 mb-5 flex justify-center ">
-                            {memberBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
+                        {/* BANNER SECTION */}
+                        <section className={`w-full h-content  flex justify-center ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""} `}>
+                            {timeOut ?
+                                <div className="loader flex flex-col items-center justify-center">
+                                    <h1>loading...</h1>
+                                    <h1>Bigger files might take a few seconds</h1>
+                                    <h1>Don't forget to click submit once it's done!</h1>
+                                </div>
                                 :
-                                <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.memberBannerImg} alt="people dancing and colors" />}
+                                <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
+
+                                    {memberBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
+                                        :
+                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.memberBannerImg} alt="people dancing and colors" />}
+                                </div>
+                            }
                         </section>
 
                         {/* Back One Page Section */}
-                        <section className="w-full h-12 flex items-center justify-end">
-                            <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                        <section className={`w-full  flex items-center justify-end ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "" : ""} ${sideExpand == false && siteExpand == true ? "" : ""}`}>
+                            <p className={` w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
                         </section>
@@ -283,17 +315,17 @@ const AdminMemberPage = (props) => {
                         {/* BUDA Member Section */}
                         <section >
                             <div className="w-full flex flex-col items-center sm:items-start">
-                                <h1 className='welcome  mt-5 sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-xl mb-3 welcome w-full flex justify-center'>Welcome  <span className='text-indigo-500 mx-2'> BUDA </span>  Crew Members!</h1>
-                                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl  text-xl mb-3 welcome w-full flex justify-center">Congratulations!!</h1>
-                                <p className="mb-3 sm:text-3xl md:text-4xl lg:text-4xl text-sm w-full flex justify-center"> {memberTitle}</p>
-                                <p className="mb-3 lg:text-2xl w-full flex justify-center">*please read all*</p>
+                                <h1 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl my-4" : ""} ${sideExpand == false && siteExpand == false ? "text-7xl my-5" : ""} ${sideExpand == true && siteExpand == true ? "text-xl my-2" : ""} ${sideExpand == false && siteExpand == true ? "text-xl my-2" : ""}  welcome w-full flex justify-center`}>Welcome  <span className='text-indigo-500 mx-2'> BUDA </span>  Crew Members!</h1>
+                                <h1 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl my-4" : ""} ${sideExpand == false && siteExpand == false ? "text-7xl my-5" : ""} ${sideExpand == true && siteExpand == true ? "text-xl my-1" : ""} ${sideExpand == false && siteExpand == true ? "text-xl my-1" : ""}  welcome w-full flex justify-center`}>Congratulations!!</h1>
+                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-4xl my-3" : ""} ${sideExpand == false && siteExpand == false ? "text-5xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-lg my-1" : ""} ${sideExpand == false && siteExpand == true ? "text-lg my-1" : ""}  w-full flex justify-center`}> {memberTitle}</p>
+                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl my-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-sm my-1" : ""} ${sideExpand == false && siteExpand == true ? "text-sm my-1" : ""}  w-full flex justify-center`}>*please read all*</p>
                                 <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                                     <div className="flex w-11/12 justify-center mb-10">
-                                        <img className="border-2 border-black flex rounded w-[800px] md:w-[900px] lg:w-[1200px]" src={data.memberMainImg} />
+                                        <img className={`transition-all duration-500 object-cover ${sideExpand == true && siteExpand == false ? "w-[1100px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[1200px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[600px] h-[250px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[600px] h-[250px]" : ""}  border-2 border-black flex rounded `} src={data.memberMainImg} />
                                     </div>
 
 
-                                    <div className="w-full p-2 md:text-xl lg:text-2xl">
+                                    <div className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   w-full `}>
                                         <p className="mb-5">
                                             <strong>Upcoming Events: </strong> {memberUpcomingEventsInfo}
                                         </p>
@@ -307,27 +339,27 @@ const AdminMemberPage = (props) => {
 
 
                                     <div className="flex flex-col sm:flex-row w-11/12 justify-evenly">
-                                        <div className="rounded-lg h-[900px] sm:w-2/5 w-11/12 flex flex-col items-center border-2  border-black mb-5">
+                                        <div className={`${sideExpand == true && siteExpand == false ? "w-[500px] h-[800px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[900px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px] h-[250px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px] h-[250px]" : ""}  rounded-lg flex flex-col items-center border-2  border-black mb-5`}>
                                             <div className="flex shrink items-center justify-center bg-indigo-200 flex-col w-full h-1/6 p-2 border-b-2 border-black border-double">
-                                                <p className="text-2xl welcome md:text-xl lg:text-4xl">Music/Videos:</p>
+                                                <p className={`${sideExpand == true && siteExpand == false ? "text-3xl " : ""} ${sideExpand == false && siteExpand == false ? "text-4xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   welcome `}>Music/Videos:</p>
                                             </div>
                                             <div className=" w-full h-[355px]  p-2 mb-2 border-b-2 border-black border-double aboutInfo">
-                                                <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Music:</strong></p>
+                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Music:</strong></p>
                                                 {memberMusicList.map((t, i) => {
                                                     return (
-                                                        <div key={i} className="flex justify-between mb-3 aboutInfo md:text-2xl">
+                                                        <div key={i} className="flex justify-between mb-3 aboutInfo ">
                                                             <p><a className="text-sky-500 underline" target="_blank" href={t.musicLink}>{t.musicTitle}</a></p>
-                                                            <button className="bg-red-400 px-2 rounded">Delete</button>
+                                                            <button className="bg-red-400 px-2 rounded" onClick={(e) => { handleDeleteOneMusic(e, t.musicLink, t.musicTitle) }}>Delete</button>
                                                         </div>
                                                     )
                                                 })}
                                             </div>
                                             <div className="w-full h-[390px] p-2 aboutInfo">
-                                                <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Videos:</strong></p>
+                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Videos:</strong></p>
                                                 {memberVideoList.map((t, i) => {
                                                     return (
-                                                        <div key={i} className="flex justify-between mb-3 aboutInfo md:text-2xl">
-                                                            <p><a className="text-sky-500 underline" href={t.videoLink}>{t.videoTitle}</a></p>
+                                                        <div key={i} className="flex justify-between mb-3 aboutInfo ">
+                                                            <p><a className="text-sky-500 underline" target="_blank" href={t.videoLink}>{t.videoTitle}</a></p>
                                                             <button className="bg-red-400 px-2 rounded" onClick={(e) => { handleDeleteOneVideo(e, t.videoLink, t.videoTitle) }}>Delete</button>
                                                         </div>
                                                     )
@@ -335,17 +367,17 @@ const AdminMemberPage = (props) => {
                                             </div>
                                         </div>
 
-                                        <div className="rounded-lg h-[900px] sm:w-2/5 w-11/12 flex flex-col items-center border-2  border-black mb-5">
-                                            <div className="flex shrink items-center justify-center bg-red-200 flex-col w-full h-1/6 p-2 border-b-2 border-black border-double">
-                                                <p className="text-2xl welcome md:text-xl lg:text-4xl">Homework/Info:</p>
+                                        <div className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "w-[500px] h-[800px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[900px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px] h-[250px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px] h-[250px]" : ""}  rounded-lg flex flex-col items-center border-2  border-black mb-5`}>
+                                            <div className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-3xl " : ""} ${sideExpand == false && siteExpand == false ? "text-4xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   flex shrink items-center justify-center bg-red-200 flex-col w-full h-1/6 p-2 border-b-2 border-black border-double`}>
+                                                <p className=" welcome ">Homework/Info:</p>
                                             </div>
                                             <div className="flex h-[355px]  flex-col w-full p-2 mb-2 border-b-2 border-black border-double aboutInfo">
-                                                <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Info:</strong></p>
-                                                <p className="md:text-xl">{memberBudaCrewInfo}</p>
+                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Info:</strong></p>
+                                                <p className="">{memberBudaCrewInfo}</p>
                                             </div>
                                             <div className="flex  h-[390px] flex-col w-full p-2 aboutInfo">
-                                                <p className="text-xl mb-2 md:text-2xl lg:text-4xl"> <strong>Homework:</strong> </p>
-                                                <p className="md:text-xl">{memberHomeworkInfo}</p>
+                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}> <strong>Homework:</strong> </p>
+                                                <p className="">{memberHomeworkInfo}</p>
                                             </div>
                                         </div>
                                     </div>

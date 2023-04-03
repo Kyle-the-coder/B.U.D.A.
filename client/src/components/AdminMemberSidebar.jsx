@@ -264,7 +264,7 @@ const AdminMemberSidebar = (props) => {
                         <h1>Edit Member Info:</h1>
                     </div>
 
-                    <div className="my-2">
+                    <div className="my-2 w-full">
                         <label className="text-white">Title:</label>
                         <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberTitle} onChange={(e) => setMemberTitle(e.target.value)} />
                     </div>
@@ -284,7 +284,7 @@ const AdminMemberSidebar = (props) => {
                         <label className="text-white">Phone Contact(if changed):</label>
                         <input type="text" className="text-black w-full transition-all duration-700 p-2" value={memberContactPhone} onChange={(e) => setMemberContactPhone(e.target.value)} />
                     </div>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editMemberSessionInfo}>Submit</button>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 my-2 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editMemberSessionInfo}>Submit</button>
                 </div>
         },
         {
@@ -293,35 +293,41 @@ const AdminMemberSidebar = (props) => {
             content:
                 <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
 
-                    <div>
-                        <div className=" transition-all duration-700">
+                    <div className="w-full">
+                        <div className="w-full flex justify-center">
+                            <h1>Add a Mix:</h1>
+                        </div>
+                        <div className=" transition-all duration-700 my-1">
                             <h1>Music Title:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberMusicTitle} onChange={(e) => setMemberMusicTitle(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberMusicTitle(e.target.value)} />
                         </div>
                     </div>
 
-                    <div>
-                        <div className=" transition-all duration-700">
+                    <div className="w-full">
+                        <div className=" transition-all duration-700 my-1">
                             <h1>Music Url:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberMusicLink} onChange={(e) => setMemberMusicLink(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberMusicLink(e.target.value)} />
                         </div>
                     </div>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberMusicLink}>Submit</button>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 my-1 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberMusicLink}>Submit</button>
 
-                    <div>
-                        <div className=" transition-all duration-700">
+                    <div className="w-full border-t-2 mt-3">
+                        <div className="w-full flex justify-center my-2">
+                            <h1>Add a Video:</h1>
+                        </div>
+                        <div className=" transition-all duration-700 my-1">
                             <h1>Video Title:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberVideoTitle} onChange={(e) => setMemberVideoTitle(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberVideoTitle(e.target.value)} />
                         </div>
                     </div>
 
-                    <div>
-                        <div className=" transition-all duration-700">
+                    <div className="w-full">
+                        <div className=" transition-all duration-700 my-1">
                             <h1>Video Url:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberVideoLink} onChange={(e) => setMemberVideoLink(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberVideoLink(e.target.value)} />
                         </div>
                     </div>
-                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberVideoLink}>Submit</button>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 my-1 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberVideoLink}>Submit</button>
                 </div>
         },
         {
