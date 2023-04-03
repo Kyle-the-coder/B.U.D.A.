@@ -206,9 +206,6 @@ const AdminBudaCrewPage = () => {
     return (
         <div className="w-full">
             <div className="flex">
-
-
-
                 <section>
                     <AdminBudaCrewSidebar
                         data={data} setData={setData}

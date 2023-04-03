@@ -23,6 +23,7 @@ import AdminBudaCrewPage from "./pages/AdminBudaCrewPage";
 import BudaCrewPage from "./views/BudaCrewPage";
 import AdminMemberPage from "./pages/AdminMemberPage";
 import MemberPage from "./views/MemberPage";
+import ContactBar from "./components/BudaContactBar";
 
 
 
@@ -79,6 +80,8 @@ function App() {
             <Route path="/memberpage" element={<MemberPage/>}/>
 
           </Routes>
+          {navTracker ? <></> : <ContactBar/>}
+          
     
 
 
