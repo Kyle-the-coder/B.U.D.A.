@@ -272,12 +272,12 @@ const AdminBudaCrewPage = () => {
 
                         {/* Rates Info Section */}
                         <section >
-                            <div className="w-full flex flex-col items-center sm:items-start">
+                            <div className="w-full flex flex-col items-center ">
                                 <h1 className={` transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl" : ""} ${sideExpand == false && siteExpand == false ? "text-6xl" : ""} ${sideExpand == true && siteExpand == true ? "text-3xl" : ""} ${sideExpand == false && siteExpand == true ? "text-3xl" : ""}  mb-3 welcome w-full flex justify-center`}>BUDA Crew Info:</h1>
                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl mb-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl mb-2" : ""} ${sideExpand == true && siteExpand == true ? "text-md" : ""} ${sideExpand == false && siteExpand == true ? "text-md" : ""}   w-full flex justify-center `}>*please read all*</p>
                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl mb-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl mb-3" : ""} ${sideExpand == true && siteExpand == true ? "text-md mb-2" : ""} ${sideExpand == false && siteExpand == true ? "text-md mb-2" : ""} w-full flex justify-center `}>*member login below*</p>
                                 <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
-                                    <div className="w-full flex flex-col md:flex-row md:justify-evenly">
+                                    <div className="w-full flex justify-evenly">
 
                                         <div className={`transition-all duration-500  ${sideExpand == true && siteExpand == false ? "w-[500px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px]" : ""}  `}>
 
@@ -318,7 +318,7 @@ const AdminBudaCrewPage = () => {
                                             </div>
                                         </div>
                                         <div className="w-full flex justify-center  sm:justify-start sm:w-1/2 ">
-                                            <img src={data.crewMainImg} className={`object-cover transition-all duration-500 infoCard  ${sideExpand == true && siteExpand == false ? "w-[500px] h-[380px] mt-7" : ""} ${sideExpand == false && siteExpand == false ? "w-[600px] h-[480px] mt-8" : ""} ${sideExpand == true && siteExpand == true ? "w-[200px] h-[200px] mt-4" : ""} ${sideExpand == false && siteExpand == true ? "w-[200px] h-[200px] mt-4" : ""}  `}></img>
+                                            <img src={data.crewMainImg} className={`object-cover transition-all duration-500 infoCard  ${sideExpand == true && siteExpand == false ? "w-[700px] h-[380px] mt-7" : ""} ${sideExpand == false && siteExpand == false ? "w-[900px] h-[480px] mt-8" : ""} ${sideExpand == true && siteExpand == true ? "w-[300px] h-[200px] mt-4" : ""} ${sideExpand == false && siteExpand == true ? "w-[300px] h-[200px] mt-4" : ""}  `}></img>
                                         </div>
                                     </div>
 
@@ -345,7 +345,7 @@ const AdminBudaCrewPage = () => {
                                     </div>
                                     <div className="w-11/12 flex justify-center mb-12">
 
-                                        <a className={`${sideExpand == true && siteExpand == false ? "text-md px-6 py-3" : ""} ${sideExpand == false && siteExpand == false ? "text-xl px-6 py-3" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] px-3 py-1" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem] px-3 py-1" : ""} bg-gradient-to-r from-indigo-200 to-red-100  border-2 border-slate-700  transition-all hover:text-black hover:border-black duration-700  text-slate-700  rounded`} href="/budacrewadmin">BUDA Crew Member Login</a>
+                                        <a className={`${sideExpand == true && siteExpand == false ? "text-md px-6 py-3 ml-3" : ""} ${sideExpand == false && siteExpand == false ? "text-xl ml-3 px-6 py-3" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] px-3 py-1 ml-1" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem] px-3 py-1 ml-1" : ""} bg-gradient-to-r from-indigo-200 to-red-100  border-2 border-slate-700  transition-all hover:text-black hover:border-black duration-700  text-slate-700  rounded`} href="/budacrewadmin">BUDA Crew Member Login</a>
                                     </div>
                                 </div>
                             </div>

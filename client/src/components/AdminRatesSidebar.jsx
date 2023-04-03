@@ -94,6 +94,7 @@ const AdminRatesSidebar = (props) => {
                     setData(docSnap.data())
                     setRate1(docSnap.data().rate1)
                     setRate2(docSnap.data().rate2)
+                    setDropIn(docSnap.data().ratesDropIn)
                     if (ratesBannerTracker == null) {
                         setRatesBannerTracker(docSnap.data().ratesBannerTracker)
                     } else if (ratesBannerHandler == "false") {
@@ -127,6 +128,7 @@ const AdminRatesSidebar = (props) => {
                     setData(docSnap.data())
                     setRate1(docSnap.data().rate1)
                     setRate2(docSnap.data().rate2)
+                    setDropIn(docSnap.data().ratesDropIn)
                     if (ratesBannerTracker == null) {
                         setRatesBannerTracker(docSnap.data().ratesBannerTracker)
                     } else if (ratesBannerHandler == "false") {
@@ -159,6 +161,7 @@ const AdminRatesSidebar = (props) => {
                     setData(docSnap.data())
                     setRate1(docSnap.data().rate1)
                     setRate2(docSnap.data().rate2)
+                    setDropIn(docSnap.data().dropIn)
                     if (ratesBannerTracker == null) {
                         setRatesBannerTracker(docSnap.data().ratesBannerTracker)
                     } else if (ratesBannerHandler == "false") {
@@ -196,6 +199,7 @@ const AdminRatesSidebar = (props) => {
                     setData(docSnap.data())
                     setRate1(docSnap.data().rate1)
                     setRate2(docSnap.data().rate2)
+                    setDropIn(docSnap.data().ratesDropIn)
                     if (ratesBannerTracker == null) {
                         setRatesBannerTracker(docSnap.data().ratesBannerTracker)
                     } else if (ratesBannerHandler == "false") {
