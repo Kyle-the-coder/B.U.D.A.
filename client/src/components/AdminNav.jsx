@@ -41,14 +41,14 @@ const AdminNavbar = () => {
     let moreLinks = [
         { name: "Edit Gallery", link: "/admingallerypage" },
         { name: "Edit Rates", link: "/adminratespage" },
-        { name: "Edit B.C. Member", link: "/budacrewmemberadminpage" },
+        { name: "Edit B.C. Member", link: "/adminmemberpage" },
         { name: "Edit Login Info", link: "/editlogin" },
         { name: "Edit B.C. Password", link: "/editbclogin" },
         { name: "Logout"}
     ]
     const handleHighlightUrl = (url) =>{
         setHighlightUrl(url)
-        if(url == "/budacrewmemberadminpage" || url == "/editlogin" || url == "/editbclogin" || url == "/adminrates" || url=="/admingallery"){
+        if(url == "/adminmemberpage" || url == "/editlogin" || url == "/editbclogin" || url == "/adminratespage" || url=="/admingallerypage"){
             setHighLightClick(true)
         } else {
             setHighLightClick(false)

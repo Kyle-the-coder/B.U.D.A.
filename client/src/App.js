@@ -21,7 +21,7 @@ import AdminRatesPage from "./pages/AdminRatesPage";
 import RatesPage from "./views/RatesPage";
 import AdminBudaCrewPage from "./pages/AdminBudaCrewPage";
 import BudaCrewPage from "./views/BudaCrewPage";
-import AdminMemberPage from "./components/AdminMemberSidebar";
+import AdminMemberPage from "./pages/AdminMemberPage";
 import MemberPage from "./views/MemberPage";
 
 

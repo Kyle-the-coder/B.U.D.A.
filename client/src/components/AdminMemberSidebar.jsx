@@ -1,136 +1,387 @@
-import check from "../assets/images/checkmark.png"
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import arrow from "../assets/images/right-arrow2.png"
+import chevron from "../assets/images/down-chevron.png"
+import more from "../assets/images/more.png"
+import { useState } from "react";
+import { db } from "../config/Firebase";
+import { serverTimestamp, doc, setDoc, getDoc } from "firebase/firestore"
+import "../styles/scrollbar.css"
 
 
-const AdminMemberPage = (props) => {
-    const navigate = useNavigate();
-    const [budaCrewMemberInfoEdited, setBudaCrewMemberInfoEdited] = useState(false)
-    const [videoAdded, setVideoAdded] = useState(false)
-    const [musicAdded, setMusicAdded] = useState(false)
-    const [memberBannerImgEdited, setMemberBannerImgEdited] = useState(false)
-    const [memberBannerVidEdited, setMemberBannerVidEdited] = useState(false)
-    const [memberImgEdited, setMemberImgEdited] = useState(false)
-    const [musicList, setMusicList] = useState([])
-    const [videoList, setVideoList] = useState([])
-    const { loggedIn, setLoggedIn, setTracker } = props
-    const {
-        memberTitle, setMemberTitle,
-        upcomingEventsInfo, setUpcomingEventsInfo,
-        videoTitle, setVideoTitle,
-        videoLink, setVideoLink,
-        homeworkInfo, setHomeworkInfo,
-        budaCrewInfo, setBudaCrewInfo,
-        contactPhone, setContactPhone,
-        musicTitle, setMusicTitle,
-        musicLink, setMusicLink } = props
-    const {
-        memberBannerImg,
-        memberBannerVid,
-        memberBannerVidOrImg,
-        setMemberBannerImg,
-        setMemberBannerVid,
-        setMemberBannerVidOrImg,
-        memberImg, setMemberImg } = props
-    const baseUrl = process.env.REACT_APP_BASE_URL
 
-    const backOne = () => {
-        navigate(-1)
+const AdminMemberSidebar = (props) => {
+    //ALL INFO
+    const { data, setData } = props
+
+    //MEMBER PAGE INFO HANDLERS
+    const { memberTitle, setMemberTitle } = props
+    const { memberUpcomingEventsInfo, setMemberUpcomingEventsInfo } = props
+    const { memberHomeworkInfo, setMemberHomeworkInfo } = props
+    const { memberBudaCrewInfo, setMemberBudaCrewInfo } = props
+    const { memberContactPhone, setMemberContactPhone } = props
+
+    //MEMBER BANNER AND MAIN IMG HANDLERS
+    const { memberMainImg, setMemberMainImg } = props
+    const { memberBannerImg, setMemberBannerImg } = props
+    const { memberBannerVid, setMemberBannerVid } = props
+    const { memberBannerTracker, setMemberBannerTracker } = props
+    const { memberBannerHandler, setMemberBannerHandler } = props
+
+    //MUSIC LIST HANDLERS
+    const { memberMusicList, setMemberMusicList } = props
+    const { memberMusicTitle, setMemberMusicTitle } = props
+    const { memberMusicLink, setMemberMusicLink } = props
+
+    //VIDEO LIST HANDLERS
+    const { memberVideoList, setMemberVideoList } = props
+    const { memberVideoLink, setMemberVideoLink } = props
+    const { memberVideoTitle, setMemberVideoTitle } = props
+
+    //INDEXES FOR HIGHLIGHT
+    const { sessionBannerIndex } = props
+    const { sessionTitleIndex } = props
+    const { sessionContentIndex } = props
+    const { noClassIndex } = props
+    const { sessionMainImgIndex } = props
+    const { sessionImg2Index } = props
+    const { sessionImg3Index } = props
+
+    //CREW IMGS
+    const { crewMainImg, setCrewMainImg } = props
+
+    //BANNER HANDLERS
+    const { crewBannerImg, setCrewBannerImg } = props
+    const { crewBannerVid, setCrewBannerVid } = props
+    const { crewBannerTracker, setCrewBannerTracker } = props
+    const { crewBannerHandler, setCrewBannerHandler } = props
+
+    //PAGE HANDLERS
+    const { perc, setPerc } = props
+    const { highlightFocus, setHighlightFocus } = props
+    const { contentHighlightFocus, setContentHighlightFocus } = props
+    const { contentHighlightIndex, setContentHighlightIndex } = props
+    const { expandIndex, setExpandIndex } = props
+    const { mainImgIndex } = props
+    const { siteExpand, setSiteExpand } = props
+    const { sideExpand, setSideExpand } = props
+    const [expand, setExpand] = useState(false)
+
+
+    const handleExpandOption = (index) => {
+        if (index != expandIndex) {
+            setExpand(true)
+        } else {
+            setExpand(!expand)
+        }
+    }
+
+    const handleExpandIndex = (index) => {
+        setExpandIndex(index)
+        if (index != "3") {
+            setContentHighlightIndex(false)
+        }
+    }
+
+    const handleContentHighlightFocus = () => {
+        setContentHighlightFocus(true)
+
     }
 
 
-    return (
-        <div>
+    const editPhoto = async () => {
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                ...data,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            alert("image went through")
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-            {/* Banner Section */}
-            <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                {memberBannerVidOrImg == "false" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={memberBannerVid} alt="people dancing and colors" ></video>
-                    :
-                    <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={memberBannerImg} alt="people dancing and colors" />}
-            </section>
 
-            {/* Back One Page Section */}
-            <section className="w-full h-12 flex items-center justify-end">
-                <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
-                    Back
-                </p>
-            </section>
+    const handleFocus = (index) => {
+        if (index == null) {
+            setHighlightFocus(true)
+        } else {
+            setHighlightFocus(false)
+        }
+    }
 
-            {/* BUDA Member Section */}
-            <section >
-                <div className="w-full flex flex-col items-center sm:items-start">
-                    <h1 className='welcome  mt-5 sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-xl mb-3 welcome w-full flex justify-center'>Welcome  <span className='text-indigo-500 mx-2'> BUDA </span>  Crew Members!</h1>
-                    <h1 className="sm:text-3xl md:text-4xl lg:text-5xl  text-xl mb-3 welcome w-full flex justify-center">Congratulations!!</h1>
-                    <p className="mb-3 sm:text-3xl md:text-4xl lg:text-4xl text-sm w-full flex justify-center"> {memberTitle}</p>
-                    <p className="mb-3 lg:text-2xl w-full flex justify-center">*please read all*</p>
-                    <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
-                        <div className="flex w-11/12 justify-center mb-10">
-                            <img className="border-2 border-black flex rounded w-[800px] md:w-[900px] lg:w-[1200px]" src={memberImg} />
+
+    const editMemberSessionInfo = async (e) => {
+        e.preventDefault()
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                ...data,
+                memberTitle: memberTitle,
+                memberUpcomingEventsInfo: memberUpcomingEventsInfo,
+                memberHomeworkInfo: memberHomeworkInfo,
+                memberBudaCrewInfo: memberBudaCrewInfo,
+                memberContactPhone: memberContactPhone,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setMemberTitle(docSnap.data().memberTitle)
+                    setMemberUpcomingEventsInfo(docSnap.data().memberUpcomingEventsInfo)
+                    setMemberHomeworkInfo(docSnap.data().memberHomeworkInfo)
+                    setMemberBudaCrewInfo(docSnap.data().memberBudaCrewInfo)
+                    setMemberContactPhone(docSnap.data().memberContactPhone)
+                    if (memberBannerTracker == null) {
+                        setMemberBannerTracker(docSnap.data().memberBannerTracker)
+                    } else if (memberBannerHandler == "false") {
+                        setMemberBannerTracker("false")
+                    } else if (memberBannerHandler === "true") {
+                        setMemberBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const editMemberBannerTracker = async () => {
+        try {
+            await setDoc(doc(db, "admin", process.env.REACT_APP_ADMIN_ID), {
+                ...data,
+                MemberBannerTracker: memberBannerTracker,
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            const getPhoto = async () => {
+                try {
+                    const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                    const docSnap = await getDoc(docRef);
+                    setData(docSnap.data())
+                    setMemberTitle(docSnap.data().memberTitle)
+                    setMemberUpcomingEventsInfo(docSnap.data().memberUpcomingEventsInfo)
+                    setMemberHomeworkInfo(docSnap.data().memberHomeworkInfo)
+                    setMemberBudaCrewInfo(docSnap.data().memberBudaCrewInfo)
+                    setMemberContactPhone(docSnap.data().memberContactPhone)
+                    if (memberBannerTracker == null) {
+                        setMemberBannerTracker(docSnap.data().memberBannerTracker)
+                    } else if (memberBannerHandler == "false") {
+                        setMemberBannerTracker("false")
+                    } else if (memberBannerHandler === "true") {
+                        setMemberBannerTracker(true)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getPhoto()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const addMemberMusicLink = async () => {
+        try {
+            await setDoc(doc(db, "memberMusicLinks", process.env.REACT_APP_MUSIC_ID), {
+                musicList: [...memberMusicList, { musicLink: memberMusicLink, musicTitle: memberMusicTitle }],
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            const getMusicLinks = async () => {
+                try {
+                    const docRef = doc(db, "memberMusicLinks", process.env.REACT_APP_MUSIC_ID);
+                    const docSnap = await getDoc(docRef);
+                    setMemberMusicList(docSnap.data().musicList)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getMusicLinks()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const addMemberVideoLink = async () => {
+        try {
+            await setDoc(doc(db, "memberVidLinks", process.env.REACT_APP_VIDEO_ID), {
+                videoList: [...memberVideoList, { videoLink: memberVideoLink, videoTitle: memberVideoTitle }],
+                timeStamp: serverTimestamp()
+            });
+            setExpand(false)
+            const getVideoLinks = async () => {
+                try {
+                    const docRef = doc(db, "memberVidLinks", process.env.REACT_APP_VIDEO_ID);
+                    const docSnap = await getDoc(docRef);
+                    setMemberVideoList(docSnap.data().videoList)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+            getVideoLinks()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const sessionOptions = [
+        {
+            name: "Edit Banner",
+            index: "1",
+            content:
+                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
+                    <div className="w-full flex flex-col items-center p-2">
+                        <div className=" transition-all duration-700">
+                            <h1>Edit Banner Image:</h1>
                         </div>
+                        <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setMemberBannerTracker("false"); setMemberBannerHandler(false); setMemberBannerImg(e.target.files[0]) }} />
+                        <input type="hidden" value="false" onClick={(e) => { setMemberBannerTracker(e.target.value); editMemberBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={() => { editPhoto(); editMemberBannerTracker() }}>Submit</button>
+                    </div>
 
-
-                        <div className="w-full p-2 md:text-xl lg:text-2xl">
-                            <p className="mb-5">
-                                <strong>Upcoming Events: </strong> {upcomingEventsInfo}
-                            </p>
-                            <p className="mb-5">
-                                <strong>Below </strong> you will find important info reagarding all BUDA Crew activites, homework, and videos
-                            </p>
-                            <p className="mb-5">
-                                If you have any issues please call me {contactPhone}
-                            </p>
+                    <div className="w-full p-2 text-black border-t-2 mt-3 bg-indigo-200 flex flex-col items-center">
+                        <div className=" transition-all duration-700  w-full flex justify-center ">
+                            <h1 className="mt-5">OR make the banner a video:</h1>
                         </div>
-
-
-                        <div className="flex flex-col sm:flex-row w-11/12 justify-evenly">
-                            <div className="rounded-lg h-[900px] sm:w-2/5 w-11/12 flex flex-col items-center border-2  border-black mb-5">
-                                <div className="flex shrink items-center justify-center bg-indigo-200 flex-col w-full h-1/6 p-2 border-b-2 border-black border-double">
-                                    <p className="text-2xl welcome md:text-xl lg:text-4xl">Music/Videos:</p>
-                                </div>
-                                <div className=" w-full h-[355px]  p-2 mb-2 border-b-2 border-black border-double aboutInfo">
-                                    <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Music:</strong></p>
-                                    {/* {musicList.map((t, i) => {
-                                        return (
-                                            <div key={i} className="flex justify-between mb-3 aboutInfo md:text-2xl">
-                                                <p><a className="text-sky-500 underline" target="_blank" href={t.musicLink}>{t.musicTitle}</a></p>
-                                                <button className="bg-red-400 px-2 rounded" onClick={(e) => { handleDeleteOneMusic(e, t._id) }}>Delete</button>
-                                            </div>
-                                        )
-                                    })} */}
-                                </div>
-                                <div className="w-full h-[390px] p-2 aboutInfo">
-                                    <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Videos:</strong></p>
-                                    {/* {videoList.map((t, i) => {
-                                        return (
-                                            <div key={i} className="flex justify-between mb-3 aboutInfo md:text-2xl">
-                                                <p><a className="text-sky-500 underline" href={t.videoLink}>{t.videoTitle}</a></p>
-                                                <button className="bg-red-400 px-2 rounded" onClick={(e) => { handleDeleteOneVideo(e, t._id) }}>Delete</button>
-                                            </div>
-                                        )
-                                    })} */}
-                                </div>
-                            </div>
-
-                            <div className="rounded-lg h-[900px] sm:w-2/5 w-11/12 flex flex-col items-center border-2  border-black mb-5">
-                                <div className="flex shrink items-center justify-center bg-red-200 flex-col w-full h-1/6 p-2 border-b-2 border-black border-double">
-                                    <p className="text-2xl welcome md:text-xl lg:text-4xl">Homework/Info:</p>
-                                </div>
-                                <div className="flex h-[355px]  flex-col w-full p-2 mb-2 border-b-2 border-black border-double aboutInfo">
-                                    <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Info:</strong></p>
-                                    <p className="md:text-xl">{budaCrewInfo}</p>
-                                </div>
-                                <div className="flex  h-[390px] flex-col w-full p-2 aboutInfo">
-                                    <p className="text-xl mb-2 md:text-2xl lg:text-4xl"> <strong>Homework:</strong> </p>
-                                    <p className="md:text-xl">{homeworkInfo}</p>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="file" className="m-8  transition-all duration-700 w-full" onChange={(e) => { setMemberBannerTracker("true"); setMemberBannerHandler(true); setMemberBannerVid(e.target.files[0]) }} />
+                        <input type="hidden" value="true" onClick={(e) => { setMemberBannerTracker(e.target.value); editMemberBannerTracker() }} />
+                        <button disabled={perc !== null && perc < 100} className="bg-slate-800 text-indigo-200 transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-200 py-2" onClick={() => { editMemberBannerTracker() }}>Submit</button>
                     </div>
                 </div>
-            </section>
+        },
+        {
+            name: "Edit Member Info",
+            index: "2",
+            content:
+                <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                    <div className=" transition-all duration-700">
+                        <h1>Edit Member Info:</h1>
+                    </div>
+
+                    <div className="my-2">
+                        <label className="text-white">Title:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberTitle} onChange={(e) => setMemberTitle(e.target.value)} />
+                    </div>
+                    <div className="my-2">
+                        <label className="text-white">Upcoming Events Info:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberUpcomingEventsInfo} onChange={(e) => setMemberUpcomingEventsInfo(e.target.value)} />
+                    </div>
+                    <div className="my-2">
+                        <label className="text-white">Homework Info:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberHomeworkInfo} onChange={(e) => setMemberHomeworkInfo(e.target.value)} />
+                    </div>
+                    <div className="my-2">
+                        <label className="text-white">Crew Info:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberBudaCrewInfo} onChange={(e) => setMemberBudaCrewInfo(e.target.value)} />
+                    </div>
+                    <div className="my-2">
+                        <label className="text-white">Phone Contact(if changed):</label>
+                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={memberContactPhone} onChange={(e) => setMemberContactPhone(e.target.value)} />
+                    </div>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editMemberSessionInfo}>Submit</button>
+                </div>
+        },
+        {
+            name: "Add Video or Music",
+            index: "3",
+            content:
+                <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+
+                    <div>
+                        <div className=" transition-all duration-700">
+                            <h1>Music Title:</h1>
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberMusicTitle} onChange={(e) => setMemberMusicTitle(e.target.value)} />
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className=" transition-all duration-700">
+                            <h1>Music Url:</h1>
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberMusicLink} onChange={(e) => setMemberMusicLink(e.target.value)} />
+                        </div>
+                    </div>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberMusicLink}>Submit</button>
+
+                    <div>
+                        <div className=" transition-all duration-700">
+                            <h1>Video Title:</h1>
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberVideoTitle} onChange={(e) => setMemberVideoTitle(e.target.value)} />
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className=" transition-all duration-700">
+                            <h1>Video Url:</h1>
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberVideoLink} onChange={(e) => setMemberVideoLink(e.target.value)} />
+                        </div>
+                    </div>
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={addMemberVideoLink}>Submit</button>
+                </div>
+        },
+        {
+            name: "Edit Main Image",
+            index: "4",
+            content:
+                <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
+                    <div className=" transition-all duration-700">
+                        <h1>Edit Buda Crew Main Image:</h1>
+                    </div>
+                    <input type="file" className="m-8  transition-all duration-700" onChange={(e) => setMemberMainImg(e.target.files[0])} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editPhoto}>Submit</button>
+                </div>
+        },
+    ]
+    return (
+        <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
+
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+                <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
+            </div>
+
+            {sideExpand &&
+                <div className="w-[300px]   bg-slate-900  z-[999] transition-all duration-700">
+
+                    <section className="w-full ">
+                        <div className="w-full">
+                            <h1 className="p-3 text-white text-lg">Edit Session Options:</h1>
+                            <div onClick={() => setSiteExpand(!siteExpand)} className="w-[280px] cursor-pointer flex justify-between items-center">
+                                <h1 className="p-3 text-white text-lg">Site Size: <span>{siteExpand ? "Small" : "Big"}</span></h1>
+                                <img className={` ${siteExpand ? "" : "rotate-180"} w-[20px] h-[20px] origin-center  transition-all duration-700`} src={chevron} />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="w-full flex flex-col items-center">
+                        <div className="w-[285px] bg-slate-800  rounded-lg transition-all duration-700 ">
+                            {sessionOptions.map((option) => {
+                                return (
+                                    <div key={option.index} className="flex w-[280px] my-5  items-start p-1 transition-all duration-700">
+                                        <div onClick={() => { handleExpandOption(option.index); handleExpandIndex(option.index); handleFocus(option.index) }} className={` ${highlightFocus && expandIndex == option.index ? "text-slate-900 bg-slate-100" : "text-indigo-300 "} relative w-full transition-all duration-700 hover:text-slate-900 cursor-pointer flex justify-between items-center hover:bg-slate-100 mb-10 rounded-lg px-2 hover:bg-indigo-300 transition-all duration-700`}>
+                                            <p className="my-2  " >{option.name}</p>
+                                            <img className="w-[30px] h-[30px]" src={arrow} />
+                                        </div>
+
+
+                                        {expand && expandIndex === option.index && <div>{option.content}</div>}
+
+                                    </div>
+                                )
+                            })}
+                        </div>
+
+                    </section>
+
+                </div>
+            }
 
         </div>
     )
 }
 
-export default AdminMemberPage;
+export default AdminMemberSidebar;
