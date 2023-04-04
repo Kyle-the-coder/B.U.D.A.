@@ -69,7 +69,6 @@ const ContactBar = () => {
             <section className="w-full bg-white  border-t-2 p-5 border-black flex flex-col items-center justify-center">
                 <h1 >Thank You for choosing BUDA!</h1>
                 <h2 >Copyright © Bianca Zogbi All rights reserved.</h2>
-                <p><Link to="/budaAdmin">Admin</Link></p>
             </section>
         </div>
     )
