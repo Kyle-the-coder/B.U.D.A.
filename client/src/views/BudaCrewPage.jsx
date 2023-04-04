@@ -122,7 +122,7 @@ const BudaCrewPage = () => {
                         </div>
                         <div className="w-11/12 flex justify-center mb-12">
 
-                            <a className="bg-indigo-800 lg:text-4xl  border-2 border-black hover:bg-gradient-to-l from-indigo-200 to-red-100 transition-all hover:text-black duration-700  text-2xl text-white px-6 py-3 rounded" href="/budacrewadmin">BUDA Crew Member Login</a>
+                            <a className="bg-indigo-800 lg:text-4xl  border-2 border-black hover:bg-gradient-to-l from-indigo-200 to-red-100 transition-all hover:text-black duration-700  text-2xl text-white px-6 py-3 rounded" href="/budamember">BUDA Crew Member Login</a>
                         </div>
                     </div>
                 </div>

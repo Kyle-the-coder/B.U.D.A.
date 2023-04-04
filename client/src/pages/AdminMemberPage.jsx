@@ -1,6 +1,6 @@
 import check from "../assets/images/checkmark.png"
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import AdminMemberSidebar from "../components/AdminMemberSidebar";
 import { db, storage } from "../config/Firebase";
 import { getDoc, doc, setDoc, serverTimestamp } from "firebase/firestore"
@@ -245,6 +245,7 @@ const AdminMemberPage = (props) => {
 
     }
 
+    
 
 
     return (
@@ -310,6 +311,8 @@ const AdminMemberPage = (props) => {
                             <p className={`transition-all duration-500 w-12  underline text-sky-500 cursor-pointer ${sideExpand == true && siteExpand == false ? "" : ""} ${sideExpand == false && siteExpand == false ? "" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem]" : ""} transition-all duration-500`} onClick={() => backOne()} >
                                 Back
                             </p>
+                           
+                            
                         </section>
 
                         {/* BUDA Member Section */}

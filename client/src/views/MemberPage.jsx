@@ -1,6 +1,9 @@
 import check from "../assets/images/checkmark.png"
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { auth } from '../config/Firebase'
+import {  signOut } from 'firebase/auth'
+import { MemberContext } from "../context/MemberContext";
 
 
 const MemberPage = (props) => {
@@ -32,12 +35,22 @@ const MemberPage = (props) => {
         setMemberBannerVid,
         setMemberBannerVidOrImg,
         memberImg, setMemberImg } = props
-    const baseUrl = process.env.REACT_APP_BASE_URL
+
+    const { dispatch } = useContext(MemberContext)
 
     const backOne = () => {
         navigate(-1)
     }
 
+    const logout = async () => {
+        try {
+            await signOut(auth)
+            dispatch({ type: 'LOGOUT' })
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
@@ -53,6 +66,9 @@ const MemberPage = (props) => {
             <section className="w-full h-12 flex items-center justify-end">
                 <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
                     Back
+                </p>
+                <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => logout()} >
+                    Logout
                 </p>
             </section>
 
