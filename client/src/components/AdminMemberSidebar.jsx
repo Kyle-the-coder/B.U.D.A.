@@ -37,22 +37,10 @@ const AdminMemberSidebar = (props) => {
     const { memberVideoTitle, setMemberVideoTitle } = props
 
     //INDEXES FOR HIGHLIGHT
-    const { sessionBannerIndex } = props
-    const { sessionTitleIndex } = props
-    const { sessionContentIndex } = props
-    const { noClassIndex } = props
-    const { sessionMainImgIndex } = props
-    const { sessionImg2Index } = props
-    const { sessionImg3Index } = props
-
-    //CREW IMGS
-    const { crewMainImg, setCrewMainImg } = props
-
-    //BANNER HANDLERS
-    const { crewBannerImg, setCrewBannerImg } = props
-    const { crewBannerVid, setCrewBannerVid } = props
-    const { crewBannerTracker, setCrewBannerTracker } = props
-    const { crewBannerHandler, setCrewBannerHandler } = props
+    const { memberAddIndex } = props
+    const { memberInfoIndex } = props
+    const { memberMainImgIndex } = props
+    const { memberBannerIndex } = props
 
     //PAGE HANDLERS
     const { perc, setPerc } = props
@@ -102,7 +90,7 @@ const AdminMemberSidebar = (props) => {
 
 
     const handleFocus = (index) => {
-        if (index == null) {
+        if (index == memberAddIndex || index == memberBannerIndex || index == memberInfoIndex || index == memberMainImgIndex) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)

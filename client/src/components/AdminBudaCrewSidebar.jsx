@@ -31,13 +31,10 @@ const AdminBudaCrewSidebar = (props) => {
     const { bcAuditionDate, setBcAuditionDate } = props
 
     //INDEXES FOR HIGHLIGHT
-    const { sessionBannerIndex } = props
-    const { sessionTitleIndex } = props
-    const { sessionContentIndex } = props
-    const { noClassIndex } = props
-    const { sessionMainImgIndex } = props
-    const { sessionImg2Index } = props
-    const { sessionImg3Index } = props
+    const { bcSessionIndex } = props
+    const { bcContentIndex } = props
+    const { crewBannerIndex } = props
+    const { crewMainImgIndex } = props
 
     //CREW IMGS
     const { crewMainImg, setCrewMainImg } = props
@@ -70,7 +67,7 @@ const AdminBudaCrewSidebar = (props) => {
 
     const handleExpandIndex = (index) => {
         setExpandIndex(index)
-        if (index != "3") {
+        if (index != "2" || index != "3") {
             setContentHighlightIndex(false)
         }
     }
@@ -96,7 +93,7 @@ const AdminBudaCrewSidebar = (props) => {
 
 
     const handleFocus = (index) => {
-        if (index == null) {
+        if (index == bcSessionIndex || index == bcContentIndex || index == crewMainImgIndex || index == crewBannerIndex) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)
@@ -122,7 +119,7 @@ const AdminBudaCrewSidebar = (props) => {
                     const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
                     const docSnap = await getDoc(docRef);
                     setData(docSnap.data())
-    
+
                     setBcSession1Date(docSnap.data().bcSession1Date)
                     setBcSession1Tuition(docSnap.data().bcSession1Tuition)
                     setBcSession1Includes(docSnap.data().bcSession1Includes)
@@ -137,7 +134,7 @@ const AdminBudaCrewSidebar = (props) => {
                     setBcExtraReheearsalClassDates(docSnap.data().bcExtraRehearsalClassDates)
                     setBcCompDateInfo(docSnap.data().bcCompDateInfo)
                     setBcAuditionDate(docSnap.data().bcAuditionDate)
-    
+
                     if (crewBannerTracker == null) {
                         setCrewBannerTracker(docSnap.data().crewBannerTracker)
                     } else if (crewBannerHandler == "false") {
@@ -178,7 +175,7 @@ const AdminBudaCrewSidebar = (props) => {
                     const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
                     const docSnap = await getDoc(docRef);
                     setData(docSnap.data())
-    
+
                     setBcSession1Date(docSnap.data().bcSession1Date)
                     setBcSession1Tuition(docSnap.data().bcSession1Tuition)
                     setBcSession1Includes(docSnap.data().bcSession1Includes)
@@ -193,7 +190,7 @@ const AdminBudaCrewSidebar = (props) => {
                     setBcExtraReheearsalClassDates(docSnap.data().bcExtraRehearsalClassDates)
                     setBcCompDateInfo(docSnap.data().bcCompDateInfo)
                     setBcAuditionDate(docSnap.data().bcAuditionDate)
-    
+
                     if (crewBannerTracker == null) {
                         setCrewBannerTracker(docSnap.data().crewBannerTracker)
                     } else if (crewBannerHandler == "false") {
@@ -255,43 +252,45 @@ const AdminBudaCrewSidebar = (props) => {
             name: "Edit Crew Session Info",
             index: "2",
             content:
-                <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[350px] h-[350px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit Crew Session Info:</h1>
                     </div>
 
                     <div className="my-2">
                         <label className="text-white">Session 1 Date:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Date} onChange={(e) => setBcSession1Date(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Date} onChange={(e) => setBcSession1Date(e.target.value)} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Session 1 Tuition:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Tuition} onChange={(e) => setBcSession1Tuition(e.target.value)} />
-                    </div>
-                    <div className="my-2">
-                        <label className="text-white">Session 1 Class Time:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcClassTime1} onChange={(e) => setBcClassTime1(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Tuition} onChange={(e) => setBcSession1Tuition(e.target.value)} onClick={() => { setContentHighlightIndex("2"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Session 1 Includes:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Includes} onChange={(e) => setBcSession1Includes(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession1Includes} onChange={(e) => setBcSession1Includes(e.target.value)} onClick={() => { setContentHighlightIndex("3"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
+                        <label className="text-white">Session 1 Class Time:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcClassTime1} onChange={(e) => setBcClassTime1(e.target.value)} onClick={() => { setContentHighlightIndex("4"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                    </div>
+
+                    <div className="my-2">
                         <label className="text-white">Session 2 Date:</label>
-                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcSession2Date} onChange={(e) => setBcSession2Date(e.target.value)} />
+                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcSession2Date} onChange={(e) => setBcSession2Date(e.target.value)} onClick={() => { setContentHighlightIndex("5"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Session 2 Tuition:</label>
-                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcSession2Tuition} onChange={(e) => setBcSession2Tuition(e.target.value)} />
-                    </div>
-                    <div className="my-2">
-                        <label className="text-white">Session 2 Class Time:</label>
-                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcClassTime2} onChange={(e) => setBcClassTime2(e.target.value)} />
+                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcSession2Tuition} onChange={(e) => setBcSession2Tuition(e.target.value)} onClick={() => { setContentHighlightIndex("6"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Session 2 Includes:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession2Includes} onChange={(e) => setBcSession2Includes(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={bcSession2Includes} onChange={(e) => setBcSession2Includes(e.target.value)} onClick={() => { setContentHighlightIndex("7"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
+                    <div className="my-2">
+                        <label className="text-white">Session 2 Class Time:</label>
+                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={bcClassTime2} onChange={(e) => setBcClassTime2(e.target.value)} onClick={() => { setContentHighlightIndex("8"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                    </div>
+
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editBcSessionInfo}>Submit</button>
                 </div>
         },
@@ -303,36 +302,37 @@ const AdminBudaCrewSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit Buda Crew Content:</h1>
                     </div>
+                    <div className="my-4">
+                        <label>Audition Date Info:</label>
+                        <input type="text" value={bcAuditionDate} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcAuditionDate(e.target.value) }} onClick={() => { setContentHighlightIndex("9"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                    </div>
 
                     <div className="my-4">
                         <label>Requirement Info:</label>
-                        <input type="text" value={bcRequirementInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcRequirementInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <input type="text" value={bcRequirementInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcRequirementInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("10"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Extra Performance Info:</label>
-                        <input type="text" value={bcExtraPerformanceInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraPerformanceInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <input type="text" value={bcExtraPerformanceInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraPerformanceInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("11"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Mandatory Class Dates:</label>
-                        <input type="text" value={bcMandatoryClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcMandatoryClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <input type="text" value={bcMandatoryClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcMandatoryClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("12"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Extra Reheasal Dates:</label>
-                        <input type="text" value={bcExtraRehearsalClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraReheearsalClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <input type="text" value={bcExtraRehearsalClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraReheearsalClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("13"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Comp Date Info:</label>
-                        <input type="text" value={bcCompDateInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcCompDateInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <input type="text" value={bcCompDateInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcCompDateInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("14"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
-                    <div className="my-4">
-                        <label>Audition Date Info:</label>
-                        <input type="text" value={bcAuditionDate} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcAuditionDate(e.target.value) }} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
-                    </div>
+                    
 
 
 
@@ -341,7 +341,7 @@ const AdminBudaCrewSidebar = (props) => {
         },
         {
             name: "Edit Main Image",
-            index: "5",
+            index: "4",
             content:
                 <div className="w-[400px] transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute left-[350px]  z-[999]">
                     <div className=" transition-all duration-700">
@@ -353,14 +353,10 @@ const AdminBudaCrewSidebar = (props) => {
         },
     ]
 
-
-
-    console.log(contentHighlightFocus, contentHighlightIndex)
-
     return (
         <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
 
-            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false); setContentHighlightFocus(false) }}>
                 <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
             </div>
 

@@ -26,8 +26,11 @@ const AdminRatesPage = (props) => {
     //RATES INFO HANDLERS
     const [rate1, setRate1] = useState('')
     const [rate2, setRate2] = useState('')
+    const [ratesIndex, setRatesIndex] = useState('')
     const [includes, setIncludes] = useState('')
+    const [includesIndex, setIncludesIndex] = useState('')
     const [dropIn, setDropIn] = useState('')
+    const [dropInIndex, setDropInIndex] = useState('')
 
     //RATES BANNER HANDLERS
     const [ratesBannerImg, setRatesBannerImg] = useState('')
@@ -44,6 +47,7 @@ const AdminRatesPage = (props) => {
                 setData(docSnap.data())
                 setRate1(docSnap.data().rate1)
                 setRate2(docSnap.data().rate2)
+                setIncludes(docSnap.data().ratesIncludes)
                 setDropIn(docSnap.data().ratesDropIn)
                 if (ratesBannerTracker == null) {
                     setRatesBannerTracker(docSnap.data().ratesBannerTracker)
@@ -128,6 +132,12 @@ const AdminRatesPage = (props) => {
             );
         }
         ratesBannerVid && uploadRatesBannerVidFile()
+
+        setRatesBannerIndex("1")
+        setRatesIndex("2")
+        setIncludesIndex("3")
+        setDropInIndex("4")
+
     }, [ratesBannerImg, ratesBannerVid])
 
 
@@ -161,6 +171,10 @@ const AdminRatesPage = (props) => {
                         rate2={rate2} setRate2={setRate2}
                         includes={includes} setIncludes={setIncludes}
                         dropIn={dropIn} setDropIn={setDropIn}
+                        ratesIndex={ratesIndex}
+                        includesIndex={includesIndex}
+                        dropInIndex={dropInIndex}
+                        
                     />
                 </section>
 
@@ -179,9 +193,9 @@ const AdminRatesPage = (props) => {
                                 :
                                 <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
 
-                                    {ratesBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.ratesBannerVid} alt="people dancing and colors" ></video>
+                                    {ratesBannerTracker === "true" ? <video className={`transition-all duration-500 ${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.ratesBannerVid} alt="people dancing and colors" ></video>
                                         :
-                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.ratesBannerImg} alt="people dancing and colors" />}
+                                        <img className={`transition-all duration-500 ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == ratesBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.ratesBannerImg} alt="people dancing and colors" />}
                                 </div>
                             }
                         </section>
@@ -196,9 +210,9 @@ const AdminRatesPage = (props) => {
                         {/* Rates Info Section */}
                         <section >
                             <div className="w-full flex flex-col items-center transition-all duration-500">
-                                <h1 className={`${highlightFocus && expandIndex == null ? "border-4 border-red-700 p-1" : ""} welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500 mb-5`}>Session Rates:</h1>
-                                <div className={` h-content transition-all duration-500  ${sideExpand == true && siteExpand == false ? "w-[1100px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[1200px]" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem] w-[400px]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem] w-[400px]" : ""}`}>
-                                    <div className={`${highlightFocus && expandIndex == null ? "border-4 border-red-700 p-1" : ""}  ${siteExpand ? "text-md" : " sm:text-xl md:text-3xl lg:text-3xl text-xl "} transition-all duration-500 `}>
+                                <h1 className={` welcome ${siteExpand ? "text-lg" : " sm:text-xl md:text-3xl lg:text-5xl text-xl "} transition-all duration-500 mb-8`}>Session Rates:</h1>
+                                <div className={` h-content transition-all duration-500  ${sideExpand == true && siteExpand == false ? "w-5/6 px-4" : ""} ${sideExpand == false && siteExpand == false ? "w-5/6 px-3" : ""} ${sideExpand == true && siteExpand == true ? "text-[.7rem] w-5/6 px-2" : ""} ${sideExpand == false && siteExpand == true ? "text-[.7rem] w-5/6 px-2" : ""}`}>
+                                    <div className={`${highlightFocus && expandIndex == ratesIndex ? "border-4 border-red-700 p-1" : ""}  ${siteExpand ? "text-md" : " sm:text-xl md:text-3xl lg:text-3xl text-xl "} transition-all duration-500 `}>
 
                                         <h4 >
                                             <strong>Tuition:</strong>
@@ -211,7 +225,7 @@ const AdminRatesPage = (props) => {
                                         </p>
                                     </div>
 
-                                    <p className="mb-5">
+                                    <p className={`transition-all duration-500 ${highlightFocus && expandIndex == includesIndex ? "border-4 border-red-700 p-1" : ""} mb-5`}>
                                         <strong>Includes</strong> {includes}
                                     </p>
 
@@ -221,7 +235,7 @@ const AdminRatesPage = (props) => {
                                     <p className="mb-5">
                                         <strong>Message</strong> me personally if you need to do monthly payments.
                                     </p>
-                                    <p className="mb-5">
+                                    <p className={`transition-all duration-500 ${highlightFocus && expandIndex == dropInIndex ? "border-4 border-red-700 p-1" : ""} mb-5`}>
                                         <strong>Drop</strong> in Price: ${dropIn}
                                     </p>
 

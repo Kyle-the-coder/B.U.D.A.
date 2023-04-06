@@ -22,6 +22,7 @@ const AdminRatesSidebar = (props) => {
     const { ratesBannerVid, setRatesBannerVid } = props
     const { ratesBannerTracker, setRatesBannerTracker } = props
     const { ratesBannerHandler, setRatesBannerHandler } = props
+    const {ratesBannerIndex} = props
     const { show, setShow } = props
 
 
@@ -37,7 +38,11 @@ const AdminRatesSidebar = (props) => {
     const { rate1, setRate1 } = props
     const { rate2, setRate2 } = props
     const { includes, setIncludes } = props
-    const {dropIn, setDropIn} = props
+    const { dropIn, setDropIn } = props
+    const {ratesIndex}=props
+    const {includesIndex}=props
+    const {dropInIndex}=props
+
 
 
     const handleExpandOption = (index) => {
@@ -56,7 +61,7 @@ const AdminRatesSidebar = (props) => {
 
 
     const handleFocus = (index) => {
-        if (index == null) {
+        if (index == ratesBannerIndex || index == ratesIndex || index == dropInIndex || index == includesIndex) {
             setHighlightFocus(true)
         } else {
             setHighlightFocus(false)
@@ -161,7 +166,7 @@ const AdminRatesSidebar = (props) => {
                     setData(docSnap.data())
                     setRate1(docSnap.data().rate1)
                     setRate2(docSnap.data().rate2)
-                    setDropIn(docSnap.data().dropIn)
+                    setDropIn(docSnap.data().ratesDropIn)
                     if (ratesBannerTracker == null) {
                         setRatesBannerTracker(docSnap.data().ratesBannerTracker)
                     } else if (ratesBannerHandler == "false") {
@@ -257,9 +262,9 @@ const AdminRatesSidebar = (props) => {
                     <div className="flex w-full mt-4 flex-col items-center">
 
                         <label className="text-white">1 Hour Class Rate:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setRate1(e.target.value)} />
+                        <input type="text" value={rate1} className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setRate1(e.target.value)} />
                         <label className="text-white mt-4">45 Minute Class Rate:</label>
-                        <input type="text" className="text-black w-full transition-all duration-700 p-2" onChange={(e) => setRate2(e.target.value)} />
+                        <input type="text" value={rate2} className="text-black w-full transition-all duration-700 p-2" onChange={(e) => setRate2(e.target.value)} />
                     </div>
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 mt-4 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editClassRates}>Submit</button>
                 </div>
@@ -268,25 +273,25 @@ const AdminRatesSidebar = (props) => {
             name: "Edit Includes Info",
             index: "3",
             content:
-            <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
-            <div className=" transition-all duration-700">
-                <h1>Edit Includes:</h1>
-            </div>
-            <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setIncludes(e.target.value)} />
-            <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editIncludes}>Submit</button>
-        </div>
+                <div className="w-[500px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                    <div className=" transition-all duration-700">
+                        <h1>Edit Includes:</h1>
+                    </div>
+                    <textarea rows="10" cols="40" value={includes} type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setIncludes(e.target.value)} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editIncludes}>Submit</button>
+                </div>
         },
         {
             name: "Edit Drop-in Rate",
             index: "4",
             content:
-            <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
-            <div className=" transition-all duration-700">
-                <h1>Edit Drop-in Rate:</h1>
-            </div>
-            <input type="text" className="m-8 w-full text-black  transition-all duration-700 p-2" onChange={(e) => setDropIn(e.target.value)} />
-            <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editDropInRate}>Submit</button>
-        </div>
+                <div className="w-[400px]  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                    <div className=" transition-all duration-700">
+                        <h1>Edit Drop-in Rate:</h1>
+                    </div>
+                    <input type="text" className="m-8 w-full text-black  transition-all duration-700 p-2" value={dropIn} onChange={(e) => setDropIn(e.target.value)} />
+                    <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editDropInRate}>Submit</button>
+                </div>
         },
     ]
 

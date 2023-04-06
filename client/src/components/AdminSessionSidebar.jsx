@@ -502,7 +502,7 @@ const AdminSessionSidebar = (props) => {
     return (
         <div className={` ${sideExpand ? "w-[350px]" : "w-[70px] "} ${siteExpand ? "h-[1175px]" : "h-full"} px-2  flex justify-center bg-slate-900  transition-all duration-700`}>
 
-            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false) }}>
+            <div className="cursor-pointer w-full h-full" onClick={() => { setSideExpand(!sideExpand); setExpand(false); setHighlightFocus(false); setContentHighlightFocus(false) }}>
                 <img className="w-[50px] h-[50px] cursor-pointer mt-1" src={more} />
             </div>
 
