@@ -34,9 +34,16 @@ const BudaCrewPage = () => {
 
             {/* Banner Section */}
             <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+            {Object.keys(data).length === 0 ? 
+                <div className="loader flex items-center">loading...</div>
+            :
+                <div className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+
                 {data.crewBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.crewBannerVid} alt="people dancing and colors" ></video>
                     :
                     <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.crewBannerImg} alt="people dancing and colors" />}
+                </div>
+            }
             </section>
 
             {/* Back One Page Section */}

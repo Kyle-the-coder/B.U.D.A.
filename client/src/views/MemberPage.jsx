@@ -74,9 +74,16 @@ const MemberPage = (props) => {
 
             {/* Banner Section */}
             <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
-                {data.memberBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
+            {Object.keys(data).length === 0 ? 
+                <div className="loader flex items-center">loading...</div>
+            :
+                <div className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+
+                {data.MemberBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
                     :
                     <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.memberBannerImg} alt="people dancing and colors" />}
+                </div>
+            }
             </section>
 
             {/* Back One Page Section */}
@@ -98,13 +105,13 @@ const MemberPage = (props) => {
                     <p className="mb-3 lg:text-2xl w-full flex justify-center">*please read all*</p>
                     <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                         <div className="flex w-11/12 justify-center mb-10">
-                            <img className="border-2 border-black flex rounded w-[800px] md:w-[900px] lg:w-[1200px]" src={data.memberImg} />
+                            <img className="border-2 border-black flex rounded w-[800px] md:w-[900px] lg:w-[1200px]" src={data.memberMainImg} />
                         </div>
 
 
                         <div className="w-full p-2 md:text-xl lg:text-2xl">
                             <p className="mb-5">
-                                <strong>Upcoming Events: </strong> {data.upcomingEventsInfo}
+                                <strong>Upcoming Events: </strong> {data.memberUpcomingEventsInfo}
                             </p>
                             <p className="mb-5">
                                 <strong>Below </strong> you will find important info reagarding all BUDA Crew activites, homework, and videos
@@ -148,11 +155,11 @@ const MemberPage = (props) => {
                                 </div>
                                 <div className="flex h-[355px]  flex-col w-full p-2 mb-2 border-b-2 border-black border-double aboutInfo">
                                     <p className="text-xl mb-2 md:text-2xl lg:text-4xl"><strong>Info:</strong></p>
-                                    <p className="md:text-xl">{data.budaCrewInfo}</p>
+                                    <p className="md:text-xl">{data.memberBudaCrewInfo}</p>
                                 </div>
                                 <div className="flex  h-[390px] flex-col w-full p-2 aboutInfo">
                                     <p className="text-xl mb-2 md:text-2xl lg:text-4xl"> <strong>Homework:</strong> </p>
-                                    <p className="md:text-xl">{data.homeworkInfo}</p>
+                                    <p className="md:text-xl">{data.memberHomeworkInfo}</p>
                                 </div>
                             </div>
                         </div>

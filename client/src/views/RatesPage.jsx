@@ -38,9 +38,16 @@ const RatesPage = () => {
         <div>
             {/* Rates Banner Section */}
             <section className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+            {Object.keys(data).length === 0 ? 
+                <div className="loader flex items-center">loading...</div>
+            :
+                <div className="w-screen bg-slate-200 h-32 mb-5 flex justify-center ">
+
                 {data.ratesBannerTracker == "true" ? <video className="shrink ratesBanner w-full h-full  bg-slate-200" loop muted autoPlay controls='' src={data.ratesBannerVid} alt="people dancing and colors" ></video>
                     :
                     <img className="shrink ratesBanner w-full h-full  bg-slate-200" src={data.ratesBannerImg} alt="people dancing and colors" />}
+                </div>
+            }
             </section>
 
             {/* Back One Page Section */}
