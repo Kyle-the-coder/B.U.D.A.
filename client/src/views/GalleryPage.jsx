@@ -88,7 +88,7 @@ const GalleryPage = (props) => {
             {/* Back One Page Section */}
             <section className="w-full h-12 flex items-center justify-end">
                 <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
-                    Back
+                    Back!
                 </p>
             </section>
 
