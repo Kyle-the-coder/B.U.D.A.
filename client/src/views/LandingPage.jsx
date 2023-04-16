@@ -60,12 +60,12 @@ const LandingPage = () => {
 
                     {/* Buda Crew Info Card */}
                     <div className="rounded w-fit h-fit hover:drop-shadow-lg">
-                        <a href="/bcp"><img className="infoCard rounded border-2 border-black cursor-pointer sm:w-48 lg:w-64 w-32" src={data.card2} alt="buda crew info card" /></a>
+                        <a href="/bcpage"><img className="infoCard rounded border-2 border-black cursor-pointer sm:w-48 lg:w-64 w-32" src={data.card2} alt="buda crew info card" /></a>
                     </div>
 
                     {/* Summer Camp Info Card */}
                     <div className=" w-fit rounded   h-fit hover:drop-shadow-lg ">
-                        <a href="/sp"><img className="infoCard rounded lg:w-64  border-2 border-black cursor-pointer sm:w-48 w-32" src={data.card3} alt="summer camp info card" /></a>
+                        <a href="/summer"><img className="infoCard rounded lg:w-64  border-2 border-black cursor-pointer sm:w-48 w-32" src={data.card3} alt="summer camp info card" /></a>
                     </div>
                 </div>
             </section>

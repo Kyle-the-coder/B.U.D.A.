@@ -16,8 +16,6 @@ const GalleryPage = (props) => {
     const videoListRef = ref(storage, "galleryvids/")
     const [galleryVidsList, setGalleryVidsList] = useState([])
     const [galleryImgsList, setGalleryImgsList] = useState([])
-    const [galleryBannerImg, setGalleryBannerImg] = useState('')
-    const [galleryBannerVid, setGalleryBannerVid] = useState('')
 
     const navigate = useNavigate();
 
@@ -104,7 +102,7 @@ const GalleryPage = (props) => {
             </div>
                 <div  className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
                     {galleryVidsList.map((vid, i) => (
-                        <video key={i} className="rounded my-3 border-2 border-indigo-200 w-[600px]" loop muted autoPlay controls='' src={vid} >video loading...</video>
+                        <video key={i} className="rounded my-3 border-2 border-indigo-200 w-[600px] h-[380px] object-cover" loop muted autoPlay controls='' src={vid} >video loading...</video>
                     )
                     )}
                 </div>
@@ -121,7 +119,6 @@ const GalleryPage = (props) => {
                 )
                 )}
                     </div>
-
             </section>
         </div>
     )
