@@ -30,7 +30,7 @@ const MapComponent = () => {
 
 
     return (
-        <LoadScript googleMapsApiKey={myKey}>
+        <LoadScript googleMapsApiKey="">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

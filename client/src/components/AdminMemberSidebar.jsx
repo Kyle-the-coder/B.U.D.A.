@@ -254,24 +254,25 @@ const AdminMemberSidebar = (props) => {
 
                     <div className="my-2 w-full">
                         <label className="text-white">Title:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberTitle} onChange={(e) => setMemberTitle(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberTitle} onChange={(e) => setMemberTitle(e.target.value)} onClick={() => { setContentHighlightIndex("1"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Upcoming Events Info:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberUpcomingEventsInfo} onChange={(e) => setMemberUpcomingEventsInfo(e.target.value)} />
-                    </div>
-                    <div className="my-2">
-                        <label className="text-white">Homework Info:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberHomeworkInfo} onChange={(e) => setMemberHomeworkInfo(e.target.value)} />
-                    </div>
-                    <div className="my-2">
-                        <label className="text-white">Crew Info:</label>
-                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberBudaCrewInfo} onChange={(e) => setMemberBudaCrewInfo(e.target.value)} />
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberUpcomingEventsInfo} onChange={(e) => setMemberUpcomingEventsInfo(e.target.value)} onClick={() => { setContentHighlightIndex("2"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
                     <div className="my-2">
                         <label className="text-white">Phone Contact(if changed):</label>
-                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={memberContactPhone} onChange={(e) => setMemberContactPhone(e.target.value)} />
+                        <input type="text" className="text-black w-full transition-all duration-700 p-2" value={memberContactPhone} onChange={(e) => setMemberContactPhone(e.target.value)} onClick={() => { setContentHighlightIndex("3"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
+                    <div className="my-2">
+                        <label className="text-white">Crew Info:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberBudaCrewInfo} onChange={(e) => setMemberBudaCrewInfo(e.target.value)} onClick={() => { setContentHighlightIndex("4"); handleContentHighlightFocus(); setHighlightFocus(true) }}/>
+                    </div>
+                    <div className="my-2">
+                        <label className="text-white">Homework Info:</label>
+                        <input type="text" className=" text-black w-full transition-all duration-700 p-2" value={memberHomeworkInfo} onChange={(e) => setMemberHomeworkInfo(e.target.value)} onClick={() => { setContentHighlightIndex("5"); handleContentHighlightFocus(); setHighlightFocus(true) }}/>
+                    </div>
+
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 my-2 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editMemberSessionInfo}>Submit</button>
                 </div>
         },
@@ -287,7 +288,7 @@ const AdminMemberSidebar = (props) => {
                         </div>
                         <div className=" transition-all duration-700 my-1">
                             <h1>Music Title:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberMusicTitle(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberMusicTitle(e.target.value)} onClick={() => { setContentHighlightIndex("6"); handleContentHighlightFocus(); setHighlightFocus(true) }}/>
                         </div>
                     </div>
 
@@ -305,7 +306,7 @@ const AdminMemberSidebar = (props) => {
                         </div>
                         <div className=" transition-all duration-700 my-1">
                             <h1>Video Title:</h1>
-                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberVideoTitle(e.target.value)} />
+                            <input type="text" className=" text-black w-full transition-all duration-700 p-2" onChange={(e) => setMemberVideoTitle(e.target.value)} onClick={() => { setContentHighlightIndex("7"); handleContentHighlightFocus(); setHighlightFocus(true) }}/>
                         </div>
                     </div>
 

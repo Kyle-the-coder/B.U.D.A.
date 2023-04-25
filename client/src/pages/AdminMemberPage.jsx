@@ -252,7 +252,8 @@ const AdminMemberPage = (props) => {
     }
 
 
-
+    console.log(contentHighlightFocus)
+    console.log(contentHighlightIndex)
 
     return (
         <div className="w-full">
@@ -309,9 +310,9 @@ const AdminMemberPage = (props) => {
                                 :
                                 <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
 
-                                    {memberBannerTracker === "true" ? <video className={`${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
+                                    {memberBannerTracker === "true" ? <video className={`transition-all duration-500 ${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""}  ratesBanner  w-full h-full  bg-slate-200`} loop muted autoPlay controls='' src={data.memberBannerVid} alt="people dancing and colors" ></video>
                                         :
-                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 ${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.memberBannerImg} alt="people dancing and colors" />}
+                                        <img className={`shrink ratesBanner w-full h-full  bg-slate-200 transition-all duration-500 ${highlightFocus && expandIndex == memberBannerIndex ? "border-4 border-red-700 " : ""} `} src={data.memberBannerImg} alt="people dancing and colors" />}
                                 </div>
                             }
                         </section>
@@ -328,7 +329,7 @@ const AdminMemberPage = (props) => {
                             <div className="w-full flex flex-col items-center ">
                                 <h1 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl my-4" : ""} ${sideExpand == false && siteExpand == false ? "text-7xl my-5" : ""} ${sideExpand == true && siteExpand == true ? "text-xl my-1" : ""} ${sideExpand == false && siteExpand == true ? "text-xl my-1" : ""}  welcome w-full flex justify-center`}>Welcome  <span className='text-indigo-500 mx-2'> BUDA </span>  Crew Members!</h1>
                                 <h1 className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-5xl my-4" : ""} ${sideExpand == false && siteExpand == false ? "text-7xl my-5" : ""} ${sideExpand == true && siteExpand == true ? "text-xl " : ""} ${sideExpand == false && siteExpand == true ? "text-xl " : ""}  welcome`}>Congratulations!!</h1>
-                                <p className={`${highlightFocus && expandIndex == memberInfoIndex ? "border-4 border-red-700 " : ""} transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-4xl my-3" : ""} ${sideExpand == false && siteExpand == false ? "text-5xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-lg " : ""} ${sideExpand == false && siteExpand == true ? "text-lg " : ""}   flex `}> {memberTitle}</p>
+                                <p className={`${contentHighlightFocus && contentHighlightIndex == "1" ? "border-2 border-red-700 p-1" : ""} ${highlightFocus && expandIndex == memberInfoIndex ? "border-4 border-red-700 " : ""} transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-4xl my-3" : ""} ${sideExpand == false && siteExpand == false ? "text-5xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-lg " : ""} ${sideExpand == false && siteExpand == true ? "text-lg " : ""}   flex `}> {memberTitle}</p>
                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl my-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-sm mb-1" : ""} ${sideExpand == false && siteExpand == true ? "text-sm mb-1" : ""}  w-full flex justify-center`}>*please read all*</p>
                                 <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                                     <div className="flex w-11/12 justify-center mb-10">
@@ -337,13 +338,13 @@ const AdminMemberPage = (props) => {
 
 
                                     <div className={`${highlightFocus && expandIndex == memberInfoIndex ? "border-4 border-red-700 " : ""} transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}  `}>
-                                        <p className="mb-5">
+                                        <p className={`transition-all duration-500 ${contentHighlightFocus && contentHighlightIndex == "2" ? "border-2 border-red-700 p-1" : ""} mb-5`}>
                                             <strong>Upcoming Events: </strong> {memberUpcomingEventsInfo}
                                         </p>
                                         <p className="mb-5">
                                             <strong>Below </strong> you will find important info reagarding all BUDA Crew activites, homework, and videos
                                         </p>
-                                        <p className="mb-5">
+                                        <p className={`${contentHighlightFocus && contentHighlightIndex == "3" ? "border-2 border-red-700 p-1" : ""} mb-5`}>
                                             If you have any issues please call me {memberContactPhone}
                                         </p>
                                     </div>
@@ -355,7 +356,7 @@ const AdminMemberPage = (props) => {
                                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-3xl " : ""} ${sideExpand == false && siteExpand == false ? "text-4xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   welcome `}>Music/Videos:</p>
                                             </div>
                                             <div className=" w-full h-[355px]  p-2 mb-2 border-b-2 border-black border-double aboutInfo">
-                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Music:</strong></p>
+                                                <p className={`${contentHighlightFocus && contentHighlightIndex == "6" ? "border-2 border-red-700" : ""}  transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Music:</strong></p>
                                                 {memberMusicList.map((t, i) => {
                                                     return (
                                                         <div key={i} className="flex justify-between mb-3 aboutInfo ">
@@ -366,7 +367,7 @@ const AdminMemberPage = (props) => {
                                                 })}
                                             </div>
                                             <div className="w-full h-[390px] p-2 aboutInfo">
-                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Videos:</strong></p>
+                                                <p className={`${contentHighlightFocus && contentHighlightIndex == "7" ? "border-2 border-red-700 " : ""}  transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Videos:</strong></p>
                                                 {memberVideoList.map((t, i) => {
                                                     return (
                                                         <div key={i} className="flex justify-between mb-3 aboutInfo ">
@@ -384,11 +385,11 @@ const AdminMemberPage = (props) => {
                                             </div>
                                             <div className="flex h-[355px]  flex-col w-full p-2 mb-2 border-b-2 border-black border-double aboutInfo">
                                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}><strong>Info:</strong></p>
-                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]  " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>{memberBudaCrewInfo}</p>
+                                                <p className={`${contentHighlightFocus && contentHighlightIndex == "4" ? "border-2 border-red-700 p-1" : ""} transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]  " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>{memberBudaCrewInfo}</p>
                                             </div>
                                             <div className="flex  h-[390px] flex-col w-full p-2 aboutInfo">
                                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-2xl " : ""} ${sideExpand == false && siteExpand == false ? "text-3xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}   mb-2 `}> <strong>Homework:</strong> </p>
-                                                <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]  " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>{memberHomeworkInfo}</p>
+                                                <p className={`${contentHighlightFocus && contentHighlightIndex == "5" ? "border-2 border-red-700 p-1" : ""}  transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl " : ""} ${sideExpand == false && siteExpand == false ? "text-2xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.8rem]  " : ""} ${sideExpand == false && siteExpand == true ? "text-[.8rem]" : ""}`}>{memberHomeworkInfo}</p>
                                             </div>
                                         </div>
                                     </div>
