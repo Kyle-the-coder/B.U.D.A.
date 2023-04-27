@@ -333,7 +333,7 @@ const AdminMemberPage = (props) => {
                                 <p className={`transition-all duration-500 ${sideExpand == true && siteExpand == false ? "text-xl my-2" : ""} ${sideExpand == false && siteExpand == false ? "text-2xl my-3" : ""} ${sideExpand == true && siteExpand == true ? "text-sm mb-1" : ""} ${sideExpand == false && siteExpand == true ? "text-sm mb-1" : ""}  w-full flex justify-center`}>*please read all*</p>
                                 <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                                     <div className="flex w-11/12 justify-center mb-10">
-                                        <img className={`transition-all duration-500 object-cover ${sideExpand == true && siteExpand == false ? "w-[1100px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[1200px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[600px] h-[250px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[600px] h-[250px]" : ""}  border-2 border-black flex rounded `} src={data.memberMainImg} />
+                                        <img className={` ${highlightFocus && expandIndex == memberMainImgIndex ? "border-4 border-red-700 " : ""}  transition-all duration-500 object-cover ${sideExpand == true && siteExpand == false ? "w-[1100px] h-[600px]" : ""} ${sideExpand == false && siteExpand == false ? "w-[1200px] h-[700px]" : ""} ${sideExpand == true && siteExpand == true ? "w-[600px] h-[250px]" : ""} ${sideExpand == false && siteExpand == true ? "w-[600px] h-[250px]" : ""}  border-2 border-black flex rounded `} src={data.memberMainImg} />
                                     </div>
 
 
