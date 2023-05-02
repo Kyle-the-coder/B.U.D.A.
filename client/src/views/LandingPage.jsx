@@ -36,7 +36,14 @@ const LandingPage = () => {
                 </div> :
                 <section className="items-center justify-center flex flex-col relative w-full h-screen bg-gradient-to-r from-indigo-400 to-red-300 flex bg-auto bg-contain " >
                     <img src={data.img} alt=" Bianca" className="rounded object-cover w-full z-[1] h-full absolute  mix-blend-overlay" />
-                    <h1 className="welcome sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl font-bold mb-2 relative">Bianca's Urban <span className="text-indigo-800">Dance</span> Academy</h1>
+                    <div className="w-full flex flex-col items-center justify-evenly md:flex-row md:justify-center h-[280px]">
+                        <div className="flex md:flex-none ">
+                            <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Bianca's</h1>
+                            <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Urban</h1>
+                        </div>
+                        <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative text-indigo-700 mx-2">Dance</h1>
+                        <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Academy</h1>
+                    </div>
                     <a href="/wsp" className="bg-indigo-800 relative   lg:text-2xl text-white px-4 py-3 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
                 </section>
 
