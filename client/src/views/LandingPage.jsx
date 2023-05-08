@@ -94,10 +94,12 @@ const LandingPage = () => {
                 :
                 <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[650px] w-[700px]" loop muted autoPlay controls=''>
-                        <source src={data.vid1}></source>
+                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[650px] w-[700px]" autoPlay  controls src={data.vid1}>
+                        <source src={data.vid1} type="video/webm" />
+                        <source src={data.vid1} type="video/mp4" />
+                        Sorry, your browser doesn't support videos.
                     </video>
-                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]" loop muted autoPlay controls='' src={data.vid2} ></video>
+                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]"  controls src={data.vid2} ></video>
                 </section>
             }
 
