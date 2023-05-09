@@ -102,7 +102,7 @@ const GalleryPage = (props) => {
             </div>
                 <div  className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
                     {galleryVidsList.map((vid, i) => (
-                        <video key={i} className="rounded my-3 border-2 border-indigo-200 w-[600px] h-[380px] object-cover" loop muted controls >
+                        <video key={i} className="rounded my-3 border-2 border-indigo-200 w-[600px] h-[380px] object-cover" controls >
                             <source src={vid} type="video/mp4"/>
                         </video>
                     )
