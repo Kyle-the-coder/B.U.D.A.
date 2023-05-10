@@ -32,7 +32,7 @@ const ContactBar = () => {
                         <div className="mb-3">
                             <div className="flex flex-col w-11/12 p-2  rounded mx-auto">
                                 <h2 className="flex mx-auto text-xl"><strong>Email:</strong></h2>
-                                <form className="w-full flex flex-col" method="POST" action="https://formsubmit.co/urok.dance@gmail.com">
+                                <form className="w-full flex flex-col" method="POST" action="https://formsubmit.co/biancazdancing@gmail.com">
 
                                     <label className="p-1">Full-Name:</label>
                                     <input className="rounded p-1 " type="text" name="name" required placeholder="First name Last name"></input>
