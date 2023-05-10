@@ -117,7 +117,7 @@ const GalleryPage = (props) => {
             </div>
                     <div  className=" flex flex-col sm:flex-row sm:justify-evenly sm:flex-wrap w-full">
                 {galleryImgsList.map((img, i) => (
-                        <img key={i} className="rounded md:m-2 border-2 border-indigo-200 m-8 object-cover w-[600px] h-[350px]" src={img} />
+                        <img key={i} className="rounded sm:m-8 border-2 border-red-200 my-2 object-cover w-[600px] h-[350px]" src={img} />
                 )
                 )}
                     </div>

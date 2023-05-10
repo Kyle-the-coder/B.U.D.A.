@@ -25,14 +25,14 @@ import MemberPage from "./views/MemberPage";
 import ContactBar from "./components/BudaContactBar";
 import MemberAdmin from "./components/MemberAdmin";
 import { MemberContext } from "./context/MemberContext";
-
+import {Helmet} from "react-helmet";
 
 
 
 function App() {
   const [navTracker, setNavTracker] = useState(false)
   const { currentUser } = useContext(AuthContext)
-  const { memberUser } =useContext(MemberContext)
+  const { memberUser } = useContext(MemberContext)
 
   useEffect(() => {
 
@@ -49,47 +49,47 @@ function App() {
     return currentUser ? (children) : <Navigate to="/" />
   }
 
-  const RequireMember = ({children})=>{
-    return memberUser ? (children) : <Navigate to="/budamember"/>
+  const RequireMember = ({ children }) => {
+    return memberUser ? (children) : <Navigate to="/budamember" />
   }
 
 
   return (
     <div className="App">
 
-        {navTracker ? <AdminNavbar /> : <BudaNavbar />}
-        
+      {navTracker ? <AdminNavbar /> : <BudaNavbar />}
 
-        
 
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/about" element={<AboutPage/>}/>
-            <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/summer" element={<SummerPage/>}/>
-            <Route path="/session" element={<SessionPage/>}/>
-            <Route path="/gallery" element={<GalleryPage/>}/>
-            <Route path="/rates" element={<RatesPage/>}/>
-            <Route path="/bcpage" element={<BudaCrewPage/>}/>
-            <Route path="/budamember" element={<MemberAdmin/>}/>
 
-            {/* Auth Routes */}
-            <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
-            <Route path="/adminaboutpage" element={<RequireAuth><AdminAboutPage/></RequireAuth>}/>
-            <Route path="/adminsummerpage" element={<RequireAuth><AdminSummerPage/></RequireAuth>}/>
-            <Route path="/adminsessionpage" element={<RequireAuth><AdminSessionPage/></RequireAuth>}/>
-            <Route path="/admingallerypage" element={<RequireAuth><AdminGalleryPage/></RequireAuth>}/>
-            <Route path="/adminratespage" element={<RequireAuth><AdminRatesPage/></RequireAuth>}/>
-            <Route path="/adminbcpage" element={<RequireAuth><AdminBudaCrewPage/></RequireAuth>}/>
-            <Route path="/adminmemberpage" element={<RequireAuth><AdminMemberPage/></RequireAuth>}/>
-            <Route path="/memberpage" element={<RequireMember><MemberPage/></RequireMember>}/>
 
-          </Routes>
-          {navTracker ? <></> : <ContactBar/>}
-          
-    
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/create" element={<CreateUser userInputs={userInputs} />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/summer" element={<SummerPage />} />
+        <Route path="/session" element={<SessionPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/rates" element={<RatesPage />} />
+        <Route path="/bcpage" element={<BudaCrewPage />} />
+        <Route path="/budamember" element={<MemberAdmin />} />
+
+        {/* Auth Routes */}
+        <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
+        <Route path="/adminaboutpage" element={<RequireAuth><AdminAboutPage /></RequireAuth>} />
+        <Route path="/adminsummerpage" element={<RequireAuth><AdminSummerPage /></RequireAuth>} />
+        <Route path="/adminsessionpage" element={<RequireAuth><AdminSessionPage /></RequireAuth>} />
+        <Route path="/admingallerypage" element={<RequireAuth><AdminGalleryPage /></RequireAuth>} />
+        <Route path="/adminratespage" element={<RequireAuth><AdminRatesPage /></RequireAuth>} />
+        <Route path="/adminbcpage" element={<RequireAuth><AdminBudaCrewPage /></RequireAuth>} />
+        <Route path="/adminmemberpage" element={<RequireAuth><AdminMemberPage /></RequireAuth>} />
+        <Route path="/memberpage" element={<RequireMember><MemberPage /></RequireMember>} />
+
+      </Routes>
+      {navTracker ? <></> : <ContactBar />}
+
+
 
 
     </div>
