@@ -298,7 +298,7 @@ const AdminBudaCrewSidebar = (props) => {
             name: "Edit Buda Crew Content",
             index: "3",
             content:
-                <div className="w-[350px] h-[300px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
+                <div className="w-[350px] h-[400px] aboutInfo  transition-all duration-700  p-2 flex flex-col items-center bg-slate-900 text-slate-100 absolute  left-[350px] z-[999]">
                     <div className=" transition-all duration-700">
                         <h1>Edit Buda Crew Content:</h1>
                     </div>
@@ -309,17 +309,17 @@ const AdminBudaCrewSidebar = (props) => {
 
                     <div className="my-4">
                         <label>Requirement Info:</label>
-                        <input type="text" value={bcRequirementInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcRequirementInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("10"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <textarea  rows="10" type="text" value={bcRequirementInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcRequirementInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("10"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Extra Performance Info:</label>
-                        <input type="text" value={bcExtraPerformanceInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraPerformanceInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("11"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <textarea  rows="10" type="text" value={bcExtraPerformanceInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcExtraPerformanceInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("11"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
                         <label>Mandatory Class Dates:</label>
-                        <input type="text" value={bcMandatoryClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcMandatoryClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("12"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <textarea  rows="10"  type="text" value={bcMandatoryClassDates} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcMandatoryClassDates(e.target.value) }} onClick={() => { setContentHighlightIndex("12"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     <div className="my-4">
@@ -329,7 +329,7 @@ const AdminBudaCrewSidebar = (props) => {
 
                     <div className="my-4">
                         <label>Comp Date Info:</label>
-                        <input type="text" value={bcCompDateInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcCompDateInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("14"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
+                        <textarea  rows="10"  type="text" value={bcCompDateInfo} className="w-full text-black  transition-all duration-700 p-2" onChange={(e) => { setBcCompDateInfo(e.target.value) }} onClick={() => { setContentHighlightIndex("14"); handleContentHighlightFocus(); setHighlightFocus(true) }} />
                     </div>
 
                     

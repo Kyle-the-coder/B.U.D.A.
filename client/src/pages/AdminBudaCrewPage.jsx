@@ -330,23 +330,23 @@ const AdminBudaCrewPage = () => {
                                     </div>
 
 
-                                    <div className={`transition-all duration-500 ${highlightFocus && expandIndex == bcContentIndex ? "border-4 border-red-700 " : ""} flex flex-col justify-evenly w-11/12 p-2 ${sideExpand == true && siteExpand == false ? "text-md h-[340px]" : ""} ${sideExpand == false && siteExpand == false ? "text-xl h-[380px]" : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] h-[140px]" : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem] h-[140px]" : ""}`}>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "9" ? "border-2 border-red-700 " : ""}`} >
+                                    <div className={` transition-all duration-500 ${highlightFocus && expandIndex == bcContentIndex ? "border-4 border-red-700 " : ""} flex flex-col justify-evenly w-11/12 p-2 ${sideExpand == true && siteExpand == false ? "text-md" : ""} ${sideExpand == false && siteExpand == false ? "text-xl " : ""} ${sideExpand == true && siteExpand == true ? "text-[.4rem] " : ""} ${sideExpand == false && siteExpand == true ? "text-[.4rem]" : ""}`}>
+                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "9" ? "border-2 border-red-700 " : ""} mb-5`} >
                                             <strong>BUDA Crew Audition Date: </strong> {bcAuditionDate}
                                         </p>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "10" ? "border-2 border-red-700 " : ""}`}>
+                                        <p className={`mb-5 transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "10" ? "border-2 border-red-700 " : ""}`}>
                                             <strong>Requirements: </strong> {bcRequirementInfo}
                                         </p>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "11" ? "border-2 border-red-700 " : ""}`}>
+                                        <p className={`mb-5 transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "11" ? "border-2 border-red-700 " : ""}`}>
                                             <strong>Extra Performance Info: </strong> {bcExtraPerformanceInfo}
                                         </p>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "12" ? "border-2 border-red-700 " : ""}`}>
+                                        <p className={`mb-5 transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "12" ? "border-2 border-red-700 " : ""}`}>
                                             <strong>Mandatory Class Dates: </strong> {bcMandatoryClassDates}
                                         </p>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "13" ? "border-2 border-red-700 " : ""}`} >
+                                        <p className={`mb-5 transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "13" ? "border-2 border-red-700 " : ""}`} >
                                             <strong>Extra Reheasal Date (if needed): </strong> {bcExtraRehearsalClassDates}
                                         </p>
-                                        <p className={`transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "14" ? "border-2 border-red-700 " : ""}`} >
+                                        <p className={`mb-5 transition-all duration-200 ${contentHighlightFocus && contentHighlightIndex == "14" ? "border-2 border-red-700 " : ""}`} >
                                             <strong>Competition Date and Info: </strong> {bcCompDateInfo}
                                         </p>
                                     </div>
