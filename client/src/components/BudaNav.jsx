@@ -40,8 +40,8 @@ const BudaNavbar = () => {
 
     return (
         <section className=' flex flex-col w-full md:p-1  bg-white border-b-2 border-black '>
-            <div className='md:mx-auto h-full ml-2 mb-1 z-[5] bg-white'>
-                <img className='w-20  xl:w-44 h-15 rounded ' src={navImg} />
+            <div className='flex justify-center h-full mb-1 z-[5] bg-white'>
+                <a href='/'> <img className='w-20  xl:w-44 h-15 rounded ' src={navImg} /></a>
             </div>
             <div onClick={() => setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden z-[11]'>
                 <img className='w-5 z-[20]' onClick={()=>setOpenMore(false)} src={open ? closeButton : menuButton}></img>
