@@ -24,8 +24,8 @@ const ContactBar = () => {
                         <h1 className="mx-auto mb-2 text-2xl welcome"><strong>Contact BUDA:</strong></h1>
                         <div className="flex justify-center h-6  mb-1">
                             <h3 className="mr-2 text-lg "><em>Socials:</em></h3>
-                            <img className="mr-2" width="30" src={fbIcon} alt="facebook icon" />
-                            <img width="30" src={instaIcon} alt="instagram icon" />
+                            <a href="https://www.facebook.com/bianca.zogbi.9" target="_blank"><img className="mr-2" width="30" src={fbIcon} alt="facebook icon" /></a>
+                            <a href="https://www.instagram.com/biancazogbi/" target="_blank"><img width="30" src={instaIcon} alt="instagram icon" /></a>
                         </div>
 
                         {/* Email Form */}

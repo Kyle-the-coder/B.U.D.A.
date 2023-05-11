@@ -88,7 +88,7 @@ const RatesPage = () => {
                         </p>
 
                         <p className="mb-5">
-                            <strong>Please</strong> note that drop ins are only good for a 1 time basis and then you will have to pay remaining tuition.
+                            <strong>Please</strong> note that drop ins are only good for a one time basis and then you will have to pay remaining tuition.
                         </p>
                         <p className="mb-5">
                             <strong>No</strong> refunds are available at this time.
