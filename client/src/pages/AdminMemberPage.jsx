@@ -305,7 +305,7 @@ const AdminMemberPage = (props) => {
                                 <div className="loader flex flex-col items-center justify-center">
                                     <h1>loading...</h1>
                                     <h1>Bigger files might take a few seconds</h1>
-                                    <h1>Don't forget to click submit once it's done!</h1>
+                                    <h1>Please click submit once it's done!</h1>
                                 </div>
                                 :
                                 <div className={`w-full bg-slate-200 mb-5 flex justify-center ${sideExpand == true && siteExpand == false ? "h-[150px]" : ""} ${sideExpand == false && siteExpand == false ? "h-[175px]" : ""} ${sideExpand == true && siteExpand == true ? "h-[95px]" : ""} ${sideExpand == false && siteExpand == true ? "h-[95px]" : ""} transition-all duration-500`}>
