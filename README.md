@@ -1,1 +1,1 @@
-# NewBUDA
+B.U.D.A. is Bianca's Urban Dance Academy and this is the website that I built for her company. It is made in React using JavaScript as the front-end and Firebase as the back-end. The website is decorated with videos and images of her students so that you can feel the energy from the studio pop right off the screen! I also added a client-side cms which allows the client to edit portions of the website on the fly for quick, responsive, and easy content management.
