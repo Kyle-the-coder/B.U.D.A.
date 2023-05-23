@@ -15,7 +15,7 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/09c5558e-aaaf-47e2-90
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/7f3ef17b-a179-4b3c-9d60-8cd93e5e9f13
 
--Along the way I found that it was hard to see the form and the content you were wanting to edit, so I created the ability to shrink the site down in an "birds-eye" fashion. This allows the client to quickly see what is being edited while being able to look at the form at the same time. 
+-Along the way I found that it was hard to see the form and the content you were wanting to edit, so I created the ability to shrink the site down in a "birds-eye" fashion. This allows the client to quickly see what is being edited while being able to look at the form at the same time. 
 
 
 
@@ -27,3 +27,13 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/a1506842-e90f-48c2-a9
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/7b961326-f875-4528-bb89-12c62b087ca9
 
 -I also gave the client the ability to edit the banner videos (which also can be images) at the top of each page for a quick customizable and personal touch that can be added to the website by the client. As new content comes in the client can update their own website quick and easy.
+
+https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b2d19141-814f-4494-99da-e51fcd80d4b8
+
+
+-Lastly when the client is done editing parts of their site, they can logout, which will log them out of their JWT Token and they can see where the edits have been made. All of this can be done while the site is live and all edits are applied instantly.
+
+
+https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/85e2ba97-6d08-4c2a-b030-d6f63ed4f960
+
+I created this site for my client to have a beautiful and customizable experience with their online presence. I want my client to feel like it's their website, that they have control over the content and overall expression that brings their site to life. Thank you for taking to the time to look at my project, again the site is live you can see it here: budamarin.com, thank you!
