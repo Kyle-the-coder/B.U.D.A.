@@ -37,6 +37,10 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b0f83a84-e7e6-4a7c-bc
 
 the next video shows how the client uses the client-side CMS to add a link to her exclusive member page
 
+
+https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/3bab32f4-9d6a-49d5-b815-e0c550fe6dcd
+
+
 -Lastly when the client is done editing parts of their site, they can logout, which will log them out of their JWT Token and they can see where the edits have been made. All of this can be done while the site is live and all edits are applied instantly.
 
 
