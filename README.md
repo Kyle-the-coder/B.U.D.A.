@@ -30,6 +30,12 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/7b961326-f875-4528-bb
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b2d19141-814f-4494-99da-e51fcd80d4b8
 
+-The client wanted a few extra features such as an email form, google maps location, and a password protected page that the client gives to certain memmbers of her business. I created a way for the client to add dropbox links to continually update those specific members on music, videos, or information that those specific members need. The password protected page also uses a JWT to allow the user to swith between pages without having to sign back in.
+
+
+https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b0f83a84-e7e6-4a7c-bc0e-0575887cbb0f
+
+the next video shows how the client uses the client-side CMS to add a link to her exclusive member page
 
 -Lastly when the client is done editing parts of their site, they can logout, which will log them out of their JWT Token and they can see where the edits have been made. All of this can be done while the site is live and all edits are applied instantly.
 
