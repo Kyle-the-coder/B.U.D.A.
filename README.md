@@ -11,7 +11,7 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/09c5558e-aaaf-47e2-90
 
 ---
 
--This is what the client side CMS looks like after they have put in their login info. Their info is stored locally as a JWT Token to authorize the correct user as well as give them more security in the access of their website. I went with a sidebar to hold the forms that can edit the content. When a form is clicked the related content on the site is highlighted with a red border to indicate which piece of the site that form is editing.
+-This is what the client side CMS looks like after they have put in their login info. Their info is stored locally as a JWT to authorize the correct user as well as give them more security in the access of their website. I went with a sidebar to hold the forms that can edit the content. When a form is clicked the related content on the site is highlighted with a red border to indicate which piece of the site that form is editing.
 
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/7f3ef17b-a179-4b3c-9d60-8cd93e5e9f13
