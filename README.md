@@ -1,6 +1,6 @@
 B.U.D.A. is an acronym for Bianca's Urban Dance Academy, a professional dance academy. I had the privilege of developing their website, which was built using React  and JavaScript for the front-end, while Firebase serves as the reliable back-end. The website showcases a vibrant collection of videos and images featuring the talented students, exuding the energy and dynamism of the academy right through the screen.
 
-To ensure seamless content management, I implemented a client-side content management system (CMS), allowing the client to make quick and responsive edits to various sections of the website. This empowers them to maintain an up-to-date online presence effortlessly. I'm excited to share that the website is live and accessible at budamarin.com, where you can explore the result of this collaboration.
+To ensure seamless content management, I implemented a client-side content management system (CMS), allowing the client to make quick and responsive edits to various sections of the website. This empowers them to maintain an up-to-date online presence effortlessly. I'm excited to share that the website is live and accessible at https://budamarin.com/, where you can explore the result of this collaboration.
 
 Allow me to provide you with a tour of the CMS that I have created, exclusively accessible to the client:
 
@@ -35,18 +35,18 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/7b961326-f875-4528-bb
 
 ---
 
-5. Banner Customization: To provide a personalized touch, the client has the capability to edit the banner videos (which can also include images) at the top of each page. This feature enables them to add a quick, customizable element that aligns with their vision. Additionally, as new content becomes available, the client can effortlessly update their website. Please refer to this image for a better understanding: 
+5. Banner Customization: To provide a personalized touch, the client has the capability to edit the banner videos (which can also include images) at the top of each page. This feature enables them to add a quick, customizable element that aligns with their vision. Additionally, as new content becomes available, the client can effortlessly update their website. Please refer to this video for a better understanding: 
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b2d19141-814f-4494-99da-e51fcd80d4b8
 
 ---
 
-6. Additional Features: Based on the client's requirements, I incorporated several additional features, including an email form, Google Maps location integration, and a password-protected page for specific members of the business. To streamline communication, I integrated Dropbox links, allowing the client to continually update designated members with relevant music, videos, or information. The password-protected page utilizes a JWT, enabling seamless navigation between pages without the need for repeated sign-ins. Here's an image showcasing these features: 
+6. Additional Features: Based on the client's requirements, I incorporated several additional features, including an email form, Google Maps location integration, and a password-protected page for specific members of the business. To streamline communication, I integrated Dropbox links, allowing the client to continually update designated members with relevant music, videos, or information. The password-protected page utilizes a JWT, enabling seamless navigation between pages without the need for repeated sign-ins. Here's a video showcasing these features: 
 
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/b0f83a84-e7e6-4a7c-bc0e-0575887cbb0f
 
-6.5. The next video shows how the client uses the client-side CMS to add a link to her exclusive member page
+6.5. The next video shows how the client uses the client-side CMS to add a link to the exclusive member page
 
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/3bab32f4-9d6a-49d5-b815-e0c550fe6dcd
@@ -54,7 +54,7 @@ https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/3bab32f4-9d6a-49d5-b8
 ---
 
 
-7. Logout and Site Visibility: To conclude the editing process, the client can log out, effectively terminating their JWT session. This provides them with a comprehensive overview of the edits they have made. Notably, all changes take effect instantly, ensuring a seamless and dynamic user experience. Here's an image showcasing this feature:
+7. Logout and Site Visibility: To conclude the editing process, the client can log out, effectively terminating their JWT session. This provides them with a comprehensive overview of the edits they have made. Notably, all changes take effect instantly, ensuring a seamless and dynamic user experience. Here's a video showcasing this feature:
 
 
 https://github.com/Kyle-the-coder/NewBUDA/assets/111798115/85e2ba97-6d08-4c2a-b030-d6f63ed4f960
