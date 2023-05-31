@@ -30,7 +30,7 @@ const InstructorsPage = () => {
         <div className="mb-8">
 
 
-            <div className="w-full flex justify-center py-5 items-center">
+            <div className="w-full flex justify-center pt-8 pb-5 items-center">
                 <h1 className="welcome text-4xl">B.U.D.A. Instructors</h1>
             </div>
 
