@@ -24,8 +24,8 @@ import AdminMemberPage from "./pages/AdminMemberPage";
 import MemberPage from "./views/MemberPage";
 import ContactBar from "./components/BudaContactBar";
 import MemberAdmin from "./components/MemberAdmin";
+import InstructorsPage from "./views/InstructorsPage";
 import { MemberContext } from "./context/MemberContext";
-import {Helmet} from "react-helmet";
 
 
 
@@ -41,8 +41,7 @@ function App() {
     } else if (currentUser === null) {
       setNavTracker(false)
     }
-
-
+    
   }, [currentUser])
 
   const RequireAuth = ({ children }) => {
@@ -74,6 +73,7 @@ function App() {
         <Route path="/rates" element={<RatesPage />} />
         <Route path="/bcpage" element={<BudaCrewPage />} />
         <Route path="/budamember" element={<MemberAdmin />} />
+        <Route path="/instructors" element={<InstructorsPage/>}/>
 
         {/* Auth Routes */}
         <Route path="/adminlandingpage" element={<RequireAuth><AdminLandingPage /></RequireAuth>} />
