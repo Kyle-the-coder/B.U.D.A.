@@ -31,10 +31,10 @@ const InstructorsPage = () => {
 
 
             <div className="w-full flex justify-center py-5 items-center">
-                <h1 className="welcome text-2xl">B.U.D.A. Instructors</h1>
+                <h1 className="welcome text-4xl">B.U.D.A. Instructors</h1>
             </div>
 
-            <section className="w-full h-5 flex items-center justify-end mb-5">
+            <section className="w-full flex items-center justify-end mb-5">
                 <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
                     Back
                 </p>
@@ -46,7 +46,7 @@ const InstructorsPage = () => {
                 </div>
 
                 <div className="w-1/2 flex flex-col ">
-                    <h1 className="mx-auto welcome my-2">Bianca Zogbi</h1>
+                    <h1 className="mx-auto welcome my-2 text-xl">Bianca Zogbi</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -60,7 +60,7 @@ const InstructorsPage = () => {
             <div className="w-full flex h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
 
                 <div className="w-1/2 flex flex-col">
-                    <h1 className="mx-auto welcome my-2">Ben Donner</h1>
+                    <h1 className="mx-auto welcome my-2 text-xl">Ben Donner</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -78,7 +78,7 @@ const InstructorsPage = () => {
                 </div>
 
                 <div className="w-1/2 flex flex-col ">
-                    <h1 className="mx-auto welcome my-2">Jazzy</h1>
+                    <h1 className="mx-auto welcome my-2 text-xl">Jazzy</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
