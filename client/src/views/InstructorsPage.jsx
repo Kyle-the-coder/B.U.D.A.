@@ -1,16 +1,48 @@
 import bPhoto from "../assets/images/budaLogo.png"
+import { useEffect, useState } from "react"
+import { db, } from "../config/Firebase";
+import { getDoc, doc, } from "firebase/firestore"
+import { useNavigate } from "react-router-dom"
 
 const InstructorsPage = () => {
+    const [data, setData] = useState({});
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        const getPhoto = async () => {
+            try {
+                const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                const docSnap = await getDoc(docRef);
+                setData(docSnap.data())
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getPhoto()
+    }, [])
+
+    const backOne = () => {
+        navigate(-1)
+    }
+
     return (
         <div className="mb-8">
-            <div className="w-full flex justify-center h-[100px] items-center">
+
+
+            <div className="w-full flex justify-center py-5 items-center">
                 <h1 className="welcome text-2xl">B.U.D.A. Instructors</h1>
             </div>
 
+            <section className="w-full h-5 flex items-center justify-end mb-5">
+                <p className=" w-12 text-sm underline text-sky-500 cursor-pointer" onClick={() => backOne()} >
+                    Back
+                </p>
+            </section>
 
-            <div className="w-full flex h-content items-center py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
+            <div className="w-full flex h-content  py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
                 <div>
-                    <img src={bPhoto} />
+                    <img className="rounded object-cover object-top w-[300px] h-[300px] infoCard2 " src={data.aboutMeImg} />
                 </div>
 
                 <div className="w-1/2 flex flex-col ">
