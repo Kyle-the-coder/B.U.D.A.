@@ -55,79 +55,76 @@ const SessionPage = (props) => {
 
             {/* BUDA Name Section */}
             <section className="w-full h-12 flex justify-center mb-5">
-                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">{data.sessionTitle}</h1>
+                <h1 className="sm:text-3xl md:text-4xl lg:text-4xl text-2xl welcome">{data.sessionTitle}</h1>
             </section>
 
             {/* Bianca About Info Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center w-full h-content justify-center">
-                    <img className="rounded infoCard2 object-cover w-[510px] h-[700px]"  src={data.sessionMainImg} />
+                    <img className="rounded infoCard2 object-cover w-[490px] h-[700px]" src={data.sessionMainImg} />
                     <div className="w-11/12 sm:w-1/2  h-[700px] flex flex-col items-center">
                         <div className=" aboutInfo w-full px-2 py-1 mb-2 lg:text-2xl">
-                            <h2 className="mb-6 lg:text-4xl">
+                            <h2 className="mb-6 lg:text-3xl">
                                 {data.sessionIntro}
                             </h2>
-                            <p className="mb-1 text-lg">
+                            <p className="mb-1 ">
                                 <strong>Important Dates:</strong>
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-xl">
                                 <strong>Start: </strong>{data.startDate}
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-xl">
                                 <strong>Show date:</strong>  {data.showDate}
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-xl">
                                 <strong>Show Location:</strong> {data.showLocation}
                             </p>
-                            <p className=" indent-5">
+                            <p className=" indent-5 text-xl">
                                 <strong>MANDATORY TECH: </strong> {data.showTech}
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-xl">
                                 <strong>{data.showTitle}: </strong> {data.showTime}
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass1} </strong>
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass2} </strong>
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass3}</strong>
                             </p>
-                            <p className="indent-5 ">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass4}</strong>
                             </p>
-                            <p className="indent-5">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass5}</strong>
                             </p>
-                            <p className="indent-5 ">
+                            <p className="indent-5 text-lg">
                                 <strong>{data.noClass6}</strong>
                             </p>
-                            <p className="indent-5 mb-5">
+                            <p className="indent-5 mb-5 text-lg">
                                 <strong>{data.noClass7}</strong>
                             </p>
-                            <p className=" text-lg">
+                            <p className="text-2xl">
                                 <strong>Tuition:</strong>
                             </p>
                             <div className="flex justify-end">
 
-                            <div className=" w-[655px]">
+                                <div className=" w-[655px]">
 
-                            <p className="">
-                                Tuition includes all classes plus costume, photos and recital.
-                            </p>
-                            <p className="">
-                                All tuition is due first week of classes or else subject to $25 late fee.
-                            </p>
+                                    <p className="text-sm indent-4">
+                                        Tuition includes all classes plus costume, photos and recital. All tuition is due first week of classes or else subject to $25 late fee.
+                                    </p>
+                                </div>
                             </div>
-                            </div>
-                            <p className="indent-5 mb-5">
-                                <a className="text-sky-500 underline" href="/rp">Click Here</a> for rate pricing.
+                            <p className="mb-5 mt-4 text-base">
+                                <a className="text-sky-500 underline " href="/rp">Click Here</a> for rate pricing.
                             </p>
-                            <p className=" text-lg">
+                            <p className=" text-2xl">
                                 <strong>Contact:</strong>
                             </p>
-                            <p className="indent-5 ">
+                            <p className="indent-5 text-base">
                                 Please <a className="text-sky-500 underline" href="#contactSection">contact</a> Bianca if you have any questions.
                             </p>
 
@@ -144,8 +141,8 @@ const SessionPage = (props) => {
             {/* BUDA Summer Image Section */}
             <section className="mb-5">
                 <div className="w-full flex flex-col sm:flex-row items-center justify-evenly">
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[400px]" src={data.sessionImg2} />
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[400px]" src={data.sessionImg3} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[480px] h-[400px]" src={data.sessionImg2} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[480px] h-[400px]" src={data.sessionImg3} />
                 </div>
             </section>
 

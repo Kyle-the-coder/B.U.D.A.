@@ -61,7 +61,7 @@ const BudaCrewPage = () => {
                     <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                         <div className="w-full flex flex-col md:flex-row md:justify-evenly">
 
-                            <div className="sm:w-[600px] w-full ">
+                            <div className="sm:w-[480px] w-full ">
 
                                 <h4 >
                                     <strong>Session Dates and Tuition:</strong>
@@ -100,7 +100,7 @@ const BudaCrewPage = () => {
                                 </div>
                             </div>
                             <div className="w-full flex justify-center mb-10 sm:justify-start sm:w-1/2 ">
-                                <img src={data.crewMainImg} className= " object-cover   w-[700px] h-[480px] infoCard mt-6"></img>
+                                <img src={data.crewMainImg} className= " object-cover w-[450px] h-[480px] infoCard mt-6"></img>
                             </div>
                         </div>
 
@@ -127,7 +127,7 @@ const BudaCrewPage = () => {
                         </div>
                         <div className="w-11/12 flex justify-center mb-12">
 
-                            <a className="bg-indigo-800 lg:text-4xl  border-2 border-black hover:bg-gradient-to-l from-indigo-200 to-red-100 transition-all hover:text-black duration-700  text-2xl text-white px-6 py-3 rounded" href="/budamember">BUDA Crew Member Login</a>
+                            <a className="text-2xl bg-gradient-to-r from-indigo-200 to-red-100  border-2 border-slate-600  transition-all hover:text-black hover:border-black duration-700  text-slate-600  rounded px-6 py-3 rounded" href="/budamember">BUDA Crew Member Login</a>
                         </div>
                     </div>
                 </div>

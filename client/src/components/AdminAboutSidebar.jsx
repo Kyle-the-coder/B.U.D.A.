@@ -191,7 +191,7 @@ const AdminAboutSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit About Me Content:</h1>
                     </div>
-                    <textarea rows="10" cols="40" type="text" className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setAboutMeContent(e.target.value)} />
+                    <textarea rows="10" cols="40" type="text" value={aboutMeContent} className="m-8 text-black  transition-all duration-700 p-2" onChange={(e) => setAboutMeContent(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editAboutMeContent}>Submit</button>
                 </div>
         },

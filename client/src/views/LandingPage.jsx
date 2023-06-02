@@ -44,7 +44,7 @@ const LandingPage = () => {
                         <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative text-indigo-700 mx-2">Dance</h1>
                         <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Academy</h1>
                     </div>
-                    <a href="/wsp" className="bg-indigo-800 relative   lg:text-2xl text-white px-4 py-3 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
+                    <a target="_blank" href="https://app.thestudiodirector.com/buda7/portal.sd?page=Enroll&meth=search&SEASON=Spring+2023" className="bg-indigo-800 relative lg:text-xl text-white px-4 py-2 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
                 </section>
 
             }
@@ -61,18 +61,18 @@ const LandingPage = () => {
 
                     {/* Important Info Card */}
                     <div className="w-fit  h-fit rounded">
-                        <img className="infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black sm:w-48 lg:w-64   w-32 h-auto" src={data.card1} onClick={() => setShow(true)} alt="important info card" />
+                        <img className="infoCard rounded hover:drop-shadow-lg  cursor-pointer border-2 border-black sm:w-48 lg:w-52   w-32 h-auto" src={data.card1} onClick={() => setShow(true)} alt="important info card" />
                         {show && <ImpInfoModal show={show} setShow={setShow} />}
                     </div>
 
                     {/* Buda Crew Info Card */}
                     <div className="rounded w-fit h-fit hover:drop-shadow-lg">
-                        <a href="/bcpage"><img className="infoCard rounded border-2 border-black cursor-pointer sm:w-48 lg:w-64 w-32" src={data.card2} alt="buda crew info card" /></a>
+                        <a href="/bcpage"><img className="infoCard rounded border-2 border-black cursor-pointer sm:w-48 lg:w-52 w-32" src={data.card2} alt="buda crew info card" /></a>
                     </div>
 
                     {/* Summer Camp Info Card */}
                     <div className=" w-fit rounded   h-fit hover:drop-shadow-lg ">
-                        <a href="/summer"><img className="infoCard rounded lg:w-64  border-2 border-black cursor-pointer sm:w-48 w-32" src={data.card3} alt="summer camp info card" /></a>
+                        <a href="/summer"><img className="infoCard rounded lg:w-52  border-2 border-black cursor-pointer sm:w-48 w-32" src={data.card3} alt="summer camp info card" /></a>
                     </div>
                 </div>
             </section>
@@ -94,12 +94,12 @@ const LandingPage = () => {
                 :
                 <section className="flex flex-col md:flex-row  justify-evenly m-0 items-center md:items-start mb-7">
 
-                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[650px] w-[700px]"  controls src={data.vid1}>
+                    <video className="rounded mb-2 md:m-0  border-2 border-red-200 md:w-[500px] w-[700px]"  controls src={data.vid1}>
                         <source src={data.vid1} type="video/webm" />
                         <source src={data.vid1} type="video/mp4" />
                         Sorry, your browser doesn't support videos.
                     </video>
-                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[650px] w-[700px]"  controls src={data.vid2} ></video>
+                    <video className="rounded h-full m-0 border-2 border-indigo-300 md:w-[500px] w-[700px]"  controls src={data.vid2} ></video>
                 </section>
             }
 

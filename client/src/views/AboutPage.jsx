@@ -61,7 +61,7 @@ const AboutPage = (props) => {
 
             {/* BUDA Name Section */}
             <section className="w-full h-12 flex justify-center mb-8">
-                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl text-2xl welcome">About Bianca:</h1>
+                <h1 className="sm:text-3xl md:text-4xl lg:text-4xl text-2xl welcome">About Bianca:</h1>
             </section>
 
             {/* Bianca About Info Section */}
@@ -80,13 +80,13 @@ const AboutPage = (props) => {
 
             {/* BUDA Name Section */}
             <section className="w-full h-12 flex justify-center mb-8">
-                <h1 className="sm:text-3xl md:text-4xl lg:text-5xl  text-2xl welcome">About BUDA:</h1>
+                <h1 className="sm:text-3xl md:text-4xl lg:text-4xl  text-2xl welcome">About BUDA:</h1>
             </section>
 
             {/* BUDA About Info Section */}
-            <section className="mb-10">
-                <div className="flex flex-col-reverse md:flex-row sm:items-start items-center w-full h-content justify-center ">
-                    <div className="sm:w-1/2 h-[590px] px-2 flex flex-col items-center">
+            <section >
+                <div className="flex  flex-col-reverse md:flex-row sm:items-start items-center w-full h-content justify-center ">
+                    <div className="sm:w-1/2 h-[390px] px-2 flex flex-col items-center">
                         <div className=" aboutInfo px-5 py-2">
                             <p className="mb-8 indent-5 lg:text-lg">
                                 {data.aboutBudaContent}

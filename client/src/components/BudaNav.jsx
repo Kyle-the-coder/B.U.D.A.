@@ -50,7 +50,7 @@ const BudaNavbar = () => {
             <div>
                 <ul className={`md:flex md:items-center md:pb-0 h-[370px] sm:h-[60px] rounded  bg-white justify-evenly absolute md:static md:z-auto z-[3] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20' : 'top-[-480px]'}`}>
                     {navLinks.map((link, i) => (
-                        <li onClick={() => handleHighlightUrl(link.link)} key={i} className=" text-x1 md:text-lg xl:text-2xl md:my-0 my-5 relative">
+                        <li onClick={() => handleHighlightUrl(link.link)} key={i} className=" text-x1 md:text-xl xl:text-2xl md:my-0 my-5 relative">
                             <Link to={link.link} className={`welcome ${highlightUrl == link.link ? "bg-slate-900 text-pink-300" : ""} relative mb-2 font-medium rounded p-1 text-black hover:bg-slate-900 hover:text-pink-300 transition-all duration-700`} onClick={() => {setOpen(!open); setOpenMore(false)}}>{link.name}</Link>
                         </li>
                     ))}
