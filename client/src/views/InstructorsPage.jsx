@@ -73,9 +73,9 @@ const InstructorsPage = () => {
                     Ben prides himself in sharing dance with others and support those in the journey to pursue the arts and foundations that make Hip Hop what it is.
                     </p>
                 </div>
-                <div>
-                    <img src={ben1} className="w-[200px]" />
-                    <img src={ben2} className="w-[200px]"/>
+                <div >
+                    <img src={ben1} className="object-cover object-top w-[320px] h-[300px] infoCard mb-10" />
+                    <img src={ben2} className="w-[320px] h-[300px] object-cover object-top infoCard2" />
                 </div>
             </div>
             <div className="w-full flex py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
