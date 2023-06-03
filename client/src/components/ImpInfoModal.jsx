@@ -1,8 +1,30 @@
 import "../styles/modal.css"
+import { useEffect, useState } from "react"
+import { db, } from "../config/Firebase";
+import { getDoc, doc, } from "firebase/firestore"
+import { useNavigate } from "react-router-dom"
 
 
 function ImpInfoModal(props) {
     const { show, setShow } = props
+
+    const [data, setData] = useState({});
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        const getPhoto = async () => {
+            try {
+                const docRef = doc(db, "admin", process.env.REACT_APP_ADMIN_ID);
+                const docSnap = await getDoc(docRef);
+                setData(docSnap.data())
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getPhoto()
+    }, [])
+
     return (
         <>
             <div className='modalBg bg-local  top-0 flex items-center z-[99] left-0 bottom-full bg-slate-200 w-screen absolute border-y-2 border-black'>
@@ -14,14 +36,34 @@ function ImpInfoModal(props) {
                     </div>
                     <div className='content'>
                         <p className='mb-2'><strong>Important Dates:</strong></p>
-                        <p className='mb-1'><strong>Start:</strong> Jan 3rd - May 14th, 2023</p>
-                        <p className='mb-1'><strong> Show date: </strong>May 14th, 2023 at The San Rafael Community center!</p>
-                        <p className='mb-1'><strong>MANDATORY TECH: </strong> 2-4pm</p>
-                        <p className='mb-1'><strong> Spring Mother's Day Show:</strong> 4-6pm</p>
-                        <p className='mb-1'><strong>No</strong> Class Jan 2nd</p>
-                        <p className='mb-1'><strong>No</strong> Class Jan 16th MLK Day</p>
-                        <p className='mb-1'><strong>No</strong> Class Feb 20-24th Mid Winter Break</p>
-                        <p className='mb-1'><strong>No</strong> Class April 10-14 Spring Break</p>
+                        <p className='mb-1'><strong>Start:</strong> {data.startDate}</p>
+                        <p className='mb-1'><strong> Show date: </strong>{data.showDate}</p>
+                        <p className='mb-1'>
+                            <strong>Show Location:</strong> {data.showLocation}
+                        </p>
+                        <p className='mb-1'><strong>MANDATORY TECH: </strong> {data.showTech}</p>
+                        <p className='mb-1'><strong> {data.showTitle}:</strong> {data.showTime}</p>
+                        <p className="text-lg">
+                            <strong>{data.noClass1} </strong>
+                        </p>
+                        <p className="text-lg">
+                            <strong>{data.noClass2} </strong>
+                        </p>
+                        <p className="text-lg">
+                            <strong>{data.noClass3}</strong>
+                        </p>
+                        <p className="text-lg">
+                            <strong>{data.noClass4}</strong>
+                        </p>
+                        <p className="text-lg">
+                            <strong>{data.noClass5}</strong>
+                        </p>
+                        <p className="text-lg">
+                            <strong>{data.noClass6}</strong>
+                        </p>
+                        <p className=" mb-5 text-lg">
+                            <strong>{data.noClass7}</strong>
+                        </p>
                     </div>
 
 
@@ -30,7 +72,7 @@ function ImpInfoModal(props) {
                     </div>
                     <div className='content flex flex-col items-center'>
                         <p className='mb-2'><strong>Tuition includes all classes plus costume, photos and recital.</strong></p>
-                        
+
                         <p className='mb-1'><strong> All tuition is due first week of classes or else subject to $25 late fee.  </strong></p>
 
                     </div>
@@ -40,8 +82,8 @@ function ImpInfoModal(props) {
                         <h1 className='text-2xl my-2 items-center'><strong>BUDA Crew Competition Info:</strong></h1>
                     </div>
                     <div className='content'>
-                        <p className='mb-1'><strong>BUDA Competition Crew Important Dates: </strong> March 17-19th Have all weekend free. We will be competing at Monsters Dance Convention in Santa Clara. Mandatory Rehearsals: March 1st, 8th, and 15th. </p>
-    
+                        <p className='mb-1 indent-5'><strong>BUDA Competition Crew Important Dates: </strong> TBA </p>
+
 
                     </div>
 
@@ -49,7 +91,7 @@ function ImpInfoModal(props) {
                         <h1 className='text-2xl my-2 items-center '><strong>Contact:</strong></h1>
                     </div>
                     <div className='content flex'>
-                        <p className='mb-2 flex mx-auto'>Please contact Bianca Zogbi at Biancazdancing@gmail.com if you have any questions. </p>
+                        <p className='mb-2 flex mx-auto'>Please contact BUDA at budamarindance@gmail.com if you have any questions. </p>
                     </div>
 
 

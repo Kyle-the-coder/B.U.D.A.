@@ -215,7 +215,7 @@ const AdminAboutSidebar = (props) => {
                     <div className=" transition-all duration-700">
                         <h1>Edit About BUDA Content:</h1>
                     </div>
-                    <textarea rows="10" cols="40" className="m-8 p-2 text-black transition-all duration-700" onChange={(e) => setAboutBudaContent(e.target.value)} />
+                    <textarea rows="10" cols="40" value={aboutBudaContent}  className="m-8 p-2 text-black transition-all duration-700" onChange={(e) => setAboutBudaContent(e.target.value)} />
                     <button disabled={perc !== null && perc < 100} className="bg-indigo-200 text-black transition-all duration-700 disabled:opacity-75 disabled:bg-red-200 px-10 rounded border-2 border-blue-700 py-2" onClick={editAboutBudaContent}>Submit</button>
                 </div>
         }

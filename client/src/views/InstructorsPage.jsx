@@ -44,16 +44,13 @@ const InstructorsPage = () => {
 
             <div className="w-full flex h-content  py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
                 <div>
-                    <img className="rounded object-cover object-top w-[300px] h-[300px] infoCard2 " src={data.aboutMeImg} />
+                    <img className="rounded object-cover object-top w-[500px] h-[550px] infoCard2 " src={data.aboutMeImg} />
                 </div>
 
                 <div className="w-1/2 flex flex-col ">
                     <h1 className="mx-auto welcome my-2 text-xl">Bianca Zogbi</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        In hac habitasse platea dictumst quisque sagittis. Tellus rutrum tellus pellentesque eu tincidunt tortor.
-                        Nunc sed blandit libero volutpat sed cras ornare arcu.
+                        {data.aboutMeContent}
                     </p>
                 </div>
             </div>
