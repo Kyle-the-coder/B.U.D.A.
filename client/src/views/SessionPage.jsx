@@ -118,8 +118,8 @@ const SessionPage = (props) => {
                                     </p>
                                 </div>
                             </div>
-                            <p className="mb-5 mt-4 text-base">
-                                <a className="text-sky-500 underline " href="/rp">Click Here</a> for rate pricing.
+                            <p className="mb-5 mt-4 text-base indent-6">
+                                <a className="text-sky-500 underline " href="/rates">Click Here</a> for rate pricing.
                             </p>
                             <p className=" text-2xl">
                                 <strong>Contact:</strong>
@@ -141,8 +141,8 @@ const SessionPage = (props) => {
             {/* BUDA Summer Image Section */}
             <section className="mb-5">
                 <div className="w-full flex flex-col sm:flex-row items-center justify-evenly">
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[480px] h-[400px]" src={data.sessionImg2} />
-                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[480px] h-[400px]" src={data.sessionImg3} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[500px]" src={data.sessionImg2} />
+                    <img className="rounded infoCard hover:drop-shadow-lg mb-5 object-cover w-[600px] h-[500px]" src={data.sessionImg3} />
                 </div>
             </section>
 

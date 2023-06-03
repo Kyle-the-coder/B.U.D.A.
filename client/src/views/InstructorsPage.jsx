@@ -62,8 +62,9 @@ const InstructorsPage = () => {
             <div className="w-full flex h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
 
                 <div className="w-1/2 flex flex-col">
-                    <h1 className="mx-auto welcome my-2 text-xl">Ben Donner</h1>
-                    <p className="indent-6">
+                    <h1 className="mx-auto welcome my-2 text-3xl">Ben Donner</h1>
+
+                    <p className="indent-6 text-lg">
                     Ben Donner is a Santa Rosa native who has been focusing on street style dancing for 8 years. 
                     His main focus revolve around Popping, Waving, Tutting, and Animation as well as learning basics from Locking, Tutting, and Krump. 
                     At 18, Ben became a choreographer and assistant director of a local dance team “Auxiliary Dance Team”, eventually landing gigs as a Hip Hop instructor around Sonoma County and Marin. 
@@ -74,8 +75,8 @@ const InstructorsPage = () => {
                     </p>
                 </div>
                 <div >
-                    <img src={ben1} className="object-cover object-top w-[320px] h-[300px] infoCard mb-10" />
-                    <img src={ben2} className="w-[320px] h-[300px] object-cover object-top infoCard2" />
+                    <img src={ben1} className="object-cover object-top w-[420px] h-[320px] infoCard mb-3" />
+                    <img src={ben2} className="w-[420px] h-[360px] object-cover object-top infoCard2" />
                 </div>
             </div>
             <div className="w-full flex py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">

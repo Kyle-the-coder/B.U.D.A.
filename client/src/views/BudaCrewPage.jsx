@@ -61,7 +61,7 @@ const BudaCrewPage = () => {
                     <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
                         <div className="w-full flex flex-col md:flex-row md:justify-evenly">
 
-                            <div className="sm:w-[480px] w-full ">
+                            <div className="sm:w-[640px] w-full ">
 
                                 <h4 >
                                     <strong>Session Dates and Tuition:</strong>
@@ -100,7 +100,7 @@ const BudaCrewPage = () => {
                                 </div>
                             </div>
                             <div className="w-full flex justify-center mb-10 sm:justify-start sm:w-1/2 ">
-                                <img src={data.crewMainImg} className= " object-cover w-[450px] h-[480px] infoCard mt-6"></img>
+                                <img src={data.crewMainImg} className= " object-cover w-[620px] h-[480px] infoCard mt-6"></img>
                             </div>
                         </div>
 
