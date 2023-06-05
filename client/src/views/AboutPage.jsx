@@ -68,7 +68,7 @@ const AboutPage = (props) => {
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
                     <img className="rounded object-cover w-[500px] h-[600px] infoCard2 mb-10"  src={data.aboutMeImg} />
-                    <div className="sm:w-1/2 w-11/12 h-[600px] flex flex-col items-center">
+                    <div className="sm:w-1/2 w-11/12 h-content md:h-[600px] flex flex-col items-center">
                         <div className=" aboutInfo p-2">
                             <p className="mb-8 indent-5 lg:text-lg">
                                 {data.aboutMeContent}
