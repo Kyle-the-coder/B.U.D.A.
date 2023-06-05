@@ -38,11 +38,11 @@ const LandingPage = () => {
                     <img src={data.img} alt=" Bianca" className="rounded object-cover w-full z-[1] h-full absolute  mix-blend-overlay" />
                     <div className="w-full flex flex-col items-center justify-evenly md:flex-row md:justify-center h-[280px]">
                         <div className="flex md:flex-none ">
-                            <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Bianca's</h1>
-                            <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Urban</h1>
+                            <h1 className="welcome lg:text-5xl xl:text-6xl text-5xl font-bold  relative mx-2">Bianca's</h1>
+                            <h1 className="welcome lg:text-5xl xl:text-6xl text-5xl font-bold  relative mx-2">Urban</h1>
                         </div>
-                        <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative text-indigo-700 mx-2">Dance</h1>
-                        <h1 className="welcome lg:text-5xl xl:text-7xl text-5xl font-bold  relative mx-2">Academy</h1>
+                        <h1 className="welcome lg:text-5xl xl:text-6xl text-5xl font-bold  relative text-indigo-700 mx-2">Dance</h1>
+                        <h1 className="welcome lg:text-5xl xl:text-6xl text-5xl font-bold  relative mx-2">Academy</h1>
                     </div>
                     <a target="_blank" href="https://app.thestudiodirector.com/buda7/portal.sd?page=Enroll&meth=search&SEASON=Spring+2023" className="bg-indigo-800 relative lg:text-xl text-white px-4 py-2 rounded z-[2] hover:bg-slate-900 hover:text-pink-300 transition-all duration-500">Class Schedule</a>
                 </section>

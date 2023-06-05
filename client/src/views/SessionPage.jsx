@@ -58,11 +58,11 @@ const SessionPage = (props) => {
                 <h1 className="sm:text-3xl md:text-4xl lg:text-4xl text-2xl welcome">{data.sessionTitle}</h1>
             </section>
 
-            {/* Bianca About Info Section */}
+            {/* Bianca Session Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center w-full h-content justify-center">
-                    <img className="rounded infoCard2 object-cover w-[490px] h-[700px]" src={data.sessionMainImg} />
-                    <div className="w-11/12 sm:w-1/2  h-[700px] flex flex-col items-center">
+                    <img className="rounded infoCard2 object-cover w-[490px] h-[700px] mb-10" src={data.sessionMainImg} />
+                    <div className="w-11/12 sm:w-1/2  md:h-[700px] flex flex-col items-center">
                         <div className=" aboutInfo w-full px-2 py-1 mb-2 lg:text-2xl">
                             <h2 className="mb-6 lg:text-3xl">
                                 {data.sessionIntro}

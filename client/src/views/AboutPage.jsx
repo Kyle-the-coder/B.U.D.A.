@@ -67,7 +67,7 @@ const AboutPage = (props) => {
             {/* Bianca About Info Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                    <img className="rounded object-cover w-[500px] h-[600px] infoCard2 "  src={data.aboutMeImg} />
+                    <img className="rounded object-cover w-[500px] h-[600px] infoCard2 mb-10"  src={data.aboutMeImg} />
                     <div className="sm:w-1/2 w-11/12 h-[600px] flex flex-col items-center">
                         <div className=" aboutInfo p-2">
                             <p className="mb-8 indent-5 lg:text-lg">
@@ -93,7 +93,7 @@ const AboutPage = (props) => {
                             </p>
                         </div>
                     </div>
-                    <img className="mb-1 object-cover w-[700px] h-[400px] rounded infoCard hover:drop-shadow-lg" src={data.aboutBudaImg} />
+                    <img className="mb-1 object-cover w-[700px] h-[400px] rounded infoCard hover:drop-shadow-lg mb-10" src={data.aboutBudaImg} />
                 </div>
             </section>
 

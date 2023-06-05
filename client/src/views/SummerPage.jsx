@@ -64,7 +64,7 @@ const SummerPage = (props) => {
             {/* Summer Info Section */}
             <section className="mb-10">
                 <div className="flex flex-col md:flex-row items-center sm:items-start w-full h-content justify-center">
-                    <img className="rounded infoCard2 m-2 object-cover w-[600px] h-[400px]"  src={data.summerMainImg} />
+                    <img className="rounded infoCard2 m-2 object-cover w-[600px] h-[400px] mb-10"  src={data.summerMainImg} />
                     <div className="w-11/12 sm:w-1/2  h-96 flex flex-col items-center">
                         <div className=" aboutInfo w-full px-2 py-1 mb-2 ">
                             <h2 className="mb-6 xl:text-3xl">
