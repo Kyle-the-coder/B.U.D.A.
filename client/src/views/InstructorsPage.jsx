@@ -77,7 +77,7 @@ const InstructorsPage = () => {
                     <img src={ben2} className="w-[420px] h-[360px] object-cover object-top infoCard2" />
                 </div>
             </div>
-            <div className="w-full flex py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
+            <div className="w-full flex flex-col md:flex-row py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
                 <div>
                     <img src={bPhoto} />
                 </div>
