@@ -56,11 +56,12 @@ const InstructorsPage = () => {
             </div>
 
 
-            <div className="w-full flex h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
+            <div className="w-full flex flex-col md:flex-row h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
 
                 <div className="w-1/2 flex flex-col">
                     <h1 className="mx-auto welcome my-2 text-3xl">Ben Donner</h1>
-
+                </div>
+                <div>
                     <p className="indent-6 text-lg">
                     Ben Donner is a Santa Rosa native who has been focusing on street style dancing for 8 years. 
                     His main focus revolve around Popping, Waving, Tutting, and Animation as well as learning basics from Locking, Tutting, and Krump. 
