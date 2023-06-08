@@ -42,7 +42,7 @@ const InstructorsPage = () => {
                 </p>
             </section>
 
-            <div className="w-full flex h-content  py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
+            <div className="w-full flex flex-col md:flex-row h-content  py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
                 <div>
                     <img className="rounded object-cover object-top w-[500px] h-[550px] infoCard2 " src={data.aboutMeImg} />
                 </div>
