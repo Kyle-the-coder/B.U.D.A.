@@ -58,23 +58,22 @@ const InstructorsPage = () => {
 
             <div className="w-full flex flex-col md:flex-row h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
 
-                <div className="w-1/2 flex flex-col">
+
+                <div className="w-1/2 flex flex-col ">
                     <h1 className="mx-auto welcome my-2 text-3xl">Ben Donner</h1>
-                </div>
-                <div>
                     <p className="indent-6 text-lg">
-                    Ben Donner is a Santa Rosa native who has been focusing on street style dancing for 8 years. 
-                    His main focus revolve around Popping, Waving, Tutting, and Animation as well as learning basics from Locking, Tutting, and Krump. 
-                    At 18, Ben became a choreographer and assistant director of a local dance team “Auxiliary Dance Team”, eventually landing gigs as a Hip Hop instructor around Sonoma County and Marin. 
-                    Ben is a member of “1up Crew” from Oakland, CA and the worldwide international popping crew, “Funny Bones Crew”. 
-                    He also is actively participating in freestyle and street style based competitions around the US, winning recent battles such as “TikTakTix: 20th Anniversary Popping Tournament” and “Monsters: Freestyle Battle” this year. 
-                    Ben has been eager to learn many different methods of these styles in order to bring insight knowledge on how these styles have impacted Hip Hop and the world. Within his dedication to foundation, as well as innovation, 
-                    Ben prides himself in sharing dance with others and support those in the journey to pursue the arts and foundations that make Hip Hop what it is.
+                        Ben Donner is a Santa Rosa native who has been focusing on street style dancing for 8 years.
+                        His main focus revolve around Popping, Waving, Tutting, and Animation as well as learning basics from Locking, Tutting, and Krump.
+                        At 18, Ben became a choreographer and assistant director of a local dance team “Auxiliary Dance Team”, eventually landing gigs as a Hip Hop instructor around Sonoma County and Marin.
+                        Ben is a member of “1up Crew” from Oakland, CA and the worldwide international popping crew, “Funny Bones Crew”.
+                        He also is actively participating in freestyle and street style based competitions around the US, winning recent battles such as “TikTakTix: 20th Anniversary Popping Tournament” and “Monsters: Freestyle Battle” this year.
+                        Ben has been eager to learn many different methods of these styles in order to bring insight knowledge on how these styles have impacted Hip Hop and the world. Within his dedication to foundation, as well as innovation,
+                        Ben prides himself in sharing dance with others and support those in the journey to pursue the arts and foundations that make Hip Hop what it is.
                     </p>
                 </div>
+
                 <div >
-                    <img src={ben1} className="object-cover object-top w-[420px] h-[320px] infoCard mb-3" />
-                    <img src={ben2} className="w-[420px] h-[360px] object-cover object-top infoCard2" />
+                    <img src={ben1} className="object-cover object-top w-[500px] h-[550px] infoCard mb-3" />
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
