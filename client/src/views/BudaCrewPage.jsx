@@ -55,7 +55,7 @@ const BudaCrewPage = () => {
             {/* Rates Info Section */}
             <section >
                 <div className="w-full flex flex-col items-center sm:items-start">
-                    <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl text-3xl mb-3 welcome w-full flex justify-center">BUDA Crew 2023-2024 Season:</h1>
+                    <h1 className="sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-3xl mb-5 welcome w-full flex justify-center">BUDA Crew 2023-2024 Season:</h1>
                     <p className="mb-3 w-full flex justify-center xl:text-2xl">*please read all*</p>
                     <p className="mb-3 w-full flex justify-center xl:text-2xl">*member login below*</p>
                     <div className="h-content w-full flex flex-col items-center sm:items-start sm:ml-8">
