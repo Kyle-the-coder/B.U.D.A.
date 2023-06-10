@@ -46,19 +46,19 @@ const InstructorsPage = () => {
                     <img className="rounded object-cover object-top w-[500px] h-[550px] infoCard2 " src={data.aboutMeImg} />
                 </div>
 
-                <div className="w-1/2 flex flex-col ">
+                <div className="sm:w-1/2 w-full flex flex-col">
                     <h1 className="mx-auto welcome my-2 text-xl">Bianca Zogbi</h1>
-                    <p className="indent-6">
+                    <p className="indent-6 ">
                         {data.aboutMeContent}
                     </p>
                 </div>
             </div>
 
 
-            <div className="w-full flex flex-col md:flex-row h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
+            <div className="w-full flex flex-col-reverse md:flex-row h-content py-3 px-1 items-center justify-center justify-evenly bg-slate-200 mb-10">
 
 
-                <div className="w-1/2 flex flex-col ">
+                <div className="sm:w-1/2 w-full flex flex-col ">
                     <h1 className="mx-auto welcome my-2 text-3xl">Ben Donner</h1>
                     <p className="indent-6 text-lg">
                         Ben Donner is a Santa Rosa native who has been focusing on street style dancing for 8 years.
@@ -77,19 +77,19 @@ const InstructorsPage = () => {
             </div>
             <div className="w-full flex flex-col md:flex-row py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
                 <div>
-                    <img src={jazzy} className="object-cover object-top w-[500px] h-[550px] infoCard mb-3"/>
+                    <img src={jazzy} className="object-cover object-top w-[500px] h-[550px] infoCard mb-3" />
                 </div>
 
-                <div className="w-1/2 flex flex-col ">
+                <div className="sm:w-1/2 w-full flex flex-col ">
                     <h1 className="mx-auto welcome my-2 text-xl">Jasmine Kaiulani </h1>
                     <p className="indent-6">
                         Jasmine Kaiulani is a dancer/choreographer, artist and performer from O’ahu. Raised in the Bay Area,
                         Jasmine recently graduated from Sonoma State University (SSU) with a B.A. in Theatre Arts and Dance, and was awarded the department’s Student of the Year.
                         At the young age of three, Jasmine trained in Ballet, Tap, Hula and Tahitian with the Westlake School for the Performing Arts and Spark of Creation Studios;
-                        and quickly flourished as a dancer and competitor, performing in productions and placing in competitions. By nine, Jasmine self-taught herself Hip-Hop 
+                        and quickly flourished as a dancer and competitor, performing in productions and placing in competitions. By nine, Jasmine self-taught herself Hip-Hop
                         and once again furthered her dance resume with Afro-Brazilian and Afro-Cuban in her teens.
-                        Jasmine has taught, created, choreographed and directed several works for the community during her young adulthood. She was titled Top 10 in the 2020 national Hip-Hop competition, KĀOS Takeover: solo division. 
-                        The following year, Jasmine was granted the honor of representing SSU at the American College Dance Association Screen Dance Film Festival and earned Special Recognition for Nhan Ho Project’s Images of Dance 2021. She has since joined Groove Against the Machine; 
+                        Jasmine has taught, created, choreographed and directed several works for the community during her young adulthood. She was titled Top 10 in the 2020 national Hip-Hop competition, KĀOS Takeover: solo division.
+                        The following year, Jasmine was granted the honor of representing SSU at the American College Dance Association Screen Dance Film Festival and earned Special Recognition for Nhan Ho Project’s Images of Dance 2021. She has since joined Groove Against the Machine;
                         her training continues at the renowned In the Groove Studios in Oakland. With a thriving passion for dance, Jasmine continues to hold focus in Hip-Hop and Modern dance;
                         and her purpose to share knowledge and inspire.
                     </p>
