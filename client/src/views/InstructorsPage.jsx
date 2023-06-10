@@ -43,11 +43,11 @@ const InstructorsPage = () => {
 
             <div className="w-full flex flex-col md:flex-row h-content  py-3 px-1 justify-center justify-evenly bg-slate-100 mb-10">
                 <div>
-                    <img className="rounded object-cover object-top w-[500px] h-[550px] infoCard2 " src={data.aboutMeImg} />
+                    <img className="rounded object-cover object-top w-[500px] h-[550px] infoCard2 mb-6" src={data.aboutMeImg} />
                 </div>
 
                 <div className="sm:w-1/2 w-full flex flex-col">
-                    <h1 className="mx-auto welcome my-2 text-xl">Bianca Zogbi</h1>
+                    <h1 className="mx-auto welcome my-2 text-3xl">Bianca Zogbi</h1>
                     <p className="indent-6 ">
                         {data.aboutMeContent}
                     </p>
@@ -72,16 +72,16 @@ const InstructorsPage = () => {
                 </div>
 
                 <div >
-                    <img src={ben1} className="object-cover object-top w-[500px] h-[550px] infoCard mb-3" />
+                    <img src={ben1} className="object-cover object-top w-[500px] h-[550px] infoCard mb-6" />
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row py-3 px-1 h-content items-center justify-center justify-evenly bg-slate-100">
                 <div>
-                    <img src={jazzy} className="object-cover object-top w-[500px] h-[550px] infoCard mb-3" />
+                    <img src={jazzy} className="object-cover object-top w-[500px] h-[550px] infoCard mb-6" />
                 </div>
 
                 <div className="sm:w-1/2 w-full flex flex-col ">
-                    <h1 className="mx-auto welcome my-2 text-xl">Jasmine Kaiulani </h1>
+                    <h1 className="mx-auto welcome my-2 text-3xl">Jasmine Kaiulani </h1>
                     <p className="indent-6">
                         Jasmine Kaiulani is a dancer/choreographer, artist and performer from O’ahu. Raised in the Bay Area,
                         Jasmine recently graduated from Sonoma State University (SSU) with a B.A. in Theatre Arts and Dance, and was awarded the department’s Student of the Year.
