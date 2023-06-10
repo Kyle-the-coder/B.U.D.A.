@@ -1,4 +1,3 @@
-import bPhoto from "../assets/images/budaLogo.png"
 import { useEffect, useState } from "react"
 import { db, } from "../config/Firebase";
 import { getDoc, doc, } from "firebase/firestore"
