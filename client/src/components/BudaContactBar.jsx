@@ -66,9 +66,10 @@ const ContactBar = () => {
             </div>
             {/* Thank You Section */}
             <section className="w-full bg-white  border-t-2 p-5 border-black flex flex-col items-center justify-center">
-                <h1 >Thank You for choosing BUDA!</h1>
-                <h2 >Copyright © Bianca Zogbi All rights reserved.</h2>
+                <h1 className="welcome" >Thank You for choosing BUDA!</h1>
                 <h2> budamarindance@gmail.com</h2>
+                <h2 className="welcome">Website created by Kyle Mitchell</h2>
+                <h2>kylethacoder@gmail.com</h2>
             </section>
         </div>
     )
