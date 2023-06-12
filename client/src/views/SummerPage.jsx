@@ -70,7 +70,7 @@ const SummerPage = (props) => {
                             <h2 className="mb-6 xl:text-3xl">
                                 <strong>{data.summerTitle}</strong>
                             </h2>
-                            <p className="mb-1 xl:text-xl">
+                            <p className="mb-1 xl:text-xl indent-5">
                                 {data.summerContent}
                             </p>
                         </div>
